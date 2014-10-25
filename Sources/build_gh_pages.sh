@@ -7,9 +7,9 @@
 make html
 
 # copy to other repo (on the gh-pages branch)
-cp -R build/html/ ../../IntroToPython.gh-pages
+cp -R build/html/ ../../PythonTopics_gh_pages/
 
-cd ../../IntroToPython.gh-pages
+cd ../../PythonTopics_gh_pages
 git add * # in case there are new files added
 git commit -a
 git push
