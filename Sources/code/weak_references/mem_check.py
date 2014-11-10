@@ -1,7 +1,13 @@
 """
-__init__.py for the utilities package
+mem_check.py
 
-a few small things here, 'cause why not?
+functions for getting memoroy use of the current python process
+
+Windows and *nix versions
+
+USAGE:
+
+amount = get_mem_use(units='MB') # options are KB, MB, GB
 
 """
 
@@ -95,7 +101,7 @@ else: # for posix systems only tested on OS-X for now
                            'GB', 'MB', 'KB'
         """
         import resource
-        useage = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+        #useage = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
         div = {'GB': 1024*1024*1024,
                'MB': 1024*1024,
                'KB': 1024,

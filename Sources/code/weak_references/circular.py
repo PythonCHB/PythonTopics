@@ -7,18 +7,20 @@ import gc
 
 deleted_object_messages = []
 
+
 class MyChild(object):
     def __init__(self, parent):
-        #self.parent = parent
+        self.parent = parent
         #self.parent = weakref.ref(parent)
-        self.parent = weakref.proxy(parent)
+        #self.parent = weakref.proxy(parent)
 
         ## store some data so it will use appreciable memory
-        ## multiply by 1234 to reduce interning
+        ## multiply by 1234 to avoid interning
         self.data = [1234*i for i in range(100000)]
 
     def __del__(self):
         deleted_object_messages.append( ('MyChild deleted', id(self)) )
+
 
 class MyParent(object):
     def __init__(self):
@@ -49,7 +51,7 @@ if __name__ == "__main__":
     print "a's parent:", a.parent
     print "a's parent's children:", a.parent.children
 
-    assert a  is a.parent.children[0]
+    assert a is a.parent.children[0]
     assert a2 is a.parent.children[1]
 
 
