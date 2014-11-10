@@ -59,23 +59,10 @@
             <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="">Python Memory Management and Weak References</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#memory-management">Memory Management</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#reference-counting">Reference Counting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#what-makes-a-reference">What makes a reference?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#how-do-i-see-what-s-going-on">How do I see what&#8217;s going on?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#playing-with-references">Playing with References</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id1">Playing with References</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id2">Playing with References</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">Playing with References</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-power-of-reference-counting">The Power of Reference Counting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-limits-of-reference-counting">The Limits of Reference Counting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-garbage-collector">The Garbage Collector</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#weak-references">Weak References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#circular-references">Circular References</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#exercise">Exercise</a></li>
 </ul>
 </li>
-</ul>
-<ul class="simple">
 </ul>
 
         
@@ -117,49 +104,49 @@
 <p><tt class="docutils literal"><span class="pre">https://github.com/PythonCHB</span></tt></p>
 <div class="section" id="memory-management">
 <h2>Memory Management<a class="headerlink" href="#memory-management" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><ul class="simple">
+<ul class="left simple">
 <li>You don&#8217;t want python objects that are no longer in use taking up memory.</li>
 <li>You don&#8217;t want to keep track of all that yourself.</li>
-<li>Most &#8220;scripting languages&#8221; or &#8220;virtual machines&#8221; have some sort of automated memory management</li>
+<li>Most &#8220;scripting languages&#8221; or &#8220;virtual machines&#8221; have some sort of
+automated memory management</li>
 </ul>
-</div></blockquote>
-<p>Many ways to do &#8220;Garbage Collection&#8221;</p>
-</div>
+<p class="center medium">Many ways to do &#8220;Garbage Collection&#8221;</p>
 <div class="section" id="reference-counting">
-<h2>Reference Counting<a class="headerlink" href="#reference-counting" title="Permalink to this headline">¶</a></h2>
+<h3>Reference Counting<a class="headerlink" href="#reference-counting" title="Permalink to this headline">¶</a></h3>
 <dl class="docutils">
-<dt>How memory is managed is not part of the Python Language spec:</dt>
+<dt>How memory is managed is not part of the Python language spec:</dt>
 <dd><ul class="first last simple">
 <li>Jython uses the JVM</li>
 <li>Iron Python uses the CLR
 - Both are garbage collected</li>
-<li>PyPy uses: ????</li>
+<li>PyPy uses <a class="reference external" href="https://pypy.readthedocs.org/en/release-2.4.x/garbage_collection.html#minimark-gc">Minimark</a></li>
 </ul>
 </dd>
 <dt>The CPython interpreter uses a reference counting scheme:</dt>
 <dd><ul class="first last simple">
-<li>every time there is a new reference to a Python object, its reference count is increased</li>
-<li>every time a reference is deleted &#8211; the count is decreased</li>
-<li>when the reference count goes to zero: the object is deleted (memory freed)</li>
+<li>Every time there is a new reference to a Python object, its reference
+count is increased</li>
+<li>Every time a reference is removed &#8211; the count is decreased</li>
+<li>When the reference count goes to zero: the object is deleted
+(memory freed)</li>
 </ul>
 </dd>
 </dl>
 </div>
 <div class="section" id="what-makes-a-reference">
-<h2>What makes a reference?<a class="headerlink" href="#what-makes-a-reference" title="Permalink to this headline">¶</a></h2>
+<h3>What makes a reference?<a class="headerlink" href="#what-makes-a-reference" title="Permalink to this headline">¶</a></h3>
 <ul>
-<li><p class="first">binding to a name:</p>
+<li><p class="first">Binding to a name:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="n">an_object</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">putting it in a container:</p>
+<li><p class="first">Putting it in a container:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">an_object</span><span class="p">)</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">passing it to a function:</p>
+<li><p class="first">Passing it to a function:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">func</span><span class="p">(</span><span class="n">an_object</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -168,139 +155,136 @@
 <p>Most of the time, you don&#8217;t need to think about this at all.</p>
 </div>
 <div class="section" id="how-do-i-see-what-s-going-on">
-<h2>How do I see what&#8217;s going on?<a class="headerlink" href="#how-do-i-see-what-s-going-on" title="Permalink to this headline">¶</a></h2>
+<h3>How do I see what&#8217;s going on?<a class="headerlink" href="#how-do-i-see-what-s-going-on" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">sys</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">getrefcount</span><span class="p">(</span><span class="nb">object</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>NOTE: This will always return one more than you&#8217;d expect, as passing the object to the function increases its refcount by one:</p>
-<div class="highlight-python"><div class="highlight"><pre>In [5]: a = []
+<p><strong>NOTE:</strong> This will always return one more than you&#8217;d expect, as passing the object to the function increases its refcount by one:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [5]: </span><span class="n">a</span> <span class="o">=</span> <span class="p">[]</span>
 
-In [6]: sys.getrefcount(a)
-Out[6]: 2
+<span class="gp">In [6]: </span><span class="n">sys</span><span class="o">.</span><span class="n">getrefcount</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="gh">Out[6]: </span><span class="go">2</span>
 </pre></div>
 </div>
-<p>[The Heisenberg Uncertainty Principle: you can&#8217;t observer it without altering it]</p>
+<dl class="docutils">
+<dt>The Heisenberg Uncertainty Principle:</dt>
+<dd><ul class="first last simple">
+<li>you can&#8217;t observe it without altering it</li>
+</ul>
+</dd>
+</dl>
 </div>
 <div class="section" id="playing-with-references">
-<h2>Playing with References<a class="headerlink" href="#playing-with-references" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre>In [7]: a = []
+<h3>Playing with References<a class="headerlink" href="#playing-with-references" title="Permalink to this headline">¶</a></h3>
+<p>(live demo)</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [7]: </span><span class="n">a</span> <span class="o">=</span> <span class="p">[]</span>
 
-In [8]: sys.getrefcount(a)
-Out[8]: 2
+<span class="gp">In [8]: </span><span class="n">sys</span><span class="o">.</span><span class="n">getrefcount</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="gh">Out[8]: </span><span class="go">2</span>
 
-In [9]: b = a
+<span class="gp">In [9]: </span><span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
 
-In [10]: sys.getrefcount(a)
-Out[10]: 3
+<span class="gp">In [10]: </span><span class="n">sys</span><span class="o">.</span><span class="n">getrefcount</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="gh">Out[10]: </span><span class="go">3</span>
 
-In [11]: l = [1,2,3,a]
+<span class="gp">In [11]: </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">a</span><span class="p">]</span>
 
-In [12]: sys.getrefcount(a)
-Out[12]: 4
+<span class="gp">In [12]: </span><span class="n">sys</span><span class="o">.</span><span class="n">getrefcount</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="gh">Out[12]: </span><span class="go">4</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id1">
-<h2>Playing with References<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre>In [13]: del b
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [13]: </span><span class="k">del</span> <span class="n">b</span>
 
-In [14]: sys.getrefcount(a)
-Out[14]: 3
+<span class="gp">In [14]: </span><span class="n">sys</span><span class="o">.</span><span class="n">getrefcount</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="gh">Out[14]: </span><span class="go">3</span>
 
 
-In [15]: del l
+<span class="gp">In [15]: </span><span class="k">del</span> <span class="n">l</span>
 
-In [16]: sys.getrefcount(a)
-Out[16]: 2
+<span class="gp">In [16]: </span><span class="n">sys</span><span class="o">.</span><span class="n">getrefcount</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="gh">Out[16]: </span><span class="go">2</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id2">
-<h2>Playing with References<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre># function local variables
+<div class="highlight-ipython"><div class="highlight"><pre><span class="c"># function local variables</span>
 
-    In [17]: def test(x):
-       ....:     print &quot;x has a refcount of:&quot;, sys.getrefcount(x)
-       ....:
+    <span class="n">In</span> <span class="p">[</span><span class="mi">17</span><span class="p">]:</span> <span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+       <span class="o">....</span><span class="p">:</span>     <span class="k">print</span> <span class="s">&quot;x has a refcount of:&quot;</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">getrefcount</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+       <span class="o">....</span><span class="p">:</span>
 
-    In [18]: sys.getrefcount(a)
-    Out[18]: 2
+    <span class="n">In</span> <span class="p">[</span><span class="mi">18</span><span class="p">]:</span> <span class="n">sys</span><span class="o">.</span><span class="n">getrefcount</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="n">Out</span><span class="p">[</span><span class="mi">18</span><span class="p">]:</span> <span class="mi">2</span>
 
-    In [19]: test(a)
-    x has a refcount of: 4
+    <span class="n">In</span> <span class="p">[</span><span class="mi">19</span><span class="p">]:</span> <span class="n">test</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="n">x</span> <span class="n">has</span> <span class="n">a</span> <span class="n">refcount</span> <span class="n">of</span><span class="p">:</span> <span class="mi">4</span>
 
-    In [20]: sys.getrefcount(a)
-    Out[20]: 2
+    <span class="n">In</span> <span class="p">[</span><span class="mi">20</span><span class="p">]:</span> <span class="n">sys</span><span class="o">.</span><span class="n">getrefcount</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="n">Out</span><span class="p">[</span><span class="mi">20</span><span class="p">]:</span> <span class="mi">2</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id3">
-<h2>Playing with References<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre>In [21]: x = 3
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [21]: </span><span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>
 
-In [22]: sys.getrefcount(x)
-Out[22]: 428
+<span class="gp">In [22]: </span><span class="n">sys</span><span class="o">.</span><span class="n">getrefcount</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gh">Out[22]: </span><span class="go">428</span>
 </pre></div>
 </div>
 <p>WHOA!!</p>
 <p>(hint: interning....)</p>
 </div>
 <div class="section" id="the-power-of-reference-counting">
-<h2>The Power of Reference Counting<a class="headerlink" href="#the-power-of-reference-counting" title="Permalink to this headline">¶</a></h2>
+<h3>The Power of Reference Counting<a class="headerlink" href="#the-power-of-reference-counting" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first">You don&#8217;t need to think about it most of the time.</p>
 </li>
 <li><p class="first">Code that creates objects doesn&#8217;t need to delete them</p>
 </li>
-<li><dl class="first docutils">
-<dt>Objects get deleted right away</dt>
-<dd><p class="first last">. They get &#8220;cleaned up&#8221; (files, for instance)</p>
-</dd>
-</dl>
+<li><p class="first">Objects get deleted right away</p>
+<blockquote>
+<div><p>. They get &#8220;cleaned up&#8221; (files, for instance)</p>
+</div></blockquote>
+</li>
+<li><p class="first">Performance is predictable</p>
 </li>
 </ul>
 </div>
 <div class="section" id="the-limits-of-reference-counting">
-<h2>The Limits of Reference Counting<a class="headerlink" href="#the-limits-of-reference-counting" title="Permalink to this headline">¶</a></h2>
-<p>Circular references</p>
-<p>If a python object references another object that references the first object: You have a circular reference:</p>
-<div class="highlight-python"><div class="highlight"><pre>In [11]: l1 = [1,]
+<h3>The Limits of Reference Counting<a class="headerlink" href="#the-limits-of-reference-counting" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Performance overhead on all operations. But the big one:</li>
+</ul>
+<p class="medium">Circular references</p>
+<p>If a python object references another object that references the first
+object:</p>
+<p>You have a circular reference ...</p>
+</div>
+</div>
+<div class="section" id="circular-references">
+<h2>Circular References<a class="headerlink" href="#circular-references" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="circular-reference-example">
+<h3>Circular Reference Example<a class="headerlink" href="#circular-reference-example" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [8]: </span><span class="n">l1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,]</span> <span class="p">;</span> <span class="n">l2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,]</span>
 
-In [12]: l2 = [2,]
+<span class="gp">In [9]: </span><span class="n">l1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">l2</span><span class="p">);</span> <span class="n">l2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">l1</span><span class="p">)</span>
 
-In [13]: l1.append(l2)
+<span class="gp">In [10]: </span><span class="n">l1</span>
+<span class="gh">Out[10]: </span><span class="go">[1, [2, [...]]]</span>
 
-In [14]: l2.append(l1)
+<span class="gp">In [11]: </span><span class="n">l2</span>
+<span class="gh">Out[11]: </span><span class="go">[2, [1, [...]]]</span>
 
-In [15]: l1
-Out[15]: [1, [2, [...]]]
+<span class="gp">In [12]: </span><span class="n">l1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="gh">Out[12]: </span><span class="go">[2, [1, [...]]]</span>
 
-In [16]: l2
-Out[16]: [2, [1, [...]]]
+<span class="gp">In [13]: </span><span class="n">l2</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+<span class="gh">Out[13]: </span><span class="go">[1, [2, [...]]]</span>
 
-In [17]: l1[1]
-Out[17]: [2, [1, [...]]]
-
-In [18]: l1[1][1]
-Out[18]: [1, [2, [...]]]
-
-In [19]: l1[1][1][1]
-Out[19]: [2, [1, [...]]]
-
-In [20]: l1[1][1][1][1]
-Out[20]: [1, [2, [...]]]
-
-In [21]: l1[1][1][1][1]
-Out[21]: [1, [2, [...]]]
-
-In [22]: sys.getrefcount(l1)
-Out[22]: 15
+<span class="gp">In [16]: </span><span class="n">sys</span><span class="o">.</span><span class="n">getrefcount</span><span class="p">(</span><span class="n">l1</span><span class="p">)</span>
+<span class="gh">Out[16]: </span><span class="go">12</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="the-garbage-collector">
-<h2>The Garbage Collector<a class="headerlink" href="#the-garbage-collector" title="Permalink to this headline">¶</a></h2>
+<h3>The Garbage Collector<a class="headerlink" href="#the-garbage-collector" title="Permalink to this headline">¶</a></h3>
 <p>As of Python 2.0 &#8211; a garbage collector was added.</p>
 <p>It can find and clean up &#8220;unreachable&#8221; references.</p>
 <p>It is turned on by default:</p>
@@ -318,27 +302,22 @@ Out[4]: 64
 <p>But it can be slow, and doesn&#8217;t always work!</p>
 </div>
 <div class="section" id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
-<p>Example in iPython notebook:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">code</span><span class="o">/</span><span class="n">CircularReferenceExample</span><span class="o">.</span><span class="n">ipynb</span>
-</pre></div>
-</div>
-<p>You can also run:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">circular</span><span class="o">.</span><span class="n">py</span>
-</pre></div>
-</div>
-<p>And:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">memcount</span><span class="o">.</span><span class="n">py</span>
-</pre></div>
-</div>
-<dl class="docutils">
-<dt><tt class="docutils literal"><span class="pre">mem_check.py</span></tt> is code that reports process memory use</dt>
-<dd>&#8211; only <a href="#id4"><span class="problematic" id="id5">*</span></a>nix for now &#8211; sorry!</dd>
-</dl>
+<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<p>A really simple example:</p>
+<p><a class="reference download internal" href="_downloads/simple_circular.py"><tt class="xref download docutils literal"><span class="pre">simple_circular.py</span></tt></a></p>
+<p>More real example in iPython notebook:</p>
+<p><a class="reference download internal" href="_downloads/CircularReferenceExample.ipynb"><tt class="xref download docutils literal"><span class="pre">CircularReferenceExample.ipynb</span></tt></a></p>
+<p>If you don&#8217;t have the notebook running:</p>
+<p><a class="reference download internal" href="_downloads/circular.py"><tt class="xref download docutils literal"><span class="pre">circular.py</span></tt></a></p>
+<p>And <a class="reference download internal" href="_downloads/memcount.py"><tt class="xref download docutils literal"><span class="pre">memcount.py</span></tt></a> is a test
+file that show memory growth if circular references are not cleaned up.</p>
+<p>( <a class="reference download internal" href="_downloads/mem_check.py"><tt class="xref download docutils literal"><span class="pre">mem_check.py</span></tt></a> )
+is code that reports process memory use.</p>
 </div>
 <div class="section" id="weak-references">
-<h2>Weak References<a class="headerlink" href="#weak-references" title="Permalink to this headline">¶</a></h2>
-<p>For times when you don&#8217;t want to keep objects alive, Python provides &#8220;weak references&#8221;.</p>
+<h3>Weak References<a class="headerlink" href="#weak-references" title="Permalink to this headline">¶</a></h3>
+<p>For times when you don&#8217;t want to keep objects alive, Python provides
+&#8220;weak references&#8221;.</p>
 <p>You saw this in the examples.</p>
 <p>Three ways to use them:</p>
 <ul class="simple">
@@ -352,15 +331,16 @@ Out[4]: 64
 - When you want to control what happens when the referenced object is gone.</li>
 </ul>
 </div>
+</div>
 <div class="section" id="exercise">
 <h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
-<p>Build a &#8220;weak cache&#8221;:</p>
-<p>For large objects that are expensive to create:</p>
-<ul class="simple">
+<p class="left">Build a &#8220;weak cache&#8221;:</p>
+<p class="left">For large objects that are expensive to create:</p>
+<ul class="left simple">
 <li>Use a WeakValueDictionay to hold references to (probably large) objects.</li>
 <li>When the client requests an object that doesn&#8217;t exist &#8211; one is created, returned, and cached (weakly).</li>
 <li>If the object is in the cache, it is returned.</li>
-<li>when not other references exist to the object, it is NOT retained by the cache.</li>
+<li>when no other references exist to the object, it is NOT retained by the cache.</li>
 </ul>
 </div>
 </div>
