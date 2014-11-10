@@ -188,11 +188,16 @@ The Limits of Reference Counting
   Circular references
 
 If a python object references another object that references the first
-object: You have a circular reference:
+object:
 
-....
+You have a circular reference ...
 
-.. nextslide::
+===================
+Circular References
+===================
+
+Circular Reference Example
+--------------------------
 
 .. code-block:: ipython
 
@@ -240,21 +245,26 @@ But it can be slow, and doesn't always work!
 Examples
 ----------
 
+A really simple example:
 
-Example in iPython notebook::
+:download:`simple_circular.py <../code/weak_references/simple_circular.py>`
 
-  code/CircularReferenceExample.ipynb
 
-You can also run::
+More real example in iPython notebook:
 
-  circular.py
+:download:`CircularReferenceExample.ipynb  <../code/weak_references/CircularReferenceExample.ipynb>`
 
-And::
+If you don't have the notebook running:
 
-  memcount.py
+:download:`circular.py <../code/weak_references/circular.py>`
 
-``mem_check.py`` is code that reports process memory use
-  -- only *nix for now -- sorry!
+And :download:`memcount.py <../code/weak_references/memcount.py>` is a test
+file that show memory growth if circular references are not cleaned up.
+
+
+( :download:`mem_check.py <../code/weak_references/mem_check.py>` )
+is code that reports process memory use.
+
 
 Weak References
 -----------------
@@ -273,21 +283,25 @@ Three ways to use them:
 
 * ``Proxy`` objects
   - act much like regular references -- client code doesn't know the difference
+
 * ``WeakRef`` objects
   - When you want to control what happens when the referenced object is gone.
 
+=========
 Exercise
----------
+=========
 
-Build a "weak cache":
+.. rst-class:: left
 
-For large objects that are expensive to create:
+    Build a "weak cache":
 
-* Use a WeakValueDictionay to hold references to (probably large) objects.
+    For large objects that are expensive to create:
 
-* When the client requests an object that doesn't exist -- one is created, returned, and cached (weakly).
+    * Use a WeakValueDictionay to hold references to (probably large) objects.
 
-* If the object is in the cache, it is returned.
+    * When the client requests an object that doesn't exist -- one is created, returned, and cached (weakly).
 
-* when not other references exist to the object, it is NOT retained by the cache.
+    * If the object is in the cache, it is returned.
+
+    * when no other references exist to the object, it is NOT retained by the cache.
 
