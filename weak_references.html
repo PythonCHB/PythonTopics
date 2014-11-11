@@ -60,6 +60,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="">Python Memory Management and Weak References</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#memory-management">Memory Management</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#circular-references">Circular References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tools">Tools</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#exercise">Exercise</a></li>
 </ul>
 </li>
@@ -240,7 +241,7 @@ count is increased</li>
 </li>
 <li><p class="first">Objects get deleted right away</p>
 <blockquote>
-<div><p>. They get &#8220;cleaned up&#8221; (files, for instance)</p>
+<div><p>. They can &#8220;clean up&#8221; on deletion (files, for instance) &#8211; and it will happen right away.</p>
 </div></blockquote>
 </li>
 <li><p class="first">Performance is predictable</p>
@@ -253,16 +254,14 @@ count is increased</li>
 <li>Performance overhead on all operations. But the big one:</li>
 </ul>
 <p class="medium">Circular references</p>
-<p>If a python object references another object that references the first
+<p>If a python object somehow references itself &#8211; i.e. it references another object that references the first
 object:</p>
 <p>You have a circular reference ...</p>
 </div>
 </div>
 <div class="section" id="circular-references">
 <h2>Circular References<a class="headerlink" href="#circular-references" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="circular-reference-example">
-<h3>Circular Reference Example<a class="headerlink" href="#circular-reference-example" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [8]: </span><span class="n">l1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,]</span> <span class="p">;</span> <span class="n">l2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,]</span>
+<div class="left highlight-ipython"><div class="highlight"><pre><span class="gp">In [8]: </span><span class="n">l1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,]</span> <span class="p">;</span> <span class="n">l2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,]</span>
 
 <span class="gp">In [9]: </span><span class="n">l1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">l2</span><span class="p">);</span> <span class="n">l2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">l1</span><span class="p">)</span>
 
@@ -277,19 +276,20 @@ object:</p>
 
 <span class="gp">In [13]: </span><span class="n">l2</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
 <span class="gh">Out[13]: </span><span class="go">[1, [2, [...]]]</span>
-
-<span class="gp">In [16]: </span><span class="n">sys</span><span class="o">.</span><span class="n">getrefcount</span><span class="p">(</span><span class="n">l1</span><span class="p">)</span>
-<span class="gh">Out[16]: </span><span class="go">12</span>
 </pre></div>
 </div>
-</div>
+<p>(demo) &#8211; <a class="reference download internal" href="_downloads/simple_circular.py"><tt class="xref download docutils literal"><span class="pre">simple_circular.py</span></tt></a></p>
 <div class="section" id="the-garbage-collector">
 <h3>The Garbage Collector<a class="headerlink" href="#the-garbage-collector" title="Permalink to this headline">¶</a></h3>
 <p>As of Python 2.0 &#8211; a garbage collector was added.</p>
+<blockquote>
+<div><ul class="simple">
+<li>(<a class="reference external" href="https://docs.python.org/2/library/gc.html">https://docs.python.org/2/library/gc.html</a>)</li>
+</ul>
+</div></blockquote>
 <p>It can find and clean up &#8220;unreachable&#8221; references.</p>
 <p>It is turned on by default:</p>
 <div class="highlight-python"><div class="highlight"><pre>In [1]: import gc
-
 In [2]: gc.isenabled()
 Out[2]: True
 </pre></div>
@@ -300,36 +300,104 @@ Out[4]: 64
 </pre></div>
 </div>
 <p>But it can be slow, and doesn&#8217;t always work!</p>
+<p>How does the garbage collector work?</p>
+<blockquote>
+<div><ul class="simple">
+<li>Not a full &#8220;mark and sweep&#8221; type.</li>
+</ul>
+</div></blockquote>
+<p>It searches for reference cycles &#8211; then cleans those up.</p>
+<blockquote>
+<div><ul class="simple">
+<li>It doesn&#8217;t have to bother checking non-container types (ints, strings, etc.)</li>
+<li>Faster, and not as dependent on having a clear &#8220;root&#8221; namespace.</li>
+</ul>
+</div></blockquote>
+<p>Details here:</p>
+<p><a class="reference external" href="http://arctrix.com/nas/python/gc/">http://arctrix.com/nas/python/gc/</a>  (or in the source!)</p>
+<p>Big issue: classes that define a <tt class="docutils literal"><span class="pre">__del__</span></tt> method are not cleaned up.</p>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">__del__</span></tt> methods often act on references that may no be there if
+they are cleaned up in the wrong order.</li>
+</ul>
+</div></blockquote>
+<p>NOTE: you can work with gc.garbage() &#8211; but tricky and messy</p>
+</div>
+</div>
+<div class="section" id="tools">
+<h2>Tools<a class="headerlink" href="#tools" title="Permalink to this headline">¶</a></h2>
+<p class="left">If these objects are no longer &#8220;reachable&#8221; &#8211; how do you find out what&#8217;s going on?</p>
+<p class="left">We saw <tt class="docutils literal"><span class="pre">sys.getrefcount()</span></tt> &#8211; but you need a reference to the object to use it.</p>
+<p class="left">You can see what the refcount is before you delete the last reference, but that isn&#8217;t always easy.</p>
+<div class="section" id="process-memory-use">
+<h3>Process Memory Use<a class="headerlink" href="#process-memory-use" title="Permalink to this headline">¶</a></h3>
+<p>A really coarse way to find a memory leak is to see if the process memory
+is growing.</p>
+<p>It can be subtle &#8211;python (and the OS) do tricks to re-use memory, etc.</p>
+<p>But if you have a &#8220;real&#8221; leak &#8211; you&#8217;ll see it. (Example to follow)</p>
+<p><a class="reference download internal" href="_downloads/mem_check.py"><tt class="xref download docutils literal"><span class="pre">mem_check.py</span></tt></a></p>
+<p>provides functions that report the memory use of the current running process.</p>
+<p>(*nix and Windows code)</p>
+</div>
+<div class="section" id="id-checks">
+<h3>id checks<a class="headerlink" href="#id-checks" title="Permalink to this headline">¶</a></h3>
+<p>As it happens, the Python <tt class="docutils literal"><span class="pre">id()</span></tt> function returns a memory address.</p>
+<p>It&#8217;s really dangerous, but that means we can examine an object if we know
+its <cite>id</cite>, even if we don&#8217;t hold a reference to it.</p>
+<p>Bill Bumgarner wrote a nifty extension module that returns the python
+object pointed to by an id (memory address) &#8211; &#8220;di&#8221;:</p>
+<p><a class="reference external" href="http://www.friday.com/bbum/2007/08/24/python-di/">http://www.friday.com/bbum/2007/08/24/python-di/</a></p>
+<p>I added a function that returns the reference count of an object from its id.</p>
+<p><a class="reference external" href="https://github.com/PythonCHB/di_refcount">https://github.com/PythonCHB/di_refcount</a></p>
+<p>NOTE: it would be a really bad idea to use these in production code!</p>
 </div>
 <div class="section" id="examples">
 <h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
-<p>A really simple example:</p>
-<p><a class="reference download internal" href="_downloads/simple_circular.py"><tt class="xref download docutils literal"><span class="pre">simple_circular.py</span></tt></a></p>
-<p>More real example in iPython notebook:</p>
+<p><a class="reference download internal" href="_downloads/simple_circular_di.py"><tt class="xref download docutils literal"><span class="pre">simple_circular_di.py</span></tt></a></p>
+<p>uses the ref_by_id() function to see what&#8217;s going on with a circular
+reference and garbage collection.</p>
+<p>More real examples in iPython notebook:</p>
 <p><a class="reference download internal" href="_downloads/CircularReferenceExample.ipynb"><tt class="xref download docutils literal"><span class="pre">CircularReferenceExample.ipynb</span></tt></a></p>
-<p>If you don&#8217;t have the notebook running:</p>
-<p><a class="reference download internal" href="_downloads/circular.py"><tt class="xref download docutils literal"><span class="pre">circular.py</span></tt></a></p>
-<p>And <a class="reference download internal" href="_downloads/memcount.py"><tt class="xref download docutils literal"><span class="pre">memcount.py</span></tt></a> is a test
+<p>Or: <a class="reference download internal" href="_downloads/circular.py"><tt class="xref download docutils literal"><span class="pre">circular.py</span></tt></a></p>
+<p><a class="reference download internal" href="_downloads/memcount.py"><tt class="xref download docutils literal"><span class="pre">memcount.py</span></tt></a> is a test
 file that show memory growth if circular references are not cleaned up.</p>
 <p>( <a class="reference download internal" href="_downloads/mem_check.py"><tt class="xref download docutils literal"><span class="pre">mem_check.py</span></tt></a> )
 is code that reports process memory use.</p>
+<p>You can find this code in the main repo here:</p>
+<p><a class="reference external" href="https://github.com/PythonCHB/PythonTopics/tree/master/Sources/code/weak_references">https://github.com/PythonCHB/PythonTopics/tree/master/Sources/code/weak_references</a></p>
 </div>
 <div class="section" id="weak-references">
 <h3>Weak References<a class="headerlink" href="#weak-references" title="Permalink to this headline">¶</a></h3>
 <p>For times when you don&#8217;t want to keep objects alive, Python provides
-&#8220;weak references&#8221;.</p>
-<p>You saw this in the examples.</p>
-<p>Three ways to use them:</p>
-<ul class="simple">
-<li>The built-in containers:
-- <tt class="docutils literal"><span class="pre">WeakKeyDictionary</span></tt>
-- <tt class="docutils literal"><span class="pre">WeakValueDictionary</span></tt>
-- <tt class="docutils literal"><span class="pre">WeakSet</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">Proxy</span></tt> objects
-- act much like regular references &#8211; client code doesn&#8217;t know the difference</li>
-<li><tt class="docutils literal"><span class="pre">WeakRef</span></tt> objects
-- When you want to control what happens when the referenced object is gone.</li>
+&#8220;weak references&#8221; &#8211; we saw this in the examples.</p>
+<p>(<a class="reference external" href="https://docs.python.org/2/library/weakref.html">https://docs.python.org/2/library/weakref.html</a>)</p>
+<ol class="arabic simple">
+<li>The built-in containers:</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">WeakKeyDictionary</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">WeakValueDictionary</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">WeakSet</span></tt></li>
 </ul>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><tt class="docutils literal"><span class="pre">Proxy</span></tt> objects</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>act much like regular references &#8211; client code doesn&#8217;t know the difference</li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><tt class="docutils literal"><span class="pre">WeakRef</span></tt> objects</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>When you want to control what happens when the referenced object is gone.</li>
+</ul>
+</div></blockquote>
 </div>
 </div>
 <div class="section" id="exercise">
