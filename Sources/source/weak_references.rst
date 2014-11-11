@@ -173,7 +173,7 @@ The Power of Reference Counting
 
 * Objects get deleted right away
 
-   . They get "cleaned up" (files, for instance)
+   . They can "clean up" on deletion (files, for instance) -- and it will happen right away.
 
 * Performance is predictable
 
@@ -187,7 +187,7 @@ The Limits of Reference Counting
 
   Circular references
 
-If a python object references another object that references the first
+If a python object somehow references itself -- i.e. it references another object that references the first
 object:
 
 You have a circular reference ...
@@ -196,42 +196,41 @@ You have a circular reference ...
 Circular References
 ===================
 
-Circular Reference Example
---------------------------
+.. rst-class:: left
 
-.. code-block:: ipython
+    .. code-block:: ipython
 
-    In [8]: l1 = [1,] ; l2 = [2,]
+        In [8]: l1 = [1,] ; l2 = [2,]
 
-    In [9]: l1.append(l2); l2.append(l1)
+        In [9]: l1.append(l2); l2.append(l1)
 
-    In [10]: l1
-    Out[10]: [1, [2, [...]]]
+        In [10]: l1
+        Out[10]: [1, [2, [...]]]
 
-    In [11]: l2
-    Out[11]: [2, [1, [...]]]
+        In [11]: l2
+        Out[11]: [2, [1, [...]]]
 
-    In [12]: l1[1]
-    Out[12]: [2, [1, [...]]]
+        In [12]: l1[1]
+        Out[12]: [2, [1, [...]]]
 
-    In [13]: l2[1][1][1]
-    Out[13]: [1, [2, [...]]]
+        In [13]: l2[1][1][1]
+        Out[13]: [1, [2, [...]]]
 
-    In [16]: sys.getrefcount(l1)
-    Out[16]: 12
+(demo) -- :download:`simple_circular.py <../code/weak_references/simple_circular.py>`
 
 
 The Garbage Collector
------------------------
+----------------------
 
 As of Python 2.0 -- a garbage collector was added.
+
+ - (https://docs.python.org/2/library/gc.html)
 
 It can find and clean up "unreachable" references.
 
 It is turned on by default::
 
 	In [1]: import gc
-
 	In [2]: gc.isenabled()
 	Out[2]: True
 
@@ -242,49 +241,124 @@ or you can force it::
 
 But it can be slow, and doesn't always work!
 
+.. nextslide::
+
+How does the garbage collector work?
+
+  * Not a full "mark and sweep" type.
+
+It searches for reference cycles -- then cleans those up.
+
+   * It doesn't have to bother checking non-container types (ints, strings, etc.)
+
+   * Faster, and not as dependent on having a clear "root" namespace.
+
+Details here:
+
+http://arctrix.com/nas/python/gc/  (or in the source!)
+
+Big issue: classes that define a ``__del__`` method are not cleaned up.
+
+  * ``__del__`` methods often act on references that may no be there if
+    they are cleaned up in the wrong order.
+
+NOTE: you can work with gc.garbage() -- but tricky and messy
+
+=====
+Tools
+=====
+
+.. rst-class:: left
+
+    If these objects are no longer "reachable" -- how do you find out what's going on?
+
+    We saw ``sys.getrefcount()`` -- but you need a reference to the object to use it.
+
+    You can see what the refcount is before you delete the last reference, but that isn't always easy.
+
+
+Process Memory Use
+-------------------
+
+A really coarse way to find a memory leak is to see if the process memory
+is growing.
+
+It can be subtle --python (and the OS) do tricks to re-use memory, etc.
+
+But if you have a "real" leak -- you'll see it. (Example to follow)
+
+:download:`mem_check.py <../code/weak_references/mem_check.py>`
+
+provides functions that report the memory use of the current running process.
+
+(\*nix and Windows code)
+
+id checks
+----------
+
+As it happens, the Python ``id()`` function returns a memory address.
+
+It's really dangerous, but that means we can examine an object if we know
+its `id`, even if we don't hold a reference to it.
+
+Bill Bumgarner wrote a nifty extension module that returns the python
+object pointed to by an id (memory address) -- "di":
+
+http://www.friday.com/bbum/2007/08/24/python-di/
+
+I added a function that returns the reference count of an object from its id.
+
+https://github.com/PythonCHB/di_refcount
+
+NOTE: it would be a really bad idea to use these in production code!
+
 Examples
 ----------
 
-A really simple example:
+:download:`simple_circular_di.py <../code/weak_references/simple_circular_di.py>`
 
-:download:`simple_circular.py <../code/weak_references/simple_circular.py>`
+uses the ref_by_id() function to see what's going on with a circular
+reference and garbage collection.
 
-
-More real example in iPython notebook:
+More real examples in iPython notebook:
 
 :download:`CircularReferenceExample.ipynb  <../code/weak_references/CircularReferenceExample.ipynb>`
 
-If you don't have the notebook running:
+Or: :download:`circular.py <../code/weak_references/circular.py>`
 
-:download:`circular.py <../code/weak_references/circular.py>`
-
-And :download:`memcount.py <../code/weak_references/memcount.py>` is a test
+:download:`memcount.py <../code/weak_references/memcount.py>` is a test
 file that show memory growth if circular references are not cleaned up.
-
 
 ( :download:`mem_check.py <../code/weak_references/mem_check.py>` )
 is code that reports process memory use.
+
+You can find this code in the main repo here:
+
+https://github.com/PythonCHB/PythonTopics/tree/master/Sources/code/weak_references
 
 
 Weak References
 -----------------
 
 For times when you don't want to keep objects alive, Python provides
-"weak references".
+"weak references" -- we saw this in the examples.
 
-You saw this in the examples.
+(https://docs.python.org/2/library/weakref.html)
 
-Three ways to use them:
+1. The built-in containers:
 
-* The built-in containers:
   - ``WeakKeyDictionary``
+
   - ``WeakValueDictionary``
+
   - ``WeakSet``
 
-* ``Proxy`` objects
+2. ``Proxy`` objects
+
   - act much like regular references -- client code doesn't know the difference
 
-* ``WeakRef`` objects
+3. ``WeakRef`` objects
+
   - When you want to control what happens when the referenced object is gone.
 
 =========
