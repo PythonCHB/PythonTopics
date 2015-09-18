@@ -3,14 +3,15 @@ In This Collection
 
 .. ifslides::
 
-    +----------------------+
-    | Topics:              |
-    +======================+
-    | .. toctree::         |
-    |     :maxdepth: 1     |
-    |                      |
-    |     weak_references  |
-    +----------------------+
+    +-------------------------------+
+    | Topics:                       |
+    +===============================+
+    | .. toctree::                  |
+    |     :maxdepth: 1              |
+    |                               |
+    |     weak_references           |
+    |     persistance_serialization |
+    +-------------------------------+
 
 .. ifnotslides::
 

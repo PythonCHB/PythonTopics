@@ -652,7 +652,7 @@ LAB
 
   - and reads it back in
 
-* Write a module that saves the data in an SQLItE datbase
+* Write a module that saves the data in an SQLitE datbase
 
   - and reads it back in
 
