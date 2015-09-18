@@ -18,9 +18,9 @@ import mem_check
 
 class MyChild(object):
     def __init__(self, parent):
-        self.parent = parent
+        #self.parent = parent
         # if a weak ref is used, then no memory leak.
-        #self.parent = weakref.proxy(parent)
+        self.parent = weakref.proxy(parent)
 
         ## store some data so it will use appreciable memory
         ## multiply by 1234 to reduce interning
@@ -55,4 +55,4 @@ if __name__ == "__main__":
         print "ref count:", sys.getrefcount(p)
         print "mem_use: %f MB"%mem_check.get_mem_use()
         del p
-        gc.collect()
+        print "collected", gc.collect()
