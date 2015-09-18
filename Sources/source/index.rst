@@ -21,6 +21,7 @@ In This Collection
         :maxdepth: 1
 
         weak_references
+        persistance_serialization
 
 .. rst-class:: credit
 
