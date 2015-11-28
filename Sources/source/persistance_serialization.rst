@@ -178,13 +178,13 @@ http://docs.python.org/library/shelve.html
 LAB
 ---
 
-There are two datasets in the ``Examples\Session10`` dir:
+Here are two datasets embedded in Python:
 
-.. code-block:: ipython
+:download:`address book data <../code/persistance/add_book_data.py>`
+:download:`flat address book data <../code/persistance/add_book_data.py>`
 
-    add_book_data.py
-    add_book_data_flat.py
-    # load with:
+They can be loaded with:: 
+
     from add_book_data import AddressBook
 
 They have address book data -- one with a nested dict, one "flat"
@@ -587,7 +587,7 @@ Support for a large number of third-party Database drivers:
   * PostgreSQL
   * Oracle
   * MSSQL (?)
-  * .....
+  * ...
 
 http://www.python.org/dev/peps/pep-0249}
 
