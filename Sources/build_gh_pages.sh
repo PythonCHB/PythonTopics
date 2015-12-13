@@ -10,6 +10,7 @@ make html
 cp -R build/html/ ../../PythonTopics_gh_pages/
 
 cd ../../PythonTopics_gh_pages
+git checkout gh-pages
 git add * # in case there are new files added
 git commit -a
 git push
