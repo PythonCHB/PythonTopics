@@ -2,8 +2,9 @@
 Persistence and Serialization
 *****************************
 
+========
 Overview
---------
+========
 
 Persistence and Serialization are closely related.
 
@@ -72,7 +73,9 @@ In theory, ``repr()``  always gives a form that can be re-constructed.
 
 Often ``str()``  form works too.
 
-``pprint``  (pretty print) module can make it easier to read.
+``pprint``  (pretty print) module can make it easier to read:
+
+https://docs.python.org/3.5/library/pprint.html
 
 Python Literal Example
 ----------------------
@@ -91,7 +94,7 @@ Python Literal Example
 
 You can save the string to a file and even use ``import``
 
-(NOTE: ``ast.literal_eval`` is safer than eval)
+(NOTE: ``ast.literal_eval`` is safer than eval: https://docs.python.org/3.5/library/ast.html#ast-helpers)
 
 pretty print
 ------------
@@ -102,7 +105,7 @@ pretty print
     In [71]: repr(data)
     Out[71]: "[{'this': 5, 'that': 4}, {'eggs': 3.4, 'spam': 7}, {'foo': 86, 'bar': 4.5}, {'fun': 43, 'baz': 6.5}]"
     In [72]: s = pprint.pformat(data)
-    In [73]: print s
+    In [73]: print(s)
     [{'that': 4, 'this': 5},
      {'eggs': 3.4, 'spam': 7},
      {'bar': 4.5, 'foo': 86},
@@ -116,17 +119,9 @@ Pickle is a binary format for python objects
 
 You can essentially dump any python object to disk (or string, or socket, or...
 
-``cPickle``  is faster than pickle, but
-can't be customized -- you usually want ``cPickle``
-
-http://docs.python.org/library/pickle.html
-
-
-.. nextslide::
-
 .. code-block:: ipython
 
-    In [87]: import cPickle as pickle
+    In [87]: import pickle
     In [83]: data
     Out[83]:
     [{'that': 4, 'this': 5},
@@ -138,8 +133,7 @@ http://docs.python.org/library/pickle.html
     In [86]: data2 == data
     Out[86]: True
 
-
-http://docs.python.org/library/pickle.html
+https://docs.python.org/3.5/library/pickle.html
 
 Shelve
 ------
@@ -148,14 +142,13 @@ A "shelf" is a persistent, dictionary-like object.
 
 (It's also a place you can put a jar of pickles...)
 
-The values (not the keys!) can be essentially arbitrary Python
-objects (anything picklable)
+The values (not the keys!) can be essentially arbitrary Python objects (anything picklable)
 
 NOTE: will not reflect changes in mutable objects without re-writing them to the db. (or use writeback=True)
 
 If less that 100s of MB -- just use a dict and pickle it.
 
-http://docs.python.org/library/shelve.html
+https://docs.python.org/3.5/library/shelve.html
 
 
 .. nextslide::
@@ -173,18 +166,18 @@ http://docs.python.org/library/shelve.html
     flag = d.has_key(key)   # true if the key exists
     d.close()       # close it
 
-http://docs.python.org/library/shelve.html
+https://docs.python.org/3.5/library/shelve.html
 
 LAB
 ---
 
-There are two datasets in the ``Examples\Session10`` dir:
+Here are two datasets embedded in Python:
 
-.. code-block:: ipython
+:download:`add_book_data.py <../code/persistance/add_book_data.py>`
+:download:`add_book_data_flat.py <../code/persistance/add_book_data_flat.py>`
 
-    add_book_data.py
-    add_book_data_flat.py
-    # load with:
+They can be loaded with:: 
+
     from add_book_data import AddressBook
 
 They have address book data -- one with a nested dict, one "flat"
@@ -234,14 +227,14 @@ Writing ``ini``  files:
 
 .. code-block:: ipython
 
-    import ConfigParser
-    config = ConfigParser.ConfigParser()
+    import configparser
+    config = configparser.ConfigParser()
     config.add_section('Section1')
     config.set('Section1', 'int', '15')
     config.set('Section1', 'bool', 'true')
     config.set('Section1', 'float', '3.1415')
     # Writing our configuration file to 'example.cfg'
-    config.write( open('example.cfg', 'wb') )
+    config.write(open('example.cfg', 'w'))
 
 Note: all keys and values are strings
 
@@ -251,7 +244,7 @@ Reading ``ini``  files:
 
 .. code-block:: ipython
 
-    >>> config = ConfigParser.ConfigParser()
+    >>> config = configparser.ConfigParser()
     >>> config.read('example.cfg')
     >>> config.sections()
     ['Section1', 'Section2']
@@ -261,7 +254,7 @@ Reading ``ini``  files:
     [('int', '15'), ('bool', 'true'), ('float', '3.1415')]
 
 
-http://docs.python.org/library/configparser.html
+https://docs.python.org/3.5/library/configparser.html
 
 CSV
 ---
@@ -292,7 +285,7 @@ Reading ``CSV``  files:
 
 ``csv``  module takes care of string quoting, etc. for you
 
-http://docs.python.org/library/csv.html
+https://docs.python.org/3.5/library/csv.html
 
 .. nextslide::
 
@@ -301,15 +294,16 @@ Writing ``CSV``  files:
 .. code-block:: python
 
     >>> import csv
-    >>> spamWriter = csv.writer(open('eggs.csv', 'wb'),
+    >>> outfile = open('eggs.csv', 'w')
+    >>> spam_writer = csv.writer(outfile,
                                 quoting=csv.QUOTE_MINIMAL)
-    >>> spamWriter.writerow(['Spam'] * 5 + ['Baked Beans'])
-    >>> spamWriter.writerow(['Spam', 'Lovely Spam', 'Wonderful Spam'])
+    >>> spam_writer.writerow(['Spam'] * 5 + ['Baked Beans'])
+    >>> spam_writer.writerow(['Spam', 'Lovely Spam', 'Wonderful Spam'])
 
 
 ``csv``  module takes care of string quoting, etc for you
 
-http://docs.python.org/library/csv.html
+https://docs.python.org/3.5/library/csv.html
 
 JSON
 ----
@@ -326,7 +320,7 @@ Presents a similar interface as ``pickle``
 
 http://www.json.org/
 
-http://docs.python.org/library/json.html
+https://docs.python.org/3.5/library/json.html
 
 Python json module
 ------------------
@@ -346,9 +340,9 @@ Python json module
     Out[98]: True # they are the same
 
 
-(also ``json.dump() and json.load()``  for files
+(also ``json.dump() and json.load()`` for files)
 
-http://docs.python.org/library/json.html
+https://docs.python.org/3.5/library/json.html
 
 XML
 ---
@@ -368,7 +362,7 @@ XML in the python std lib
 
 ``xml.etree``
 
-http://docs.python.org/library/xml.etree.elementtree.html
+https://docs.python.org/3.5/library/xml.etree.elementtree.html
 
 elementtree
 -----------
@@ -381,16 +375,17 @@ an ``ElementTree``  is an entire XML doc
 
 an ``Element``  is a node in that tree
 
-http://docs.python.org/library/xml.etree.elementtree.html}
+https://docs.python.org/3.5/library/xml.etree.elementtree.html
 
 LAB
 ---
+
+Use the same addressbook data:
 
 ::
 
     # load with:
     from add_book_data import AddressBook
-
 
 They have address book data -- one with a nested dict, one "flat"
 
@@ -420,22 +415,23 @@ DataBases
 anydbm
 ------
 
-``anydbm``  is a generic interface to variants of the DBM database
+``dbm``  is a generic interface to variants of the DBM database
 
 Suitable for storing data that fits well into a python dict with strings as both keys and values
 
-Note: anydbm will use the dbm system that works on your system -- this may be different on different systems -- so the db files may NOT be compatible! ``whichdb``  will try to figure it out, but it's not guaranteed
+Note: dbm will use the dbm system that works on your system -- this may be different on different systems -- so the db files may NOT be compatible! ``whichdb``  will try to figure it out, but it's not guaranteed
 
-http://docs.python.org/library/anydbm.html
+https://docs.python.org/3.5/library/dbm.html
 
-anydbm module
+dbm module
 -------------
 Writing data:
 
 ::
 
     #creating a dbm file:
-    anydbm.open(filename, 'n')
+    import dbm
+    dbm.open(filename, 'n')
 
 
 flag options are:
@@ -445,7 +441,7 @@ flag options are:
 * 'c' --  Open database for reading and writing, creating it if it doesn’t exist
 * 'n' -- Always create a new, empty database, open for reading and writing
 
-http://docs.python.org/library/anydbm.html
+https://docs.python.org/3.5/library/dbm.html
 
 anydbm module
 -------------
@@ -463,7 +459,7 @@ anydbm module
     # read it:
     db = dbm.open("dbm", "r")
     for key in db.keys():
-        print key, db[key]
+        print(key, db[key])
 
 
 
@@ -493,8 +489,7 @@ Allows (and requires) SQL queries
 
 Can provide high performance, flexible, portable storage for your app
 
-http://docs.python.org/library/sqlite3.html
-
+https://docs.python.org/3.5/library/sqlite3.html
 
 .. nextslide::
 
@@ -510,7 +505,7 @@ Example:
     # create a cursor
     c = conn.cursor()
 
-http://docs.python.org/library/sqlite3.html
+https://docs.python.org/3.5/library/sqlite3.html
 
 python sqlite module
 --------------------
@@ -520,8 +515,7 @@ Execute SQL with the cursor:
 ::
 
     # Create table
-    c.execute("'CREATE TABLE stocks
-                 (date text, trans text, symbol text, qty real, price real)"')
+    c.execute("'CREATE TABLE stocks (date text, trans text, symbol text, qty real, price real)'")
     # Insert a row of data
     c.execute("INSERT INTO stocks VALUES ('2006-01-05','BUY','RHAT',100,35.14)")
     # Save (commit) the changes
@@ -530,8 +524,7 @@ Execute SQL with the cursor:
     c.close()
 
 
-
-http://docs.python.org/library/sqlite3.html
+https://docs.python.org/3.5/library/sqlite3.html
 
 python sqlite module
 --------------------
@@ -542,8 +535,8 @@ python sqlite module
 
     >>> for row in c.execute('SELECT * FROM stocks ORDER BY price'):
             print row
-    (u'2006-01-05', u'BUY', u'RHAT', 100, 35.14)
-    (u'2006-03-28', u'BUY', u'IBM', 1000, 45.0)
+    ('2006-01-05', 'BUY', 'RHAT', 100, 35.14)
+    ('2006-03-28', 'BUY', 'IBM', 1000, 45.0)
     ...
 
 
@@ -573,13 +566,12 @@ Good idea to use the DB-API’s parameter substitution:
     c.executemany('INSERT INTO stocks VALUES (?,?,?,?,?)', purchases)
 
 
-
 http://xkcd.com/327/
 
 DB-API
 ------
 
-The DB-API spec (PEP 249) is a specification for interaction between Python and Relational Databases.}
+The DB-API spec (PEP 249) is a specification for interaction between Python and Relational Databases.
 
 Support for a large number of third-party Database drivers:
 
@@ -587,7 +579,7 @@ Support for a large number of third-party Database drivers:
   * PostgreSQL
   * Oracle
   * MSSQL (?)
-  * .....
+  * ...
 
 http://www.python.org/dev/peps/pep-0249}
 
@@ -616,11 +608,9 @@ Object Databases
 
 Directly store and retrieve Python Objects.
 
-Kind of like ``shelve`` , but more flexible, and give you searching, etc.
+Kind of like ``shelve``, but more flexible, and give you searching, etc.
 
-ZODB: (http://www.zodb.org/
-
-Durus: (https://www.mems-exchange.org/software/DurusWorks/})
+ZODB: (http://www.zodb.org/)
 
 NoSQL
 -----
