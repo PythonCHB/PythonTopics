@@ -579,7 +579,7 @@ http://xkcd.com/327/
 DB-API
 ------
 
-The DB-API spec (PEP 249) is a specification for interaction between Python and Relational Databases.}
+The DB-API spec (PEP 249) is a specification for interaction between Python and Relational Databases.
 
 Support for a large number of third-party Database drivers:
 
@@ -587,7 +587,7 @@ Support for a large number of third-party Database drivers:
   * PostgreSQL
   * Oracle
   * MSSQL (?)
-  * .....
+  * ...
 
 http://www.python.org/dev/peps/pep-0249}
 

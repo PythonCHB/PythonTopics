@@ -23,6 +23,7 @@ In This Collection
 
         weak_references
         persistance_serialization
+        where_to_put_tests
 
 .. rst-class:: credit
 

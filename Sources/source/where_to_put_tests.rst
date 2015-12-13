@@ -5,11 +5,10 @@ where to put tests?
 TL; DR
 ======
 
-Too Long; Didn't Read:
 
 If your package and test code are small and self contained, put the tests in with the package.
 
-IF the tests are large or complex, or require reading/writting files, or significatn samepl data, put yoru tests outside the package.
+If the tests are large or complex, or require reading/writing files, or significant sample data, put your tests outside the package.
 
 Test system recommendations
 ----------------------------
@@ -18,14 +17,17 @@ Test system recommendations
 
 https://pytest.org/latest/goodpractises.html
 
-I need to add links for nose and unittest....
+I need to add links for ``nose`` and ``unittest``....
 
 
 Two Options
 -----------
 
-In Python packaging, there seems to be no consensus on where you should put your test suite.
+In Python packaging, there seems is no consensus on where you should put your test suite. This thread:
 
+https://mail.python.org/pipermail/distutils-sig/2015-October/027003.html
+
+makes that clear :-)
 
 There are essentially two recommended approaches:
 
@@ -37,7 +39,7 @@ to do that, you need to install your package under development in "develop" mode
 
     python setup.py develop
 
-or
+or::
 
     pip install -r ./
 
@@ -61,7 +63,7 @@ for recommendations.
 Self contained
 --------------
 
-The advantage of keeping test code self-contained is that you can have a large suite of tests with sample data and who knows what, and it won't bloat and complicate the installed package (and test code can write to the test dirs, etc..... Also, you can then run the test suite against an installed version that may not be exactly the same as the current live code.
+The advantage of keeping test code self-contained is that you can have a large suite of tests with sample data and who knows what, and it won't bloat and complicate the installed package (and test code can write to the test dirs, etc. Also, you can then run the test suite against an installed version that may not be exactly the same as the current live code.
 
 Sub-package
 -----------
