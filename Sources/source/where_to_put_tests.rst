@@ -42,7 +42,7 @@ to do that, you need to install your package under development in "develop" mode
 
 or::
 
-    pip install -r ./
+    pip install -e .   # install package using setup.py in editable mode
 
 That means that you do need a setup.py -- though it can be very minimal. See:
 
