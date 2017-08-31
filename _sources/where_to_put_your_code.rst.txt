@@ -98,7 +98,8 @@ Now you can fire up python (or ipython, or a Jupyter notebook, or write code in 
 
 And you are good to go!
 
-.. I've enclosed my sample package as a zip file -- if it makes it through.
+Here is a zip file of my simple example package: :download:`my_code.zip <../code/my_code.zip>`
+
 
 NOTES:
 ------
