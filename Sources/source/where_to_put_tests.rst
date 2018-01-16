@@ -1,6 +1,6 @@
-********************
-where to put tests?
-********************
+*******************
+Where to Put Tests?
+*******************
 
 ======
 TL; DR
@@ -18,7 +18,7 @@ Test system recommendations
 
 https://pytest.org/latest/goodpractises.html
 
-I need to add links for ``nose`` and ``unittest``....
+I need to add links for ``nose`` and ``unittest``.... PR's accepted!
 
 
 Two Options
