@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>where to put tests? &mdash; Python Topics 1.0.0 documentation</title>
+  <title>Where to Put Tests? &mdash; Python Topics 1.0.0 documentation</title>
   
 
   
@@ -36,6 +36,7 @@
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Python Topics 1.0.0 documentation" href="index.html"/>
+        <link rel="next" title="Where to put your custom code?" href="where_to_put_your_code.html"/>
         <link rel="prev" title="Persistence and Serialization" href="persistance_serialization.html"/> 
 
   
@@ -92,7 +93,7 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="weak_references.html">Python Memory Management and Weak References</a></li>
 <li class="toctree-l1"><a class="reference internal" href="persistance_serialization.html">Persistence and Serialization</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">where to put tests?</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Where to Put Tests?</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#tl-dr">TL; DR</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#test-system-recommendations">Test system recommendations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#two-options">Two Options</a></li>
@@ -102,6 +103,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="where_to_put_your_code.html">Where to put your custom code?</a></li>
 </ul>
 
             
@@ -146,7 +148,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>where to put tests?</li>
+      <li>Where to Put Tests?</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -166,7 +168,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="where-to-put-tests">
-<h1>where to put tests?<a class="headerlink" href="#where-to-put-tests" title="Permalink to this headline">¶</a></h1>
+<h1>Where to Put Tests?<a class="headerlink" href="#where-to-put-tests" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="tl-dr">
 <h2>TL; DR<a class="headerlink" href="#tl-dr" title="Permalink to this headline">¶</a></h2>
 <p>If your package and test code are small and self contained, put the tests in with the package.</p>
@@ -175,7 +177,7 @@
 <h3>Test system recommendations<a class="headerlink" href="#test-system-recommendations" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal"><span class="pre">pytest</span></code> has a bit of discussion of the issue here:</p>
 <p><a class="reference external" href="https://pytest.org/latest/goodpractises.html">https://pytest.org/latest/goodpractises.html</a></p>
-<p>I need to add links for <code class="docutils literal"><span class="pre">nose</span></code> and <code class="docutils literal"><span class="pre">unittest</span></code>….</p>
+<p>I need to add links for <code class="docutils literal"><span class="pre">nose</span></code> and <code class="docutils literal"><span class="pre">unittest</span></code>…. PR’s accepted!</p>
 </div>
 <div class="section" id="two-options">
 <h3>Two Options<a class="headerlink" href="#two-options" title="Permalink to this headline">¶</a></h3>
@@ -195,7 +197,7 @@
 </pre></div>
 </div>
 <p>or:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="o">./</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span>   <span class="c1"># install package using setup.py in editable mode</span>
 </pre></div>
 </div>
 <p>That means that you do need a setup.py – though it can be very minimal. See:</p>
@@ -236,6 +238,8 @@
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="where_to_put_your_code.html" class="btn btn-neutral float-right" title="Where to put your custom code?" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="persistance_serialization.html" class="btn btn-neutral" title="Persistence and Serialization" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

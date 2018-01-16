@@ -1,6 +1,6 @@
-********************
-where to put tests?
-********************
+*******************
+Where to Put Tests?
+*******************
 
 ======
 TL; DR
@@ -18,7 +18,7 @@ Test system recommendations
 
 https://pytest.org/latest/goodpractises.html
 
-I need to add links for ``nose`` and ``unittest``....
+I need to add links for ``nose`` and ``unittest``.... PR's accepted!
 
 
 Two Options
@@ -42,7 +42,7 @@ to do that, you need to install your package under development in "develop" mode
 
 or::
 
-    pip install -r ./
+    pip install -e .   # install package using setup.py in editable mode
 
 That means that you do need a setup.py -- though it can be very minimal. See:
 
