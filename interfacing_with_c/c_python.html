@@ -1,0 +1,262 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Interfacing C and Python &mdash; Python Topics 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Python Topics 1.0.0 documentation" href="../index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Python Topics
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../weak_references.html">Python Memory Management and Weak References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../persistance_serialization.html">Persistence and Serialization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../where_to_put_tests.html">Where to Put Tests?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../where_to_put_your_code.html">Where to put your custom code?</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Python Topics</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Interfacing C and Python</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/interfacing_with_c/c_python.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="interfacing-c-and-python">
+<h1>Interfacing C and Python<a class="headerlink" href="#interfacing-c-and-python" title="Permalink to this headline">¶</a></h1>
+<p>Sorry, not much here</p>
+<p>NOTE: this is all about the CPython interpreter – not PyPy, IronPython, JPython, etc.</p>
+<div class="section" id="documentation">
+<h2>Documentation:<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
+<p>Core docs for the C API:</p>
+</div>
+<div class="section" id="interfacing-methods">
+<h2>Interfacing methods:<a class="headerlink" href="#interfacing-methods" title="Permalink to this headline">¶</a></h2>
+<p>There a bunch of ways to interface C and Python:</p>
+<div class="section" id="hand-write-against-the-c-api">
+<h3>Hand write against the C API:<a class="headerlink" href="#hand-write-against-the-c-api" title="Permalink to this headline">¶</a></h3>
+<p>The python interpeter exposes a full API to all teh pyton objects, etc. You can essentially do anything, but it’s a lot of hand-work.</p>
+<p>And reference counting is really hard to get right!</p>
+<p><a class="reference external" href="http://docs.python.org/2/c-api/">http://docs.python.org/2/c-api/</a></p>
+</div>
+<div class="section" id="cython">
+<h3>Cython:<a class="headerlink" href="#cython" title="Permalink to this headline">¶</a></h3>
+<p>Cython can be described as a “python-like language for writing python extensions”</p>
+<p>It can be used essentially to speed up Python, but also to Call Python from C</p>
+<p>(derived from Pyrex)</p>
+<div class="section" id="xdress">
+<h4>XDress<a class="headerlink" href="#xdress" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
+<div class="section" id="ctypes">
+<h3>ctypes<a class="headerlink" href="#ctypes" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="swig-sip-etc">
+<h3>SWIG, SIP, ETC.<a class="headerlink" href="#swig-sip-etc" title="Permalink to this headline">¶</a></h3>
+<p>Auto wrapper generators.</p>
+</div>
+</div>
+<div class="section" id="example">
+<h2>EXAMPLE:<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<p>Same as the one for fortran: a automatic gain control filter.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Christopher Barker.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

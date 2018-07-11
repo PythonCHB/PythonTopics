@@ -1,0 +1,338 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Where to put your custom code? &mdash; Python Topics 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Python Topics 1.0.0 documentation" href="index.html"/>
+        <link rel="prev" title="Where to Put Tests?" href="where_to_put_tests.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Python Topics
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="weak_references.html">Python Memory Management and Weak References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="persistance_serialization.html">Persistence and Serialization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="where_to_put_tests.html">Where to Put Tests?</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Where to put your custom code?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#tl-dr">TL; DR</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-by-step">Step by step:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#putting-in-your-code">Putting in your code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#notes">NOTES:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Python Topics</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Where to put your custom code?</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/where_to_put_your_code.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="where-to-put-your-custom-code">
+<h1>Where to put your custom code?<a class="headerlink" href="#where-to-put-your-custom-code" title="Permalink to this headline">¶</a></h1>
+<p>A suggestion for how to manage your personal library of python functions you might use for scripting, data analysis, etc.</p>
+<div class="section" id="tl-dr">
+<h2>TL; DR<a class="headerlink" href="#tl-dr" title="Permalink to this headline">¶</a></h2>
+<p>If you have a collection of your own code you want access to for various projects:</p>
+<p>Make a “package” out of it so you can manage it in one place, and use it in other places.</p>
+<div class="section" id="introduction">
+<h3>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h3>
+<p>Many folks find they have a collection of little scripts and utilities that they want to be able to use and re-use for various projects. It is really NOT a good idea to simply copy and paste these around for use with each project – you will regret that!</p>
+<p>It is also not a good idea to use the <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code> environment variable to set up a directory in which to dump stuff. (Google a bit if you want to know why).</p>
+<p>The best way to do this with Python is to use the Python package mechanism.</p>
+<p>A Python “package” is a collection of modules and scripts – we usually think of these as something carefully developed for particular purpose and distributed to a wide audience for re-use – the packages you can install with pip.</p>
+<p>Indeed that is the case, but the “collection of modules and scripts” part can be used for your own code that no one else is ever going to touch, and the overhead is small if you use it only this way.</p>
+</div>
+<div class="section" id="step-by-step">
+<h3>Step by step:<a class="headerlink" href="#step-by-step" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Create a directory in your user (or home, or … ) dir for your code. Let’s call it “my_code”.</li>
+<li>This is going to seem odd, but create another dir with the same name inside that – this is where the actual code goes. (it’s a convention to name the top dir the same thing as the “package” name, but it doesn’t matter. But the inner name does – that is the name of your package.</li>
+<li>In that dir, put in an empty, for now, file called <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code>.</li>
+<li>In the outer dir, put in a file (we’ll fill it in later) called <code class="docutils literal notranslate"><span class="pre">setup.py</span></code>.</li>
+</ol>
+<p>So you should have:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">my_code</span>
+    <span class="n">my_code</span>
+        <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+    <span class="n">setup</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>The inner my_code dir is now a python “package” – any directory with a <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file is a package. But how to use it?</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> file is where you specify for python how this package is setup. You can do a lot in there, and if you ever want to share your code with anyone else, you should follow:</p>
+<p><a class="reference external" href="https://packaging.python.org/tutorials/distributing-packages/">https://packaging.python.org/tutorials/distributing-packages/</a>.</p>
+<p>But for now, we are going to make it as <em>simple</em> as possible:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">setuptools</span> <span class="k">import</span> <span class="n">setup</span>
+
+<span class="n">setup</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;my_code&#39;</span><span class="p">,</span>
+      <span class="n">packages</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;my_code&#39;</span><span class="p">],</span>
+      <span class="p">)</span>
+</pre></div>
+</div>
+<p>That’s it – really! There is a lot you can do here to support multiple packages, scripts, etc, but this is enough to get you started.</p>
+</div>
+<div class="section" id="putting-in-your-code">
+<h3>Putting in your code<a class="headerlink" href="#putting-in-your-code" title="Permalink to this headline">¶</a></h3>
+<p>Now put some code in there!</p>
+<p>Create a file for your code, and put it in the inner my_code dir:</p>
+<p><code class="docutils literal notranslate"><span class="pre">some_code.py</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Just an example, but this could be a collection of utility functions, etc.</span>
+
+<span class="sd">Here would be documentation of what&#39;s in this file</span>
+
+<span class="sd">In this case, just one function to make sure it works.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="nf">test_fun</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;yup -- this worked!!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>OK – now you have a (useless) package with some code in it - how to use it?</p>
+<p>To use this package, you need to “install” it into the python environment that you want to use. Some of us have a single python install – maybe Anaconda’s root environment, or the python.org python installer, or … Some of us use virtualenv, or pipienv, or conda environments. In any case, get yourself into that environment at a command line and put yourself (<code class="docutils literal notranslate"><span class="pre">cd</span></code> in Terminal, DOS box, etc…)  in the outer my_code dir, and type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code> installs a package. <code class="docutils literal notranslate"><span class="pre">-e</span></code> means “do an editable install”, and the dot (<code class="docutils literal notranslate"><span class="pre">.</span></code>) means, install the package in the current directory. <code class="docutils literal notranslate"><span class="pre">pip</span></code> will look for a <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> file in the current working dir. And editable install is like install, but instead of copying the code into the python environment, it adds it to the Python search path (only that particular environment’s Python) so you can import it, but it will always be importing the current version of the files if you change things.</p>
+<p>This means you can be activly maintaining your shared code, and other projects that use it will always get the latest version.</p>
+<p>Now you can fire up Python (or iPython, or a Jupyter notebook, or write code in a script, or…) and do:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>In [2]: from my_code import some_code
+
+In [3]: some_code.test_fun()
+
+yup -- this worked!!
+</pre></div>
+</div>
+<p>And you are good to go!</p>
+<p>Here is a zip file of my simple example package: <a class="reference download internal" href="_downloads/my_code.zip" download=""><code class="xref download docutils literal notranslate"><span class="pre">my_code.zip</span></code></a></p>
+</div>
+<div class="section" id="notes">
+<h3>NOTES:<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h3>
+<p>If you have only a little bit of code, you can do all this with a single module, rather than a package, and have an easier import. But I think most folks have enough stuff that it’s better to have multiple modules with related stuff in them.</p>
+<p>If you have more than a few modules, it would probably make sense to keep them in separate packages, organized by functionality.</p>
+<dl class="docutils">
+<dt>This is only the very simplest way to do it what you really SHOULD do is be more formal about the process:</dt>
+<dd><ul class="first last simple">
+<li>Do some versioning of the package</li>
+<li>Keep it in source code version control system (like git, etc)</li>
+<li>add  tests of your code…</li>
+</ul>
+</dd>
+</dl>
+<p>and others…</p>
+<p>Look up “Software Carpentry” for many more ideas how better to manage your Software for Science.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="where_to_put_tests.html" class="btn btn-neutral" title="Where to Put Tests?" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Christopher Barker.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
