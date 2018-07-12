@@ -1,8 +1,8 @@
 Interfacing Fortran and Python
-################################
+##############################
 
 Documentation:
-================
+==============
 
 A nice reference for Python for Fortran programmers:
 
@@ -16,7 +16,7 @@ http://fortran90.org/src/best-practices.html
 http://fortran90.org/src/best-practices.html#interfacing-with-python
 
 Interfacing methods:
-======================
+====================
 
 There a a handful of ways to interface Fortran and Python:
 
@@ -75,7 +75,7 @@ The problem at hand is an automatic gain control function function, expressed in
       end
 
 f2py:
--------
+-----
 
 f2py is a command line utility that comes with numpy. You can build a default simple wrapper with the f2py command::
 
@@ -108,7 +108,7 @@ So it can be called like so::
 where `signal` and `filtered` are 1-d arrays of float32 values, both of the same length.
 
 Giving f2py extra information:
-...............................
+..............................
 
 f2py can build an interface to a fortran subroutine, but it can't do it all that well without some extra information. For instnce, note from the docstring that the argument `ampagc` is listed as an input argument, when it is really intended to be used for output.
 
