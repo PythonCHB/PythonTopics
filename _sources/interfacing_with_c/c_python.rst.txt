@@ -12,12 +12,14 @@ Documentation:
 Core docs for the C API:
 
 
+https://docs.python.org/3/extending/
 
 
 Interfacing methods:
 ====================
 
 There a bunch of ways to interface C and Python:
+
 
 Hand write against the C API:
 -----------------------------
@@ -35,13 +37,13 @@ Cython can be described as a "python-like language for writing python extensions
 
 It can be used essentially to speed up Python, but also to call Python from C.
 
-(derived from Pyrex)
+https://cython.org/
 
-XDress
-......
 
 ctypes
 ------
+
+Ctypes comes with PYthon out of the box.
 
 
 SWIG, SIP, ETC.
@@ -53,5 +55,9 @@ Auto wrapper generators.
 EXAMPLE:
 ========
 
-Same as the one for fortran: a automatic gain control filter.
+Same as the one for fortran: a automatic gain control filter:
+
+:download:`agc_example.zip`
+
+
 

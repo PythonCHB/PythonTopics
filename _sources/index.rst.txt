@@ -1,32 +1,18 @@
 In This Collection
 ==================
 
-.. ifslides::
+Topics:
+-------
 
-    +-------------------------------+
-    | Topics:                       |
-    +===============================+
-    | .. toctree::                  |
-    |     :maxdepth: 1              |
-    |                               |
-    |     weak_references           |
-    |     persistance_serialization |
-    +-------------------------------+
+.. toctree::
+    :maxdepth: 1
 
-.. ifnotslides::
+    weak_references
+    persistance_serialization
+    where_to_put_tests
+    where_to_put_your_code
+    interfacing_with_c/index
 
-    Topics:
-    -------
-
-    .. toctree::
-        :maxdepth: 1
-
-        weak_references
-        persistance_serialization
-        where_to_put_tests
-        where_to_put_your_code
-
-.. rst-class:: credit
 
 These materials copyright Christopher H. Barker
 

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Interfacing C and Python &mdash; Python Topics 1.0.0 documentation</title>
+  <title>Interfacing with C / Fortran &mdash; Python Topics 1.0.0 documentation</title>
   
 
   
@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Interfacing Fortran and Python" href="fortran_python.html" />
-    <link rel="prev" title="Interfacing with C / Fortran" href="index.html" /> 
+    <link rel="next" title="Interfacing C and Python" href="c_python.html" />
+    <link rel="prev" title="Where to put your custom code?" href="../where_to_put_your_code.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -87,14 +87,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../persistance_serialization.html">Persistence and Serialization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../where_to_put_tests.html">Where to Put Tests?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../where_to_put_your_code.html">Where to put your custom code?</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Interfacing with C / Fortran</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="index.html#topics">Topics:</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Interfacing C and Python</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#documentation">Documentation:</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#interfacing-methods">Interfacing methods:</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#example">EXAMPLE:</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Interfacing with C / Fortran</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#topics">Topics:</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="c_python.html">Interfacing C and Python</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fortran_python.html">Interfacing Fortran and Python</a></li>
 </ul>
 </li>
@@ -145,15 +140,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">Interfacing with C / Fortran</a> &raquo;</li>
-        
-      <li>Interfacing C and Python</li>
+      <li>Interfacing with C / Fortran</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/interfacing_with_c/c_python.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/interfacing_with_c/index.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -166,43 +159,22 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="interfacing-c-and-python">
-<h1>Interfacing C and Python<a class="headerlink" href="#interfacing-c-and-python" title="Permalink to this headline">¶</a></h1>
-<p>Sorry, not much here yet.</p>
-<p>NOTE: this is all about the CPython interpreter – not PyPy, IronPython, JPython, etc.</p>
-<div class="section" id="documentation">
-<h2>Documentation:<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
-<p>Core docs for the C API:</p>
-<p><a class="reference external" href="https://docs.python.org/3/extending/">https://docs.python.org/3/extending/</a></p>
+  <div class="section" id="interfacing-with-c-fortran">
+<h1>Interfacing with C / Fortran<a class="headerlink" href="#interfacing-with-c-fortran" title="Permalink to this headline">¶</a></h1>
+<p><strong>Warning</strong> These notes are a bit out of date, and have not been tested or updated in a few years. But hopefully there is still some useful stuff in here.</p>
+<div class="section" id="topics">
+<h2>Topics:<a class="headerlink" href="#topics" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="c_python.html">Interfacing C and Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fortran_python.html">Interfacing Fortran and Python</a></li>
+</ul>
 </div>
-<div class="section" id="interfacing-methods">
-<h2>Interfacing methods:<a class="headerlink" href="#interfacing-methods" title="Permalink to this headline">¶</a></h2>
-<p>There a bunch of ways to interface C and Python:</p>
-<div class="section" id="hand-write-against-the-c-api">
-<h3>Hand write against the C API:<a class="headerlink" href="#hand-write-against-the-c-api" title="Permalink to this headline">¶</a></h3>
-<p>The python interpeter exposes a full API to all the python objects, etc. You can essentially do anything, but it’s a lot of hand-work.</p>
-<p>And reference counting is really hard to get right!</p>
-<p><a class="reference external" href="http://docs.python.org/3/c-api/">http://docs.python.org/3/c-api/</a></p>
-</div>
-<div class="section" id="cython">
-<h3>Cython:<a class="headerlink" href="#cython" title="Permalink to this headline">¶</a></h3>
-<p>Cython can be described as a “python-like language for writing python extensions”</p>
-<p>It can be used essentially to speed up Python, but also to call Python from C.</p>
-<p><a class="reference external" href="https://cython.org/">https://cython.org/</a></p>
-</div>
-<div class="section" id="ctypes">
-<h3>ctypes<a class="headerlink" href="#ctypes" title="Permalink to this headline">¶</a></h3>
-<p>Ctypes comes with PYthon out of the box.</p>
-</div>
-<div class="section" id="swig-sip-etc">
-<h3>SWIG, SIP, ETC.<a class="headerlink" href="#swig-sip-etc" title="Permalink to this headline">¶</a></h3>
-<p>Auto wrapper generators.</p>
-</div>
-</div>
-<div class="section" id="example">
-<h2>EXAMPLE:<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<p>Same as the one for fortran: a automatic gain control filter:</p>
+<p>There is a farily complete (but poorly documented) example of multiple approaches using and Automatic Gain Control filter here:</p>
 <p><a class="reference download internal" href="../_downloads/agc_example.zip" download=""><code class="xref download docutils literal notranslate"><span class="pre">agc_example.zip</span></code></a></p>
+<p>These materials copyright Christopher H. Barker</p>
+<p>Licensed under the Creative Commons Attribution-ShareAlike 4.0 International Public License.</p>
+<p><a class="reference external" href="https://creativecommons.org/licenses/by-sa/4.0/legalcode">https://creativecommons.org/licenses/by-sa/4.0/legalcode</a></p>
 </div>
 </div>
 
@@ -214,10 +186,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="fortran_python.html" class="btn btn-neutral float-right" title="Interfacing Fortran and Python" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="c_python.html" class="btn btn-neutral float-right" title="Interfacing C and Python" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral" title="Interfacing with C / Fortran" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../where_to_put_your_code.html" class="btn btn-neutral" title="Where to put your custom code?" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
