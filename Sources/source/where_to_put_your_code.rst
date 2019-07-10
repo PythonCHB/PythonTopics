@@ -6,12 +6,16 @@ Where to put your custom code?
 
 A suggestion for how to manage your personal library of python functions you might use for scripting, data analysis, etc.
 
+
 TL; DR
 ======
 
 If you have a collection of your own code you want access to for various projects:
 
 Make a "package" out of it so you can manage it in one place, and use it in other places.
+
+You DO NOT NEED TO PUT IT ON PYPI !
+
 
 Introduction
 ------------
@@ -35,7 +39,7 @@ Step by step:
 
 1) Create a directory in your user (or home, or ... ) dir for your code. Let's call it "my_code".
 
-2) This is going to seem odd, but create another dir with the same name inside that -- this is where the actual code goes. (it's a convention to name the top dir the same thing as the "package" name, but it doesn't matter. But the inner name does -- that is the name of your package.
+2) This is going to seem odd, but create another dir with the same name inside that -- this is where the actual code goes. (it's a convention to name the top directory the same thing as the "package" name, but you don't have to follow that convention. But the inner name does -- that is the name of your package.
 
 3) In that dir, put in an empty, for now, file called ``__init__.py``.
 
