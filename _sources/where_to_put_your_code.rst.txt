@@ -29,7 +29,7 @@ Many scientists and engineers that do a little coding find they have a collectio
 Options for Handling Your Code Collection:
 ------------------------------------------
 
- 1) Keep your code in one place, and copy and paste the functions y ou need into each new project.
+ 1) Keep your code in one place, and copy and paste the functions you need into each new project.
 
 
 DON'T DO THAT!
@@ -39,9 +39,25 @@ REALLY!
 .......
 
 
-It is really NOT a good idea to simply copy and paste these around for use with each project -- you will regret that!
+It is really NOT a good idea to simply copy and paste code around for use with each project. You will end up with multiple versions scattered all over the place -- **you will regret that!**
 
-It is also not a good idea to use the ``PYTHONPATH`` environment variable to set up a directory in which to dump stuff. (Google a bit if you want to know why).
+ 2) Put your code in a single directory and add it to the ``PYTHONPATH`` environment variable
+
+
+DON'T DO THAT!
+..............
+
+
+REALLY!
+.......
+
+``PTYHONPATH`` is shared by all installs of Python. What with Python2, Python3, virtual environments, etc -- it's really not a good idea.
+
+If you don't believe me: **Google It**
+
+
+What you should do is make a "package"
+--------------------------------------
 
 The best way to do this with Python is to use the Python package mechanism.
 
@@ -49,11 +65,27 @@ A Python "package" is a collection of modules and scripts -- we usually think of
 
 Indeed that is the case, but the "collection of modules and scripts" part can be used for your own code that no one else is ever going to touch, and the overhead is small if you use it only this way.
 
+Why Don't People Tend to figure this out for themselves?
+........................................................
+
+The Packaging Documentation is mostly about Making a "proper" package for distribution to a wide audience.
+
+So newbies tend to either:
+
+* Think: "I don't want/need to do all that", and then move on and copy and past their code around like they have already done.
+
+or
+
+* Go ahead and follow the instructions, and end up putting their tiny little not-useful-to-anyone-else package up on PyPi.
+
+
 The challenge is that most of the documentation about python packaging is focused on creating a package of a library that you want to distribute to the community. In that case, it's very important to have full and proper meta data, tests, documentation, etc. As a result, the packaging documentation makes the whole process seem complicated and cumbersome.
 
-But making a simple package for your own use can be very simple, and very useful.
+Making a simple package just for your own use can be very simple, and very useful.
+..................................................................................
 
-Step by step:
+
+Step by Step:
 -------------
 
 1) Create a directory in your user (or home, or ... ) dir for your code. Let's call it "my_code".

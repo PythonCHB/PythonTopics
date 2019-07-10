@@ -93,9 +93,16 @@
 <li class="toctree-l3"><a class="reference internal" href="#options-for-handling-your-code-collection">Options for Handling Your Code Collection:</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#don-t-do-that">DON’T DO THAT!</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#really">REALLY!</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">DON’T DO THAT!</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">REALLY!</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#step-by-step">Step by step:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#what-you-should-do-is-make-a-package">What you should do is make a “package”</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#why-don-t-people-tend-to-figure-this-out-for-themselves">Why Don’t People Tend to figure this out for themselves?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#making-a-simple-package-just-for-your-own-use-can-be-very-simple-and-very-useful">Making a simple package just for your own use can be very simple, and very useful.</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#step-by-step">Step by Step:</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#putting-in-your-code">Putting in your code</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#notes">NOTES:</a></li>
 </ul>
@@ -187,7 +194,7 @@
 <h3>Options for Handling Your Code Collection:<a class="headerlink" href="#options-for-handling-your-code-collection" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ol class="arabic simple">
-<li>Keep your code in one place, and copy and paste the functions y ou need into each new project.</li>
+<li>Keep your code in one place, and copy and paste the functions you need into each new project.</li>
 </ol>
 </div></blockquote>
 <div class="section" id="don-t-do-that">
@@ -195,17 +202,46 @@
 </div>
 <div class="section" id="really">
 <h4>REALLY!<a class="headerlink" href="#really" title="Permalink to this headline">¶</a></h4>
-<p>It is really NOT a good idea to simply copy and paste these around for use with each project – you will regret that!</p>
-<p>It is also not a good idea to use the <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code> environment variable to set up a directory in which to dump stuff. (Google a bit if you want to know why).</p>
+<p>It is really NOT a good idea to simply copy and paste code around for use with each project. You will end up with multiple versions scattered all over the place – <strong>you will regret that!</strong></p>
+<blockquote>
+<div><ol class="arabic simple" start="2">
+<li>Put your code in a single directory and add it to the <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code> environment variable</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="id1">
+<h4>DON’T DO THAT!<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="id2">
+<h4>REALLY!<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">PTYHONPATH</span></code> is shared by all installs of Python. What with Python2, Python3, virtual environments, etc – it’s really not a good idea.</p>
+<p>If you don’t believe me: <strong>Google It</strong></p>
+</div>
+</div>
+<div class="section" id="what-you-should-do-is-make-a-package">
+<h3>What you should do is make a “package”<a class="headerlink" href="#what-you-should-do-is-make-a-package" title="Permalink to this headline">¶</a></h3>
 <p>The best way to do this with Python is to use the Python package mechanism.</p>
 <p>A Python “package” is a collection of modules and scripts – we usually think of these as something carefully developed for a particular purpose and distributed to a wide audience for re-use – the packages you can install with pip.</p>
 <p>Indeed that is the case, but the “collection of modules and scripts” part can be used for your own code that no one else is ever going to touch, and the overhead is small if you use it only this way.</p>
+<div class="section" id="why-don-t-people-tend-to-figure-this-out-for-themselves">
+<h4>Why Don’t People Tend to figure this out for themselves?<a class="headerlink" href="#why-don-t-people-tend-to-figure-this-out-for-themselves" title="Permalink to this headline">¶</a></h4>
+<p>The Packaging Documentation is mostly about Making a “proper” package for distribution to a wide audience.</p>
+<p>So newbies tend to either:</p>
+<ul class="simple">
+<li>Think: “I don’t want/need to do all that”, and then move on and copy and past their code around like they have already done.</li>
+</ul>
+<p>or</p>
+<ul class="simple">
+<li>Go ahead and follow the instructions, and end up putting their tiny little not-useful-to-anyone-else package up on PyPi.</li>
+</ul>
 <p>The challenge is that most of the documentation about python packaging is focused on creating a package of a library that you want to distribute to the community. In that case, it’s very important to have full and proper meta data, tests, documentation, etc. As a result, the packaging documentation makes the whole process seem complicated and cumbersome.</p>
-<p>But making a simple package for your own use can be very simple, and very useful.</p>
+</div>
+<div class="section" id="making-a-simple-package-just-for-your-own-use-can-be-very-simple-and-very-useful">
+<h4>Making a simple package just for your own use can be very simple, and very useful.<a class="headerlink" href="#making-a-simple-package-just-for-your-own-use-can-be-very-simple-and-very-useful" title="Permalink to this headline">¶</a></h4>
 </div>
 </div>
 <div class="section" id="step-by-step">
-<h3>Step by step:<a class="headerlink" href="#step-by-step" title="Permalink to this headline">¶</a></h3>
+<h3>Step by Step:<a class="headerlink" href="#step-by-step" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li>Create a directory in your user (or home, or … ) dir for your code. Let’s call it “my_code”.</li>
 <li>This is going to seem odd, but create another dir with the same name inside that – this is where the actual code goes. (it’s a convention to name the top directory the same thing as the “package” name, but you don’t have to follow that convention. But the inner name does – that is the name of your package.</li>
