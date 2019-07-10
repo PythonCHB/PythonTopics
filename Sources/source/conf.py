@@ -269,39 +269,29 @@ texinfo_documents = [
 #texinfo_no_detailmenu = False
 
 
-# -- Hieroglyph Slide Configuration ------------
-
-extensions += [
-    'hieroglyph',
-]
-
-slide_title = "PythonTopics"
-slide_theme = 'slides2'
-slide_levels = 3
-
 # Place custom static assets in the _static directory and uncomment
 # the following lines to include them
 
-slide_theme_options = {
-    'subtitle': 'Interesting Corners of Python Programming',
-    'custom_css': 'custom.css',
-    # 'custom_js': 'custom.js',
-    'presenters': [
-        {
-            'name': u'Christopher Barker',
-            'email': u'PythonCHB@gmail.com',
-            'github': u'https://github.com/PythonCHB',
-            'company': u'Christopher Barker, PhD'
-        },
-        # {
-        #     'name': 'Cris Ewing',
-        #     'twitter': '@crisewing',
-        #     'www': 'http://crisewing.com',
-        #     'github': 'http://github.com/cewing',
-        #     'company': 'Cris Ewing, Developer LLC'
-        # },
-    ]
-}
+# slide_theme_options = {
+#     'subtitle': 'Interesting Corners of Python Programming',
+#     'custom_css': 'custom.css',
+#     # 'custom_js': 'custom.js',
+#     'presenters': [
+#         {
+#             'name': u'Christopher Barker',
+#             'email': u'PythonCHB@gmail.com',
+#             'github': u'https://github.com/PythonCHB',
+#             'company': u'Christopher Barker, PhD'
+#         },
+#         # {
+#         #     'name': 'Cris Ewing',
+#         #     'twitter': '@crisewing',
+#         #     'www': 'http://crisewing.com',
+#         #     'github': 'http://github.com/cewing',
+#         #     'company': 'Cris Ewing, Developer LLC'
+#         # },
+#     ]
+# }
 
 # ----------------------------------------------
 

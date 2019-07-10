@@ -18,13 +18,13 @@ Test system recommendations
 
 https://pytest.org/latest/goodpractises.html
 
-I need to add links for ``nose`` and ``unittest``.... PR's accepted!
+I need to add links for ``nose`` and ``unittest`` ... PR's accepted!
 
 
 Two Options
 -----------
 
-In Python packaging, there seems is no consensus on where you should put your test suite. This thread:
+In Python packaging, there is no consensus on where you should put your test suite. This thread:
 
 https://mail.python.org/pipermail/distutils-sig/2015-October/027003.html
 
@@ -50,7 +50,10 @@ https://packaging.python.org/en/latest/
 
 for recommendations.
 
-2) The other options is to put your test code in a sub-package inside your package. In this case, it should be inside your package, and *be* a package itself (i.e. have an ``__init__.py``)::
+In the this case, the directory with all the tests shouls not be a python package -- this is, it should not have a ``__init__.py`` file.
+
+
+2) The other options is to put your test code in a sub-package inside your package. In this case, it should be inside your package, and *be* a python package itself (i.e. have an ``__init__.py``)::
 
     my_package
         __init__.py
@@ -61,7 +64,7 @@ for recommendations.
             test_1.py
             test_2.py
 
-Self contained
+Self Contained
 --------------
 
 The advantage of keeping test code self-contained is that you can have a large suite of tests with sample data and who knows what, and it won't bloat and complicate the installed package (and test code can write to the test dirs, etc. Also, you can then run the test suite against an installed version that may not be exactly the same as the current live code.
