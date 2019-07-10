@@ -6,12 +6,16 @@ Where to put your custom code?
 
 A suggestion for how to manage your personal library of python functions you might use for scripting, data analysis, etc.
 
+
 TL; DR
 ======
 
-If you have a collection of your own code you want access to for various projects:
+If you have a collection of your own code you want to access for various projects:
 
 Make a "package" out of it so you can manage it in one place, and use it in other places.
+
+You DO NOT NEED TO PUT IT ON PYPI !
+
 
 Introduction
 ------------
@@ -35,7 +39,7 @@ Step by step:
 
 1) Create a directory in your user (or home, or ... ) dir for your code. Let's call it "my_code".
 
-2) This is going to seem odd, but create another dir with the same name inside that -- this is where the actual code goes. (it's a convention to name the top dir the same thing as the "package" name, but it doesn't matter. But the inner name does -- that is the name of your package.
+2) This is going to seem odd, but create another dir with the same name inside that -- this is where the actual code goes. (it's a convention to name the top directory the same thing as the "package" name, but you don't have to follow that convention. But the inner name does -- that is the name of your package.
 
 3) In that dir, put in an empty, for now, file called ``__init__.py``.
 
@@ -46,6 +50,7 @@ So you should have::
   my_code
       my_code
           __init__.py
+          some_code.py
       setup.py
 
 The inner my_code dir is now a python "package" -- any directory with a ``__init__.py`` file is a package. But how to use it?
@@ -64,6 +69,11 @@ But for now, we are going to make it as *simple* as possible::
 
 That's it -- really! There is a lot you can do here to support multiple packages, scripts, etc, but this is enough to get you started.
 
+Here: :download:`make_my_package.py <../code/make_my_package.py>` is a little script that will build an empty package for you::
+
+  python make_my_package.py your_package_name
+
+will do it for you.
 
 Putting in your code
 --------------------
@@ -91,7 +101,7 @@ OK -- now you have a (useless) package with some code in it - how to use it?
 
 To use this package, you need to "install" it into the python environment that you want to use. Some of us have a single python install -- maybe Anaconda's root environment, or the python.org python installer, or ...
 
-Some of us use virtualenv, or pipienv, or conda environments. In any case, get yourself into that environment at a command line and put yourself (``cd`` in Terminal, DOS box, etc...)  in the outer my_code dir (where the setup.py  is), and type::
+Some of us use virtualenv, or pipenv, or conda environments. In any case, get yourself into that environment at a command line and put yourself (``cd`` in Terminal, DOS box, etc...)  in the outer my_code dir (where the setup.py  is), and type::
 
     pip install -e .
 
@@ -103,15 +113,15 @@ Now you can fire up Python (or iPython, or a Jupyter notebook, or write code in 
 
 .. code-block:: ipython
 
-    In [2]: from my_code import some_code
+    In [2]: from test_package import test_code
 
-    In [3]: some_code.test_fun()
+    In [3]: test_code.test_fun()
 
     yup -- this worked!!
 
 And you are good to go!
 
-Here is a zip file of my simple example package: :download:`my_code.zip <../code/my_code.zip>`
+.. Here is a zip file of my simple example package: :download:`my_code.zip <../code/my_code.zip>`
 
 
 NOTES:

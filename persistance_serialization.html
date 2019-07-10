@@ -27,7 +27,9 @@
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Where to Put Tests?" href="where_to_put_tests.html" />
+    <link rel="prev" title="Python Memory Management and Weak References" href="weak_references.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -80,60 +82,63 @@
               
             
             
-              <!-- Local TOC -->
-              <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">Persistence and Serialization</a><ul>
-<li><a class="reference internal" href="#overview">Overview</a><ul>
-<li><a class="reference internal" href="#serialization">Serialization</a></li>
-<li><a class="reference internal" href="#persistence">Persistence</a></li>
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="weak_references.html">Python Memory Management and Weak References</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Persistence and Serialization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#serialization">Serialization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#persistence">Persistence</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#python-specific-formats">Python Specific Formats</a><ul>
-<li><a class="reference internal" href="#python-literals">Python Literals</a></li>
-<li><a class="reference internal" href="#id1">Python Literals</a></li>
-<li><a class="reference internal" href="#python-literal-example">Python Literal Example</a></li>
-<li><a class="reference internal" href="#pretty-print">pretty print</a></li>
-<li><a class="reference internal" href="#pickle">Pickle</a></li>
-<li><a class="reference internal" href="#shelve">Shelve</a></li>
-<li><a class="reference internal" href="#lab">LAB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#python-specific-formats">Python Specific Formats</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#python-literals">Python Literals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Python Literals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#python-literal-example">Python Literal Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pretty-print">pretty print</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pickle">Pickle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#shelve">Shelve</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lab">LAB</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#interchange-formats">Interchange Formats</a><ul>
-<li><a class="reference internal" href="#ini">INI</a></li>
-<li><a class="reference internal" href="#configparser">ConfigParser</a></li>
-<li><a class="reference internal" href="#csv">CSV</a></li>
-<li><a class="reference internal" href="#csv-module">CSV module</a></li>
-<li><a class="reference internal" href="#json">JSON</a></li>
-<li><a class="reference internal" href="#python-json-module">Python json module</a></li>
-<li><a class="reference internal" href="#xml">XML</a></li>
-<li><a class="reference internal" href="#xml-in-the-python-std-lib">XML in the python std lib</a></li>
-<li><a class="reference internal" href="#elementtree">elementtree</a></li>
-<li><a class="reference internal" href="#id2">LAB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#interchange-formats">Interchange Formats</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ini">INI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configparser">ConfigParser</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#csv">CSV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#csv-module">CSV module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#json">JSON</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#python-json-module">Python json module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#xml">XML</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#xml-in-the-python-std-lib">XML in the python std lib</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#elementtree">elementtree</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">LAB</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#databases">DataBases</a><ul>
-<li><a class="reference internal" href="#anydbm">anydbm</a></li>
-<li><a class="reference internal" href="#dbm-module">dbm module</a></li>
-<li><a class="reference internal" href="#anydbm-module">anydbm module</a></li>
-<li><a class="reference internal" href="#sqlite">sqlite</a></li>
-<li><a class="reference internal" href="#python-sqlite-module">python sqlite module</a></li>
-<li><a class="reference internal" href="#id3">python sqlite module</a></li>
-<li><a class="reference internal" href="#id4">python sqlite module</a></li>
-<li><a class="reference internal" href="#id5">python sqlite module</a></li>
-<li><a class="reference internal" href="#db-api">DB-API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#databases">DataBases</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#anydbm">anydbm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dbm-module">dbm module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#anydbm-module">anydbm module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sqlite">sqlite</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#python-sqlite-module">python sqlite module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">python sqlite module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">python sqlite module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">python sqlite module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#db-api">DB-API</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#other-options">Other Options</a><ul>
-<li><a class="reference internal" href="#object-relation-mappers">Object-Relation Mappers</a></li>
-<li><a class="reference internal" href="#object-databases">Object Databases</a></li>
-<li><a class="reference internal" href="#nosql">NoSQL</a></li>
-<li><a class="reference internal" href="#id6">LAB</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#other-options">Other Options</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#object-relation-mappers">Object-Relation Mappers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#object-databases">Object Databases</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nosql">NoSQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">LAB</a></li>
 </ul>
 </li>
 </ul>
-</div>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="where_to_put_tests.html">Where to Put Tests?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="where_to_put_your_code.html">Where to put your custom code?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interfacing_with_c/index.html">Interfacing with C / Fortran</a></li>
+</ul>
+
             
           
         </div>
@@ -314,8 +319,8 @@ a file), but not all persistence mechanisms are serial (i.e RDBMS)</p>
 <div class="section" id="lab">
 <h3>LAB<a class="headerlink" href="#lab" title="Permalink to this headline">¶</a></h3>
 <p>Here are two datasets embedded in Python:</p>
-<p><a class="reference download internal" href="_downloads/add_book_data.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">add_book_data.py</span></code></a>
-<a class="reference download internal" href="_downloads/add_book_data_flat.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">add_book_data_flat.py</span></code></a></p>
+<p><a class="reference download internal" download="" href="_downloads/7d0c5239a2e6f94e78418216661bf6bc/add_book_data.py"><code class="xref download docutils literal notranslate"><span class="pre">add_book_data.py</span></code></a>
+<a class="reference download internal" download="" href="_downloads/502ba1eeb73754790b154ea79bb7a8b0/add_book_data_flat.py"><code class="xref download docutils literal notranslate"><span class="pre">add_book_data_flat.py</span></code></a></p>
 <p>They can be loaded with:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">add_book_data</span> <span class="k">import</span> <span class="n">AddressBook</span>
 </pre></div>
@@ -700,12 +705,21 @@ from add_book_data import AddressBook</dd>
           </div>
           <footer>
   
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="where_to_put_tests.html" class="btn btn-neutral float-right" title="Where to Put Tests?" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="weak_references.html" class="btn btn-neutral" title="Python Memory Management and Weak References" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, Christopher Barker.
+        &copy; Copyright 2014, Christopher Barker
 
     </p>
   </div>
@@ -724,20 +738,14 @@ from add_book_data import AddressBook</dd>
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'1.0.0',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
 
   
 
