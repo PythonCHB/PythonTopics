@@ -2,6 +2,10 @@
 Where to put your custom code?
 ******************************
 
+
+A Package Just for You!
+=======================
+
 (You can find this page at: http://bit.ly/JustPackage)
 
 A suggestion for how to manage your personal library of python functions you might use for scripting, data analysis, etc.
@@ -20,7 +24,22 @@ You DO NOT NEED TO PUT IT ON PYPI !
 Introduction
 ------------
 
-Many scientists and engineers that do a little coding find they have a collection of little scripts and utilities that they want to be able to use and re-use for various projects. It is really NOT a good idea to simply copy and paste these around for use with each project -- you will regret that!
+Many scientists and engineers that do a little coding find they have a collection of little scripts and utilities that they want to be able to use and re-use for various projects.
+
+Options for Handling Your Code Collection:
+------------------------------------------
+
+ 1) Keep your code in one place, and copy and paste the functions y ou need into each new project.
+
+
+DON'T DO THAT!
+..............
+
+REALLY!
+.......
+
+
+It is really NOT a good idea to simply copy and paste these around for use with each project -- you will regret that!
 
 It is also not a good idea to use the ``PYTHONPATH`` environment variable to set up a directory in which to dump stuff. (Google a bit if you want to know why).
 

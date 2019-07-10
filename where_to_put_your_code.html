@@ -87,8 +87,14 @@
 <li class="toctree-l1"><a class="reference internal" href="persistance_serialization.html">Persistence and Serialization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="where_to_put_tests.html">Where to Put Tests?</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Where to put your custom code?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#a-package-just-for-you">A Package Just for You!</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#tl-dr">TL; DR</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#options-for-handling-your-code-collection">Options for Handling Your Code Collection:</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#don-t-do-that">DON’T DO THAT!</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#really">REALLY!</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#step-by-step">Step by step:</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#putting-in-your-code">Putting in your code</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#notes">NOTES:</a></li>
@@ -163,8 +169,11 @@
             
   <div class="section" id="where-to-put-your-custom-code">
 <h1>Where to put your custom code?<a class="headerlink" href="#where-to-put-your-custom-code" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="a-package-just-for-you">
+<h2>A Package Just for You!<a class="headerlink" href="#a-package-just-for-you" title="Permalink to this headline">¶</a></h2>
 <p>(You can find this page at: <a class="reference external" href="http://bit.ly/JustPackage">http://bit.ly/JustPackage</a>)</p>
 <p>A suggestion for how to manage your personal library of python functions you might use for scripting, data analysis, etc.</p>
+</div>
 <div class="section" id="tl-dr">
 <h2>TL; DR<a class="headerlink" href="#tl-dr" title="Permalink to this headline">¶</a></h2>
 <p>If you have a collection of your own code you want to access for various projects:</p>
@@ -172,13 +181,28 @@
 <p>You DO NOT NEED TO PUT IT ON PYPI !</p>
 <div class="section" id="introduction">
 <h3>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h3>
-<p>Many scientists and engineers that do a little coding find they have a collection of little scripts and utilities that they want to be able to use and re-use for various projects. It is really NOT a good idea to simply copy and paste these around for use with each project – you will regret that!</p>
+<p>Many scientists and engineers that do a little coding find they have a collection of little scripts and utilities that they want to be able to use and re-use for various projects.</p>
+</div>
+<div class="section" id="options-for-handling-your-code-collection">
+<h3>Options for Handling Your Code Collection:<a class="headerlink" href="#options-for-handling-your-code-collection" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Keep your code in one place, and copy and paste the functions y ou need into each new project.</li>
+</ol>
+</div></blockquote>
+<div class="section" id="don-t-do-that">
+<h4>DON’T DO THAT!<a class="headerlink" href="#don-t-do-that" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="really">
+<h4>REALLY!<a class="headerlink" href="#really" title="Permalink to this headline">¶</a></h4>
+<p>It is really NOT a good idea to simply copy and paste these around for use with each project – you will regret that!</p>
 <p>It is also not a good idea to use the <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code> environment variable to set up a directory in which to dump stuff. (Google a bit if you want to know why).</p>
 <p>The best way to do this with Python is to use the Python package mechanism.</p>
 <p>A Python “package” is a collection of modules and scripts – we usually think of these as something carefully developed for a particular purpose and distributed to a wide audience for re-use – the packages you can install with pip.</p>
 <p>Indeed that is the case, but the “collection of modules and scripts” part can be used for your own code that no one else is ever going to touch, and the overhead is small if you use it only this way.</p>
 <p>The challenge is that most of the documentation about python packaging is focused on creating a package of a library that you want to distribute to the community. In that case, it’s very important to have full and proper meta data, tests, documentation, etc. As a result, the packaging documentation makes the whole process seem complicated and cumbersome.</p>
 <p>But making a simple package for your own use can be very simple, and very useful.</p>
+</div>
 </div>
 <div class="section" id="step-by-step">
 <h3>Step by step:<a class="headerlink" href="#step-by-step" title="Permalink to this headline">¶</a></h3>
