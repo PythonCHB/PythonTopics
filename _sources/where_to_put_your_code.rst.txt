@@ -8,6 +8,9 @@ A Package Just for You!
 
 (You can find this page at: http://bit.ly/JustPackage)
 
+.. note:: This page is generated from a Sphinx document managed in this gitHub repo: https://github.com/PythonCHB/PythonTopics. I welcome questions, comments, and, of course, Pull Requests.
+
+
 A suggestion for how to manage your personal library of python functions you might use for scripting, data analysis, etc.
 
 

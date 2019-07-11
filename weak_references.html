@@ -355,7 +355,7 @@ object:</p>
 <span class="gh">Out[13]: </span><span class="go">[1, [2, [...]]]</span>
 </pre></div>
 </div>
-<p>(demo) – <a class="reference download internal" download="" href="_downloads/826655e74b897a728283ba123ed2a4fb/simple_circular.py"><code class="xref download docutils literal notranslate"><span class="pre">simple_circular.py</span></code></a></p>
+<p>(demo) – <a class="reference download internal" href="_downloads/simple_circular.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">simple_circular.py</span></code></a></p>
 <div class="section" id="the-garbage-collector">
 <h3>The Garbage Collector<a class="headerlink" href="#the-garbage-collector" title="Permalink to this headline">¶</a></h3>
 <p>As of Python 2.0 – a garbage collector was added.</p>
@@ -413,7 +413,7 @@ they are cleaned up in the wrong order.</li>
 is growing.</p>
 <p>It can be subtle –python (and the OS) do tricks to re-use memory, etc.</p>
 <p>But if you have a “real” leak – you’ll see it. (Example to follow)</p>
-<p><a class="reference download internal" download="" href="_downloads/0c9b35f0d7e64ab95fd1077dd8c59150/mem_check.py"><code class="xref download docutils literal notranslate"><span class="pre">mem_check.py</span></code></a></p>
+<p><a class="reference download internal" href="_downloads/mem_check.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">mem_check.py</span></code></a></p>
 <p>provides functions that report the memory use of the current running process.</p>
 <p>(*nix and Windows code)</p>
 </div>
@@ -431,15 +431,15 @@ object pointed to by an id (memory address) – “di”:</p>
 </div>
 <div class="section" id="examples">
 <h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference download internal" download="" href="_downloads/e3a7ca4a787a9227c9512cc3878c0418/simple_circular_di.py"><code class="xref download docutils literal notranslate"><span class="pre">simple_circular_di.py</span></code></a></p>
+<p><a class="reference download internal" href="_downloads/simple_circular_di.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">simple_circular_di.py</span></code></a></p>
 <p>uses the ref_by_id() function to see what’s going on with a circular
 reference and garbage collection.</p>
 <p>More real examples in iPython notebook:</p>
-<p><a class="reference download internal" download="" href="_downloads/131fcad055f62f1755f7fb9d57e684d6/CircularReferenceExample.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">CircularReferenceExample.ipynb</span></code></a></p>
-<p>Or: <a class="reference download internal" download="" href="_downloads/e457b7c3605a1e4e1e0e4fed6d6c2917/circular.py"><code class="xref download docutils literal notranslate"><span class="pre">circular.py</span></code></a></p>
-<p><a class="reference download internal" download="" href="_downloads/c9c547602c172767c48f5202eee6834b/memcount.py"><code class="xref download docutils literal notranslate"><span class="pre">memcount.py</span></code></a> is a test
+<p><a class="reference download internal" href="_downloads/CircularReferenceExample.ipynb" download=""><code class="xref download docutils literal notranslate"><span class="pre">CircularReferenceExample.ipynb</span></code></a></p>
+<p>Or: <a class="reference download internal" href="_downloads/circular.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">circular.py</span></code></a></p>
+<p><a class="reference download internal" href="_downloads/memcount.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">memcount.py</span></code></a> is a test
 file that show memory growth if circular references are not cleaned up.</p>
-<p>( <a class="reference download internal" download="" href="_downloads/0c9b35f0d7e64ab95fd1077dd8c59150/mem_check.py"><code class="xref download docutils literal notranslate"><span class="pre">mem_check.py</span></code></a> )
+<p>( <a class="reference download internal" href="_downloads/mem_check.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">mem_check.py</span></code></a> )
 is code that reports process memory use.</p>
 <p>You can find this code in the main repo here:</p>
 <p><a class="reference external" href="https://github.com/PythonCHB/PythonTopics/tree/master/Sources/code/weak_references">https://github.com/PythonCHB/PythonTopics/tree/master/Sources/code/weak_references</a></p>
@@ -510,7 +510,7 @@ is code that reports process memory use.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, Christopher Barker
+        &copy; Copyright 2014, Christopher Barker.
 
     </p>
   </div>
@@ -529,14 +529,20 @@ is code that reports process memory use.</p>
 
   
 
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
 
   
 
