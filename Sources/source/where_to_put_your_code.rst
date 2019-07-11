@@ -35,11 +35,9 @@ Options for Handling Your Code Collection:
  1) Keep your code in one place, and copy and paste the functions you need into each new project.
 
 
-DON'T DO THAT!
-..............
+**DON'T DO THAT!**
 
-REALLY!
-.......
+**REALLY!**
 
 
 It is really NOT a good idea to simply copy and paste code around for use with each project. You will end up with multiple versions scattered all over the place -- **you will regret that!**
@@ -47,14 +45,12 @@ It is really NOT a good idea to simply copy and paste code around for use with e
  2) Put your code in a single directory and add it to the ``PYTHONPATH`` environment variable
 
 
-DON'T DO THAT!
-..............
+**DON'T DO THAT!**
+
+**REALLY!**
 
 
-REALLY!
-.......
-
-``PTYHONPATH`` is shared by all installs of Python. What with Python2, Python3, virtual environments, etc -- it's really not a good idea.
+``PYTHONPATH`` is shared by all installs of Python. What with Python2, Python3, virtual environments, etc -- it's really not a good idea.
 
 If you don't believe me: **Google It**
 
@@ -68,24 +64,24 @@ A Python "package" is a collection of modules and scripts -- we usually think of
 
 Indeed that is the case, but the "collection of modules and scripts" part can be used for your own code that no one else is ever going to touch, and the overhead is small if you use it only this way.
 
-Why Don't People Tend to figure this out for themselves?
+
+Why Don't People Tend to Figure This out for Themselves?
 ........................................................
 
-The Packaging Documentation is mostly about Making a "proper" package for distribution to a wide audience.
+The packaging documentation is mostly about making a "proper" package for distribution to a wide audience.
 
 So newbies tend to either:
 
-* Think: "I don't want/need to do all that", and then move on and copy and past their code around like they have already done.
+* Think: "I don't want/need to do all that", and then move on and copy and past their code around like they have already been doing.
 
 or
 
-* Go ahead and follow the instructions, and end up putting their tiny little not-useful-to-anyone-else package up on PyPi.
+* Go ahead and follow all the instructions, and end up putting their tiny little not-useful-to-anyone-else package up on PyPi.
 
 
 The challenge is that most of the documentation about python packaging is focused on creating a package of a library that you want to distribute to the community. In that case, it's very important to have full and proper meta data, tests, documentation, etc. As a result, the packaging documentation makes the whole process seem complicated and cumbersome.
 
-Making a simple package just for your own use can be very simple, and very useful.
-..................................................................................
+.. rubric:: Making a simple package just for your own use can be very simple, and very useful.
 
 
 Step by Step:
@@ -93,7 +89,9 @@ Step by Step:
 
 1) Create a directory in your user (or home, or ... ) dir for your code. Let's call it "my_code".
 
-2) This is going to seem odd, but create another dir with the same name inside that -- this is where the actual code goes. (it's a convention to name the top directory the same thing as the "package" name, but you don't have to follow that convention. But the inner name does -- that is the name of your package.
+2) This is going to seem odd, but create another dir with the same name inside that -- this is where the actual code goes. (it's a convention to name the top directory the same thing as the "package" name, but you don't have to follow that convention. But the inner name does matter -- that is the name of your package, and how you will import it into Python.
+
+Be thoughtful about what you name your package: you want a easy to remember and fairly easy to type name, but also one that is not used already for any of the standard library or commonly used third party packages. Once you come up with a name, google "the_name python" just to make sure it's not already in use.
 
 3) In that dir, put in an empty, for now, file called ``__init__.py``.
 
@@ -188,9 +186,9 @@ If you have more than a few modules, it would probably make sense to keep them i
 This is only the very simplest way to do it. What you really SHOULD do is be more formal about the process:
   - Do some versioning of the package
   - Keep it in source code version control system (like git, etc)
-  - add tests of your code...
+  - Add tests of your code...
 
-and others...
+and others. But this is enough to get you started, and you can extend it as you develop more software carpentry skills.
 
 Look up "Software Carpentry" for many more ideas about how better to manage your Software for Science.
 
