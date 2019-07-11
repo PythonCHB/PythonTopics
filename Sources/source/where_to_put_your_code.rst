@@ -2,7 +2,14 @@
 Where to put your custom code?
 ******************************
 
+
+A Package Just for You!
+=======================
+
 (You can find this page at: http://bit.ly/JustPackage)
+
+.. note:: This page is generated from a Sphinx document managed in this gitHub repo: https://github.com/PythonCHB/PythonTopics. I welcome questions, comments, and, of course, Pull Requests.
+
 
 A suggestion for how to manage your personal library of python functions you might use for scripting, data analysis, etc.
 
@@ -10,7 +17,7 @@ A suggestion for how to manage your personal library of python functions you mig
 TL; DR
 ======
 
-If you have a collection of your own code you want access to for various projects:
+If you have a collection of your own code you want to access for various projects:
 
 Make a "package" out of it so you can manage it in one place, and use it in other places.
 
@@ -20,9 +27,40 @@ You DO NOT NEED TO PUT IT ON PYPI !
 Introduction
 ------------
 
-Many scientists and engineers that do a little coding find they have a collection of little scripts and utilities that they want to be able to use and re-use for various projects. It is really NOT a good idea to simply copy and paste these around for use with each project -- you will regret that!
+Many scientists and engineers that do a little coding find they have a collection of little scripts and utilities that they want to be able to use and re-use for various projects.
 
-It is also not a good idea to use the ``PYTHONPATH`` environment variable to set up a directory in which to dump stuff. (Google a bit if you want to know why).
+Options for Handling Your Code Collection:
+------------------------------------------
+
+ 1) Keep your code in one place, and copy and paste the functions you need into each new project.
+
+
+DON'T DO THAT!
+..............
+
+REALLY!
+.......
+
+
+It is really NOT a good idea to simply copy and paste code around for use with each project. You will end up with multiple versions scattered all over the place -- **you will regret that!**
+
+ 2) Put your code in a single directory and add it to the ``PYTHONPATH`` environment variable
+
+
+DON'T DO THAT!
+..............
+
+
+REALLY!
+.......
+
+``PTYHONPATH`` is shared by all installs of Python. What with Python2, Python3, virtual environments, etc -- it's really not a good idea.
+
+If you don't believe me: **Google It**
+
+
+What you should do is make a "package"
+--------------------------------------
 
 The best way to do this with Python is to use the Python package mechanism.
 
@@ -30,11 +68,27 @@ A Python "package" is a collection of modules and scripts -- we usually think of
 
 Indeed that is the case, but the "collection of modules and scripts" part can be used for your own code that no one else is ever going to touch, and the overhead is small if you use it only this way.
 
+Why Don't People Tend to figure this out for themselves?
+........................................................
+
+The Packaging Documentation is mostly about Making a "proper" package for distribution to a wide audience.
+
+So newbies tend to either:
+
+* Think: "I don't want/need to do all that", and then move on and copy and past their code around like they have already done.
+
+or
+
+* Go ahead and follow the instructions, and end up putting their tiny little not-useful-to-anyone-else package up on PyPi.
+
+
 The challenge is that most of the documentation about python packaging is focused on creating a package of a library that you want to distribute to the community. In that case, it's very important to have full and proper meta data, tests, documentation, etc. As a result, the packaging documentation makes the whole process seem complicated and cumbersome.
 
-But making a simple package for your own use can be very simple, and very useful.
+Making a simple package just for your own use can be very simple, and very useful.
+..................................................................................
 
-Step by step:
+
+Step by Step:
 -------------
 
 1) Create a directory in your user (or home, or ... ) dir for your code. Let's call it "my_code".
@@ -50,6 +104,7 @@ So you should have::
   my_code
       my_code
           __init__.py
+          some_code.py
       setup.py
 
 The inner my_code dir is now a python "package" -- any directory with a ``__init__.py`` file is a package. But how to use it?
@@ -68,6 +123,11 @@ But for now, we are going to make it as *simple* as possible::
 
 That's it -- really! There is a lot you can do here to support multiple packages, scripts, etc, but this is enough to get you started.
 
+Here: :download:`make_my_package.py <../code/make_my_package.py>` is a little script that will build an empty package for you::
+
+  python make_my_package.py your_package_name
+
+will do it for you.
 
 Putting in your code
 --------------------
@@ -95,7 +155,7 @@ OK -- now you have a (useless) package with some code in it - how to use it?
 
 To use this package, you need to "install" it into the python environment that you want to use. Some of us have a single python install -- maybe Anaconda's root environment, or the python.org python installer, or ...
 
-Some of us use virtualenv, or pipienv, or conda environments. In any case, get yourself into that environment at a command line and put yourself (``cd`` in Terminal, DOS box, etc...)  in the outer my_code dir (where the setup.py  is), and type::
+Some of us use virtualenv, or pipenv, or conda environments. In any case, get yourself into that environment at a command line and put yourself (``cd`` in Terminal, DOS box, etc...)  in the outer my_code dir (where the setup.py  is), and type::
 
     pip install -e .
 
@@ -107,15 +167,15 @@ Now you can fire up Python (or iPython, or a Jupyter notebook, or write code in 
 
 .. code-block:: ipython
 
-    In [2]: from my_code import some_code
+    In [2]: from test_package import test_code
 
-    In [3]: some_code.test_fun()
+    In [3]: test_code.test_fun()
 
     yup -- this worked!!
 
 And you are good to go!
 
-Here is a zip file of my simple example package: :download:`my_code.zip <../code/my_code.zip>`
+.. Here is a zip file of my simple example package: :download:`my_code.zip <../code/my_code.zip>`
 
 
 NOTES:
