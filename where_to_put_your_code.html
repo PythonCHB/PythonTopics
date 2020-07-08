@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,43 +11,46 @@
   
 
   
-  
-  
-  
-
-  
-
-  
-  
-    
-
-  
-
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Interfacing with C / Fortran" href="interfacing_with_c/index.html" />
-    <link rel="prev" title="Where to Put Tests?" href="where_to_put_tests.html" /> 
 
   
-  <script src="_static/js/modernizr.min.js"></script>
+  
+  
+  
 
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Where to Put Tests?" href="where_to_put_tests.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
-            <a href="index.html" class="icon icon-home"> Python Topics
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> Python Topics
           
 
           
@@ -75,6 +77,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -102,12 +105,12 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="interfacing_with_c/index.html">Interfacing with C / Fortran</a></li>
 </ul>
 
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -146,7 +149,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html">Docs</a> &raquo;</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>Where to put your custom code?</li>
     
@@ -173,8 +176,8 @@
 <h2>A Package Just for You!<a class="headerlink" href="#a-package-just-for-you" title="Permalink to this headline">¶</a></h2>
 <p>(You can find this page at: <a class="reference external" href="http://bit.ly/JustPackage">http://bit.ly/JustPackage</a>)</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">This page is generated from a Sphinx document managed in this gitHub repo: <a class="reference external" href="https://github.com/PythonCHB/PythonTopics">https://github.com/PythonCHB/PythonTopics</a>. I welcome questions, comments, and, of course, Pull Requests.</p>
+<p class="admonition-title">Note</p>
+<p>This page is generated from a Sphinx document managed in this gitHub repo: <a class="reference external" href="https://github.com/PythonCHB/PythonTopics">https://github.com/PythonCHB/PythonTopics</a>. I welcome questions, comments, and, of course, Pull Requests.</p>
 </div>
 <p>A suggestion for how to manage your personal library of python functions you might use for scripting, data analysis, etc.</p>
 </div>
@@ -191,17 +194,10 @@
 <h3>Options for Handling Your Code Collection:<a class="headerlink" href="#options-for-handling-your-code-collection" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ol class="arabic simple">
-<li>Keep your code in one place, and copy and paste the functions you need into each new project.</li>
+<li><p>Keep your code in one place, and copy and paste the functions you need into each new project.</p></li>
 </ol>
 </div></blockquote>
-<p><strong>DON’T DO THAT!</strong></p>
-<p><strong>REALLY!</strong></p>
-<p>It is really NOT a good idea to simply copy and paste code around for use with each project. You will end up with multiple versions scattered all over the place – <strong>you will regret that!</strong></p>
-<blockquote>
-<div><ol class="arabic simple" start="2">
-<li>Put your code in a single directory and add it to the <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code> environment variable</li>
-</ol>
-</div></blockquote>
+<p>It is really NOT a good idea to simply copy and paste code around for use with each project. You will end up with multiple versions scattered all over the place …</p>
 <p><strong>DON’T DO THAT!</strong></p>
 <p><strong>REALLY!</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code> is shared by all installs of Python. What with Python2, Python3, virtual environments, etc – it’s really not a good idea.</p>
@@ -217,11 +213,11 @@
 <p>The packaging documentation is mostly about making a “proper” package for distribution to a wide audience.</p>
 <p>So newbies tend to either:</p>
 <ul class="simple">
-<li>Think: “I don’t want/need to do all that”, and then move on and copy and past their code around like they have already been doing.</li>
+<li><p>Think: “I don’t want/need to do all that”, and then move on and copy and past their code around like they have already been doing.</p></li>
 </ul>
 <p>or</p>
 <ul class="simple">
-<li>Go ahead and follow all the instructions, and end up putting their tiny little not-useful-to-anyone-else package up on PyPi.</li>
+<li><p>Go ahead and follow all the instructions, and end up putting their tiny little not-useful-to-anyone-else package up on PyPi.</p></li>
 </ul>
 <p>The challenge is that most of the documentation about python packaging is focused on creating a package of a library that you want to distribute to the community. In that case, it’s very important to have full and proper meta data, tests, documentation, etc. As a result, the packaging documentation makes the whole process seem complicated and cumbersome.</p>
 <p class="rubric">Making a simple package just for your own use can be very simple, and very useful.</p>
@@ -230,13 +226,13 @@
 <div class="section" id="step-by-step">
 <h3>Step by Step:<a class="headerlink" href="#step-by-step" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li>Create a directory in your user (or home, or … ) dir for your code. Let’s call it “my_code”.</li>
-<li>This is going to seem odd, but create another dir with the same name inside that – this is where the actual code goes. (it’s a convention to name the top directory the same thing as the “package” name, but you don’t have to follow that convention. But the inner name does matter – that is the name of your package, and how you will import it into Python.</li>
+<li><p>Create a directory in your user (or home, or … ) dir for your code. Let’s call it “my_code”.</p></li>
+<li><p>This is going to seem odd, but create another dir with the same name inside that – this is where the actual code goes. (it’s a convention to name the top directory the same thing as the “package” name, but you don’t have to follow that convention. But the inner name does matter – that is the name of your package, and how you will import it into Python.</p></li>
 </ol>
 <p>Be thoughtful about what you name your package: you want a easy to remember and fairly easy to type name, but also one that is not used already for any of the standard library or commonly used third party packages. Once you come up with a name, google “the_name python” just to make sure it’s not already in use.</p>
 <ol class="arabic simple" start="3">
-<li>In that dir, put in an empty, for now, file called <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code>.</li>
-<li>In the outer dir, put in a file (we’ll fill it in later) called <code class="docutils literal notranslate"><span class="pre">setup.py</span></code>.</li>
+<li><p>In that dir, put in an empty, for now, file called <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code>.</p></li>
+<li><p>In the outer dir, put in a file (we’ll fill it in later) called <code class="docutils literal notranslate"><span class="pre">setup.py</span></code>.</p></li>
 </ol>
 <p>So you should have:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">my_code</span>
@@ -250,7 +246,7 @@
 <p>The <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> file is where you specify for python how this package is setup. You can do a lot in there, and if you ever want to share your code with anyone else, you should follow:</p>
 <p><a class="reference external" href="https://packaging.python.org/tutorials/distributing-packages/">https://packaging.python.org/tutorials/distributing-packages/</a></p>
 <p>But for now, we are going to make it as <em>simple</em> as possible:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">setuptools</span> <span class="k">import</span> <span class="n">setup</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span>
 
 <span class="n">setup</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;my_code&#39;</span><span class="p">,</span>
       <span class="n">packages</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;my_code&#39;</span><span class="p">],</span>
@@ -258,7 +254,7 @@
 </pre></div>
 </div>
 <p>That’s it – really! There is a lot you can do here to support multiple packages, scripts, etc, but this is enough to get you started.</p>
-<p>Here: <a class="reference download internal" href="_downloads/make_my_package.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">make_my_package.py</span></code></a> is a little script that will build an empty package for you:</p>
+<p>Here: <a class="reference download internal" download="" href="_downloads/9cf5f2793655451b6b2af1e6ee61317d/make_my_package.py"><code class="xref download docutils literal notranslate"><span class="pre">make_my_package.py</span></code></a> is a little script that will build an empty package for you:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">make_my_package</span><span class="o">.</span><span class="n">py</span> <span class="n">your_package_name</span>
 </pre></div>
 </div>
@@ -305,12 +301,11 @@
 <h3>NOTES:<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h3>
 <p>If you have only a little bit of code, you can do all this with a single module, rather than a package, and have an easier import. But I think most folks have enough stuff that it’s better to have multiple modules with related stuff in them.</p>
 <p>If you have more than a few modules, it would probably make sense to keep them in separate packages, organized by functionality.</p>
-<dl class="docutils">
-<dt>This is only the very simplest way to do it. What you really SHOULD do is be more formal about the process:</dt>
-<dd><ul class="first last simple">
-<li>Do some versioning of the package</li>
-<li>Keep it in source code version control system (like git, etc)</li>
-<li>Add tests of your code…</li>
+<dl class="simple">
+<dt>This is only the very simplest way to do it. What you really SHOULD do is be more formal about the process:</dt><dd><ul class="simple">
+<li><p>Do some versioning of the package</p></li>
+<li><p>Keep it in source code version control system (like git, etc)</p></li>
+<li><p>Add tests of your code…</p></li>
 </ul>
 </dd>
 </dl>
@@ -328,10 +323,8 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="interfacing_with_c/index.html" class="btn btn-neutral float-right" title="Interfacing with C / Fortran" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-      
-        <a href="where_to_put_tests.html" class="btn btn-neutral" title="Where to Put Tests?" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="where_to_put_tests.html" class="btn btn-neutral float-left" title="Where to Put Tests?" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -340,11 +333,19 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, Christopher Barker.
+        
+        &copy; Copyright 2014, Christopher Barker
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -356,33 +357,16 @@
   </div>
   
 
-
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'1.0.0',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-
-  
-
-  <script type="text/javascript" src="_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,43 +11,47 @@
   
 
   
-  
-  
-  
-
-  
-
-  
-  
-    
-
-  
-
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Where to Put Tests?" href="where_to_put_tests.html" />
     <link rel="prev" title="Python Memory Management and Weak References" href="weak_references.html" /> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
-            <a href="index.html" class="icon icon-home"> Python Topics
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> Python Topics
           
 
           
@@ -75,6 +78,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -136,12 +140,12 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="where_to_put_tests.html">Where to Put Tests?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="where_to_put_your_code.html">Where to put your custom code?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="interfacing_with_c/index.html">Interfacing with C / Fortran</a></li>
 </ul>
 
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -180,7 +184,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html">Docs</a> &raquo;</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>Persistence and Serialization</li>
     
@@ -269,7 +273,7 @@ a file), but not all persistence mechanisms are serial (i.e RDBMS)</p>
 <span class="gp">In [71]: </span><span class="nb">repr</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="gh">Out[71]: </span><span class="go">&quot;[{&#39;this&#39;: 5, &#39;that&#39;: 4}, {&#39;eggs&#39;: 3.4, &#39;spam&#39;: 7}, {&#39;foo&#39;: 86, &#39;bar&#39;: 4.5}, {&#39;fun&#39;: 43, &#39;baz&#39;: 6.5}]&quot;</span>
 <span class="gp">In [72]: </span><span class="n">s</span> <span class="o">=</span> <span class="n">pprint</span><span class="o">.</span><span class="n">pformat</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="gp">In [73]: </span><span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="gp">In [73]: </span><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 <span class="go">[{&#39;that&#39;: 4, &#39;this&#39;: 5},</span>
 <span class="go"> {&#39;eggs&#39;: 3.4, &#39;spam&#39;: 7},</span>
 <span class="go"> {&#39;bar&#39;: 4.5, &#39;foo&#39;: 86},</span>
@@ -319,24 +323,27 @@ a file), but not all persistence mechanisms are serial (i.e RDBMS)</p>
 <div class="section" id="lab">
 <h3>LAB<a class="headerlink" href="#lab" title="Permalink to this headline">¶</a></h3>
 <p>Here are two datasets embedded in Python:</p>
-<p><a class="reference download internal" href="_downloads/add_book_data.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">add_book_data.py</span></code></a>
-<a class="reference download internal" href="_downloads/add_book_data_flat.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">add_book_data_flat.py</span></code></a></p>
+<p><a class="reference download internal" download="" href="_downloads/9b1095d9f7d6a50a89a011beaee3ce5f/add_book_data.py"><code class="xref download docutils literal notranslate"><span class="pre">add_book_data.py</span></code></a>
+<a class="reference download internal" download="" href="_downloads/e766955bd4e3b7c757dc7de36e15ae91/add_book_data_flat.py"><code class="xref download docutils literal notranslate"><span class="pre">add_book_data_flat.py</span></code></a></p>
 <p>They can be loaded with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">add_book_data</span> <span class="k">import</span> <span class="n">AddressBook</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">add_book_data</span> <span class="kn">import</span> <span class="n">AddressBook</span>
 </pre></div>
 </div>
 <p>They have address book data – one with a nested dict, one “flat”</p>
 <ul class="simple">
-<li>Write a module that saves the data as python literals in a file<ul>
-<li>and reads it back in</li>
+<li><p>Write a module that saves the data as python literals in a file</p>
+<ul>
+<li><p>and reads it back in</p></li>
 </ul>
 </li>
-<li>Write a module that saves the data as a pickle in a file<ul>
-<li>and reads it back in</li>
+<li><p>Write a module that saves the data as a pickle in a file</p>
+<ul>
+<li><p>and reads it back in</p></li>
 </ul>
 </li>
-<li>Write a module that saves the data in a shelve<ul>
-<li>and accesses it one by one.</li>
+<li><p>Write a module that saves the data in a shelve</p>
+<ul>
+<li><p>and accesses it one by one.</p></li>
 </ul>
 </li>
 </ul>
@@ -399,7 +406,7 @@ a file), but not all persistence mechanisms are serial (i.e RDBMS)</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">csv</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">spamReader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;eggs.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">spamReader</span><span class="p">:</span>
-<span class="gp">... </span>    <span class="k">print</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="nb">print</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
 <span class="go">Spam, Spam, Spam, Spam, Spam, Baked Beans</span>
 <span class="go">Spam, Lovely Spam, Wonderful Spam</span>
 </pre></div>
@@ -471,37 +478,37 @@ a file), but not all persistence mechanisms are serial (i.e RDBMS)</p>
 <h3>LAB<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>Use the same addressbook data:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># load with:</span>
-<span class="kn">from</span> <span class="nn">add_book_data</span> <span class="k">import</span> <span class="n">AddressBook</span>
+<span class="kn">from</span> <span class="nn">add_book_data</span> <span class="kn">import</span> <span class="n">AddressBook</span>
 </pre></div>
 </div>
 <p>They have address book data – one with a nested dict, one “flat”</p>
 <ul>
-<li><p class="first">Write a module that saves the data as an INI file</p>
+<li><p>Write a module that saves the data as an INI file</p>
 <blockquote>
 <div><ul class="simple">
-<li>and reads it back in</li>
+<li><p>and reads it back in</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first">Write a module that saves the data as a CSV file</p>
+<li><p>Write a module that saves the data as a CSV file</p>
 <blockquote>
 <div><ul class="simple">
-<li>and reads it back in</li>
+<li><p>and reads it back in</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first">Write a module that saves the data in JSON</p>
+<li><p>Write a module that saves the data in JSON</p>
 <blockquote>
 <div><ul class="simple">
-<li>and reads it back in</li>
+<li><p>and reads it back in</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first">Write a module that saves the data in XML</p>
+<li><p>Write a module that saves the data in XML</p>
 <blockquote>
 <div><ul class="simple">
-<li>and reads it back in</li>
-<li>this gets ugly!</li>
+<li><p>and reads it back in</p></li>
+<li><p>this gets ugly!</p></li>
 </ul>
 </div></blockquote>
 </li>
@@ -527,10 +534,10 @@ a file), but not all persistence mechanisms are serial (i.e RDBMS)</p>
 </div>
 <p>flag options are:</p>
 <ul class="simple">
-<li>‘r’ –  Open existing database for reading only (default)</li>
-<li>‘w’ – Open existing database for reading and writing</li>
-<li>‘c’ –  Open database for reading and writing, creating it if it doesn’t exist</li>
-<li>‘n’ – Always create a new, empty database, open for reading and writing</li>
+<li><p>‘r’ –  Open existing database for reading only (default)</p></li>
+<li><p>‘w’ – Open existing database for reading and writing</p></li>
+<li><p>‘c’ –  Open database for reading and writing, creating it if it doesn’t exist</p></li>
+<li><p>‘n’ – Always create a new, empty database, open for reading and writing</p></li>
 </ul>
 <p><a class="reference external" href="https://docs.python.org/3.5/library/dbm.html">https://docs.python.org/3.5/library/dbm.html</a></p>
 </div>
@@ -630,11 +637,11 @@ a file), but not all persistence mechanisms are serial (i.e RDBMS)</p>
 <p>Support for a large number of third-party Database drivers:</p>
 <blockquote>
 <div><ul class="simple">
-<li>MySQL</li>
-<li>PostgreSQL</li>
-<li>Oracle</li>
-<li>MSSQL (?)</li>
-<li>…</li>
+<li><p>MySQL</p></li>
+<li><p>PostgreSQL</p></li>
+<li><p>Oracle</p></li>
+<li><p>MSSQL (?)</p></li>
+<li><p>…</p></li>
 </ul>
 </div></blockquote>
 <p><a class="reference external" href="http://www.python.org/dev/peps/pep-0249">http://www.python.org/dev/peps/pep-0249</a>}</p>
@@ -646,10 +653,9 @@ a file), but not all persistence mechanisms are serial (i.e RDBMS)</p>
 <h3>Object-Relation Mappers<a class="headerlink" href="#object-relation-mappers" title="Permalink to this headline">¶</a></h3>
 <p>Systems for mapping Python objects to tables</p>
 <p>Saves you writing that glue code (and the SQL)</p>
-<dl class="docutils">
-<dt>Usually deal with mapping to variety of back-ends:</dt>
-<dd><p class="first">– test with SQLite, deploy with PostreSQL</p>
-<p class="last">SQL Alchemy
+<dl>
+<dt>Usually deal with mapping to variety of back-ends:</dt><dd><p>– test with SQLite, deploy with PostreSQL</p>
+<p>SQL Alchemy
 – <a class="reference external" href="http://www.sqlalchemy.org/">http://www.sqlalchemy.org/</a></p>
 </dd>
 </dl>
@@ -668,30 +674,33 @@ a file), but not all persistence mechanisms are serial (i.e RDBMS)</p>
 <p>….Big deal for “Big Data”: Amazon, Google, etc.</p>
 <p>Document-Oriented Storage</p>
 <ul class="simple">
-<li>MongoDB (BSON interface, JSON documents)</li>
-<li>CouchDB (Apache):<ul>
-<li>JSON documents</li>
-<li>Javascript querying (MapReduce)</li>
-<li>HTTP API</li>
+<li><p>MongoDB (BSON interface, JSON documents)</p></li>
+<li><p>CouchDB (Apache):</p>
+<ul>
+<li><p>JSON documents</p></li>
+<li><p>Javascript querying (MapReduce)</p></li>
+<li><p>HTTP API</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="id6">
 <h3>LAB<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
-<dl class="docutils">
-<dt>::</dt>
-<dd># load with:
-from add_book_data import AddressBook</dd>
+<dl class="simple">
+<dt>::</dt><dd><p># load with:
+from add_book_data import AddressBook</p>
+</dd>
 </dl>
 <ul class="simple">
-<li>Write a module that saves the data in a dbm datbase<ul>
-<li>and reads it back in</li>
+<li><p>Write a module that saves the data in a dbm datbase</p>
+<ul>
+<li><p>and reads it back in</p></li>
 </ul>
 </li>
-<li>Write a module that saves the data in an SQLitE datbase<ul>
-<li>and reads it back in</li>
-<li>helps to know SQL here…</li>
+<li><p>Write a module that saves the data in an SQLitE datbase</p>
+<ul>
+<li><p>and reads it back in</p></li>
+<li><p>helps to know SQL here…</p></li>
 </ul>
 </li>
 </ul>
@@ -710,7 +719,7 @@ from add_book_data import AddressBook</dd>
         <a href="where_to_put_tests.html" class="btn btn-neutral float-right" title="Where to Put Tests?" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="weak_references.html" class="btn btn-neutral" title="Python Memory Management and Weak References" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="weak_references.html" class="btn btn-neutral float-left" title="Python Memory Management and Weak References" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -719,11 +728,19 @@ from add_book_data import AddressBook</dd>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, Christopher Barker.
+        
+        &copy; Copyright 2014, Christopher Barker
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -735,33 +752,16 @@ from add_book_data import AddressBook</dd>
   </div>
   
 
-
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'1.0.0',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-
-  
-
-  <script type="text/javascript" src="_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

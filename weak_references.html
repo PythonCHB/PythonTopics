@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,43 +11,47 @@
   
 
   
-  
-  
-  
-
-  
-
-  
-  
-    
-
-  
-
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Persistence and Serialization" href="persistance_serialization.html" />
     <link rel="prev" title="In This Collection" href="index.html" /> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
-            <a href="index.html" class="icon icon-home"> Python Topics
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> Python Topics
           
 
           
@@ -75,6 +78,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -110,12 +114,12 @@
 <li class="toctree-l1"><a class="reference internal" href="persistance_serialization.html">Persistence and Serialization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="where_to_put_tests.html">Where to Put Tests?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="where_to_put_your_code.html">Where to put your custom code?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="interfacing_with_c/index.html">Interfacing with C / Fortran</a></li>
 </ul>
 
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -154,7 +158,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html">Docs</a> &raquo;</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>Python Memory Management and Weak References</li>
     
@@ -183,30 +187,28 @@
 <div class="section" id="memory-management">
 <h2>Memory Management<a class="headerlink" href="#memory-management" title="Permalink to this headline">¶</a></h2>
 <ul class="left simple">
-<li>You don’t want python objects that are no longer in use taking up memory.</li>
-<li>You don’t want to keep track of all that yourself.</li>
-<li>Most “scripting languages” or “virtual machines” have some sort of
-automated memory management</li>
+<li><p>You don’t want python objects that are no longer in use taking up memory.</p></li>
+<li><p>You don’t want to keep track of all that yourself.</p></li>
+<li><p>Most “scripting languages” or “virtual machines” have some sort of
+automated memory management</p></li>
 </ul>
 <p class="center medium">Many ways to do “Garbage Collection”</p>
 <div class="section" id="reference-counting">
 <h3>Reference Counting<a class="headerlink" href="#reference-counting" title="Permalink to this headline">¶</a></h3>
-<dl class="docutils">
-<dt>How memory is managed is not part of the Python language spec:</dt>
-<dd><ul class="first last simple">
-<li>Jython uses the JVM</li>
-<li>Iron Python uses the CLR
-- Both are garbage collected</li>
-<li>PyPy uses <a class="reference external" href="https://pypy.readthedocs.org/en/release-2.4.x/garbage_collection.html#minimark-gc">Minimark</a></li>
+<dl class="simple">
+<dt>How memory is managed is not part of the Python language spec:</dt><dd><ul class="simple">
+<li><p>Jython uses the JVM</p></li>
+<li><p>Iron Python uses the CLR
+- Both are garbage collected</p></li>
+<li><p>PyPy uses <a class="reference external" href="https://pypy.readthedocs.org/en/release-2.4.x/garbage_collection.html#minimark-gc">Minimark</a></p></li>
 </ul>
 </dd>
-<dt>The CPython interpreter uses a reference counting scheme:</dt>
-<dd><ul class="first last simple">
-<li>Every time there is a new reference to a Python object, its reference
-count is increased</li>
-<li>Every time a reference is removed – the count is decreased</li>
-<li>When the reference count goes to zero: the object is deleted
-(memory freed)</li>
+<dt>The CPython interpreter uses a reference counting scheme:</dt><dd><ul class="simple">
+<li><p>Every time there is a new reference to a Python object, its reference
+count is increased</p></li>
+<li><p>Every time a reference is removed – the count is decreased</p></li>
+<li><p>When the reference count goes to zero: the object is deleted
+(memory freed)</p></li>
 </ul>
 </dd>
 </dl>
@@ -214,17 +216,17 @@ count is increased</li>
 <div class="section" id="what-makes-a-reference">
 <h3>What makes a reference?<a class="headerlink" href="#what-makes-a-reference" title="Permalink to this headline">¶</a></h3>
 <ul>
-<li><p class="first">Binding to a name:</p>
+<li><p>Binding to a name:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">an_object</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Putting it in a container:</p>
+<li><p>Putting it in a container:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">an_object</span><span class="p">)</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Passing it to a function:</p>
+<li><p>Passing it to a function:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">func</span><span class="p">(</span><span class="n">an_object</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -245,10 +247,9 @@ count is increased</li>
 <span class="gh">Out[6]: </span><span class="go">2</span>
 </pre></div>
 </div>
-<dl class="docutils">
-<dt>The Heisenberg Uncertainty Principle:</dt>
-<dd><ul class="first last simple">
-<li>you can’t observe it without altering it</li>
+<dl class="simple">
+<dt>The Heisenberg Uncertainty Principle:</dt><dd><ul class="simple">
+<li><p>you can’t observe it without altering it</p></li>
 </ul>
 </dd>
 </dl>
@@ -312,23 +313,20 @@ count is increased</li>
 <div class="section" id="the-power-of-reference-counting">
 <h3>The Power of Reference Counting<a class="headerlink" href="#the-power-of-reference-counting" title="Permalink to this headline">¶</a></h3>
 <ul>
-<li><p class="first">You don’t need to think about it most of the time.</p>
-</li>
-<li><p class="first">Code that creates objects doesn’t need to delete them</p>
-</li>
-<li><p class="first">Objects get deleted right away</p>
+<li><p>You don’t need to think about it most of the time.</p></li>
+<li><p>Code that creates objects doesn’t need to delete them</p></li>
+<li><p>Objects get deleted right away</p>
 <blockquote>
 <div><p>. They can “clean up” on deletion (files, for instance) – and it will happen right away.</p>
 </div></blockquote>
 </li>
-<li><p class="first">Performance is predictable</p>
-</li>
+<li><p>Performance is predictable</p></li>
 </ul>
 </div>
 <div class="section" id="the-limits-of-reference-counting">
 <h3>The Limits of Reference Counting<a class="headerlink" href="#the-limits-of-reference-counting" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Performance overhead on all operations. But the big one:</li>
+<li><p>Performance overhead on all operations. But the big one:</p></li>
 </ul>
 <p class="medium">Circular references</p>
 <p>If a python object somehow references itself – i.e. it references another object that references the first
@@ -355,13 +353,13 @@ object:</p>
 <span class="gh">Out[13]: </span><span class="go">[1, [2, [...]]]</span>
 </pre></div>
 </div>
-<p>(demo) – <a class="reference download internal" href="_downloads/simple_circular.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">simple_circular.py</span></code></a></p>
+<p>(demo) – <a class="reference download internal" download="" href="_downloads/68fdf7be6441291a88cd184989d02039/simple_circular.py"><code class="xref download docutils literal notranslate"><span class="pre">simple_circular.py</span></code></a></p>
 <div class="section" id="the-garbage-collector">
 <h3>The Garbage Collector<a class="headerlink" href="#the-garbage-collector" title="Permalink to this headline">¶</a></h3>
 <p>As of Python 2.0 – a garbage collector was added.</p>
 <blockquote>
 <div><ul class="simple">
-<li>(<a class="reference external" href="https://docs.python.org/2/library/gc.html">https://docs.python.org/2/library/gc.html</a>)</li>
+<li><p>(<a class="reference external" href="https://docs.python.org/2/library/gc.html">https://docs.python.org/2/library/gc.html</a>)</p></li>
 </ul>
 </div></blockquote>
 <p>It can find and clean up “unreachable” references.</p>
@@ -380,14 +378,14 @@ object:</p>
 <p>How does the garbage collector work?</p>
 <blockquote>
 <div><ul class="simple">
-<li>Not a full “mark and sweep” type.</li>
+<li><p>Not a full “mark and sweep” type.</p></li>
 </ul>
 </div></blockquote>
 <p>It searches for reference cycles – then cleans those up.</p>
 <blockquote>
 <div><ul class="simple">
-<li>It doesn’t have to bother checking non-container types (ints, strings, etc.)</li>
-<li>Faster, and not as dependent on having a clear “root” namespace.</li>
+<li><p>It doesn’t have to bother checking non-container types (ints, strings, etc.)</p></li>
+<li><p>Faster, and not as dependent on having a clear “root” namespace.</p></li>
 </ul>
 </div></blockquote>
 <p>Details here:</p>
@@ -395,8 +393,8 @@ object:</p>
 <p>Big issue: classes that define a <code class="docutils literal notranslate"><span class="pre">__del__</span></code> method are not cleaned up.</p>
 <blockquote>
 <div><ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">__del__</span></code> methods often act on references that may no be there if
-they are cleaned up in the wrong order.</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__del__</span></code> methods often act on references that may no be there if
+they are cleaned up in the wrong order.</p></li>
 </ul>
 </div></blockquote>
 <p>NOTE: you can work with gc.garbage() – but tricky and messy</p>
@@ -413,7 +411,7 @@ they are cleaned up in the wrong order.</li>
 is growing.</p>
 <p>It can be subtle –python (and the OS) do tricks to re-use memory, etc.</p>
 <p>But if you have a “real” leak – you’ll see it. (Example to follow)</p>
-<p><a class="reference download internal" href="_downloads/mem_check.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">mem_check.py</span></code></a></p>
+<p><a class="reference download internal" download="" href="_downloads/265232a61066399b6260b4402804cda9/mem_check.py"><code class="xref download docutils literal notranslate"><span class="pre">mem_check.py</span></code></a></p>
 <p>provides functions that report the memory use of the current running process.</p>
 <p>(*nix and Windows code)</p>
 </div>
@@ -431,15 +429,15 @@ object pointed to by an id (memory address) – “di”:</p>
 </div>
 <div class="section" id="examples">
 <h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference download internal" href="_downloads/simple_circular_di.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">simple_circular_di.py</span></code></a></p>
+<p><a class="reference download internal" download="" href="_downloads/12cddb2119e4bb8354336830e15fa55c/simple_circular_di.py"><code class="xref download docutils literal notranslate"><span class="pre">simple_circular_di.py</span></code></a></p>
 <p>uses the ref_by_id() function to see what’s going on with a circular
 reference and garbage collection.</p>
 <p>More real examples in iPython notebook:</p>
-<p><a class="reference download internal" href="_downloads/CircularReferenceExample.ipynb" download=""><code class="xref download docutils literal notranslate"><span class="pre">CircularReferenceExample.ipynb</span></code></a></p>
-<p>Or: <a class="reference download internal" href="_downloads/circular.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">circular.py</span></code></a></p>
-<p><a class="reference download internal" href="_downloads/memcount.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">memcount.py</span></code></a> is a test
+<p><a class="reference download internal" download="" href="_downloads/e500eaf05ac135f66accf85f202387f6/CircularReferenceExample.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">CircularReferenceExample.ipynb</span></code></a></p>
+<p>Or: <a class="reference download internal" download="" href="_downloads/3b439708ef58a241500b880a3a57505e/circular.py"><code class="xref download docutils literal notranslate"><span class="pre">circular.py</span></code></a></p>
+<p><a class="reference download internal" download="" href="_downloads/a37ffbc246ef52b59a4358a8a4f5efe7/memcount.py"><code class="xref download docutils literal notranslate"><span class="pre">memcount.py</span></code></a> is a test
 file that show memory growth if circular references are not cleaned up.</p>
-<p>( <a class="reference download internal" href="_downloads/mem_check.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">mem_check.py</span></code></a> )
+<p>( <a class="reference download internal" download="" href="_downloads/265232a61066399b6260b4402804cda9/mem_check.py"><code class="xref download docutils literal notranslate"><span class="pre">mem_check.py</span></code></a> )
 is code that reports process memory use.</p>
 <p>You can find this code in the main repo here:</p>
 <p><a class="reference external" href="https://github.com/PythonCHB/PythonTopics/tree/master/Sources/code/weak_references">https://github.com/PythonCHB/PythonTopics/tree/master/Sources/code/weak_references</a></p>
@@ -450,29 +448,29 @@ is code that reports process memory use.</p>
 “weak references” – we saw this in the examples.</p>
 <p>(<a class="reference external" href="https://docs.python.org/2/library/weakref.html">https://docs.python.org/2/library/weakref.html</a>)</p>
 <ol class="arabic simple">
-<li>The built-in containers:</li>
+<li><p>The built-in containers:</p></li>
 </ol>
 <blockquote>
 <div><ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">WeakKeyDictionary</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">WeakValueDictionary</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">WeakSet</span></code></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WeakKeyDictionary</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WeakValueDictionary</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WeakSet</span></code></p></li>
 </ul>
 </div></blockquote>
 <ol class="arabic simple" start="2">
-<li><code class="docutils literal notranslate"><span class="pre">Proxy</span></code> objects</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Proxy</span></code> objects</p></li>
 </ol>
 <blockquote>
 <div><ul class="simple">
-<li>act much like regular references – client code doesn’t know the difference</li>
+<li><p>act much like regular references – client code doesn’t know the difference</p></li>
 </ul>
 </div></blockquote>
 <ol class="arabic simple" start="3">
-<li><code class="docutils literal notranslate"><span class="pre">WeakRef</span></code> objects</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WeakRef</span></code> objects</p></li>
 </ol>
 <blockquote>
 <div><ul class="simple">
-<li>When you want to control what happens when the referenced object is gone.</li>
+<li><p>When you want to control what happens when the referenced object is gone.</p></li>
 </ul>
 </div></blockquote>
 </div>
@@ -482,10 +480,10 @@ is code that reports process memory use.</p>
 <p class="left">Build a “weak cache”:</p>
 <p class="left">For large objects that are expensive to create:</p>
 <ul class="left simple">
-<li>Use a WeakValueDictionay to hold references to (probably large) objects.</li>
-<li>When the client requests an object that doesn’t exist – one is created, returned, and cached (weakly).</li>
-<li>If the object is in the cache, it is returned.</li>
-<li>when no other references exist to the object, it is NOT retained by the cache.</li>
+<li><p>Use a WeakValueDictionay to hold references to (probably large) objects.</p></li>
+<li><p>When the client requests an object that doesn’t exist – one is created, returned, and cached (weakly).</p></li>
+<li><p>If the object is in the cache, it is returned.</p></li>
+<li><p>when no other references exist to the object, it is NOT retained by the cache.</p></li>
 </ul>
 </div>
 </div>
@@ -501,7 +499,7 @@ is code that reports process memory use.</p>
         <a href="persistance_serialization.html" class="btn btn-neutral float-right" title="Persistence and Serialization" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral" title="In This Collection" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="In This Collection" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -510,11 +508,19 @@ is code that reports process memory use.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, Christopher Barker.
+        
+        &copy; Copyright 2014, Christopher Barker
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -526,33 +532,16 @@ is code that reports process memory use.</p>
   </div>
   
 
-
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'1.0.0',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-
-  
-
-  <script type="text/javascript" src="_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

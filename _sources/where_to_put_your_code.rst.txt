@@ -34,13 +34,19 @@ Options for Handling Your Code Collection:
 
  1) Keep your code in one place, and copy and paste the functions you need into each new project.
 
+.. centered::
 
-**DON'T DO THAT!**
+    **DON'T DO THAT!**
 
-**REALLY!**
+    **REALLY!**
 
 
-It is really NOT a good idea to simply copy and paste code around for use with each project. You will end up with multiple versions scattered all over the place -- **you will regret that!**
+It is really NOT a good idea to simply copy and paste code around for use with each project. You will end up with multiple versions scattered all over the place ...
+
+.. centered::
+
+    **you will regret that!**
+
 
  2) Put your code in a single directory and add it to the ``PYTHONPATH`` environment variable
 
