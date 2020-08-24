@@ -16,7 +16,7 @@ Test system recommendations
 
 ``pytest`` has a bit of discussion of the issue here:
 
-https://pytest.org/latest/goodpractises.html
+https://docs.pytest.org/en/stable/goodpractices.html
 
 I need to add links for ``nose`` and ``unittest`` ... PR's accepted!
 
