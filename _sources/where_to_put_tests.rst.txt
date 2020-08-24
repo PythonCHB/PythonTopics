@@ -50,7 +50,7 @@ https://packaging.python.org/en/latest/
 
 for recommendations.
 
-In the this case, the directory with all the tests shouls not be a python package -- this is, it should not have a ``__init__.py`` file.
+In the this case, the directory with all the tests should not be a python package -- this is, it should not have a ``__init__.py`` file.
 
 
 2) The other options is to put your test code in a sub-package inside your package. In this case, it should be inside your package, and *be* a python package itself (i.e. have an ``__init__.py``)::
@@ -73,3 +73,5 @@ Sub-package
 -----------
 
 The advantage of test being a sub-package is that your test code gets installed with the package, so users (including yourself, if you are deploying the code) can install the package, and run the test to make sure the install all went well. You can also have the tests use relative imports, so you can run it all without installing (though with develop mode I don't think that is much of an advantage)
+
+

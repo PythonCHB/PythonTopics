@@ -198,7 +198,7 @@
 <p>That means that you do need a setup.py – though it can be very minimal. See:</p>
 <p><a class="reference external" href="https://packaging.python.org/en/latest/">https://packaging.python.org/en/latest/</a></p>
 <p>for recommendations.</p>
-<p>In the this case, the directory with all the tests shouls not be a python package – this is, it should not have a <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file.</p>
+<p>In the this case, the directory with all the tests should not be a python package – this is, it should not have a <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file.</p>
 <ol class="arabic" start="2">
 <li><p>The other options is to put your test code in a sub-package inside your package. In this case, it should be inside your package, and <em>be</em> a python package itself (i.e. have an <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code>):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">my_package</span>
