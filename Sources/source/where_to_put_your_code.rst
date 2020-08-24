@@ -32,22 +32,23 @@ Many scientists and engineers that do a little coding find they have a collectio
 Options for Handling Your Code Collection:
 ------------------------------------------
 
- 1) Keep your code in one place, and copy and paste the functions you need into each new project.
+**(1)** Keep your code in one place and copy and paste the functions you need into each new project.
+
+.. centered:: **DON'T DO THAT!**
+
+.. centered:: **REALLY!**
 
 
-**DON'T DO THAT!**
+It is really NOT a good idea to simply copy and paste code around for use with each project. You will end up with multiple versions scattered all over the place ...
 
-**REALLY!**
-
-
-It is really NOT a good idea to simply copy and paste code around for use with each project. You will end up with multiple versions scattered all over the place -- **you will regret that!**
-
- 2) Put your code in a single directory and add it to the ``PYTHONPATH`` environment variable
+.. centered:: **You will regret that!**
 
 
-**DON'T DO THAT!**
+**(2)** Put your code in a single directory and add it to the ``PYTHONPATH`` environment variable
 
-**REALLY!**
+.. centered:: **DON'T DO THAT!**
+
+.. centered:: **REALLY!**
 
 
 ``PYTHONPATH`` is shared by all installs of Python. What with Python2, Python3, virtual environments, etc -- it's really not a good idea.
