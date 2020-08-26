@@ -20,7 +20,7 @@ https://docs.pytest.org/en/stable/goodpractices.html
 
 For ``nose``, read https://nose.readthedocs.io/en/latest/finding_tests.html
 
-and for ``unittest`` read https://docs.python.org/3/library/unittest.html#test-discovery .
+and for ``unittest`` read https://docs.python.org/3/library/unittest.html#test-discovery.
 
 
 Two Options
