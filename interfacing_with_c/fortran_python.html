@@ -1,89 +1,43 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en">
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Interfacing Fortran and Python &mdash; Python Topics 1.0.0 documentation</title>
-  
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=3ee1c6c6" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
   
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-
-  
-  
-  
-  
-
-  
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
+      <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=af2ce170"></script>
+      <script src="../_static/doctools.js?v=888ff710"></script>
+      <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Python Topics
           
-
-          
+          <a href="../index.html" class="icon icon-home">
+            Python Topics
           </a>
-
-          
-            
-            
-              <div class="version">
-                1.0
-              </div>
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../weak_references.html">Python Memory Management and Weak References</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../persistance_serialization.html">Persistence and Serialization</a></li>
@@ -91,100 +45,61 @@
 <li class="toctree-l1"><a class="reference internal" href="../where_to_put_your_code.html">Where to put your custom code?</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">Python Topics</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-        
-      <li>Interfacing Fortran and Python</li>
-    
-    
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Interfacing Fortran and Python</li>
       <li class="wy-breadcrumbs-aside">
-        
-            
             <a href="../_sources/interfacing_with_c/fortran_python.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="interfacing-fortran-and-python">
-<h1>Interfacing Fortran and Python<a class="headerlink" href="#interfacing-fortran-and-python" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="documentation">
-<h2>Documentation:<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
+             
+  <section id="interfacing-fortran-and-python">
+<h1>Interfacing Fortran and Python<a class="headerlink" href="#interfacing-fortran-and-python" title="Permalink to this heading">¶</a></h1>
+<section id="documentation">
+<h2>Documentation:<a class="headerlink" href="#documentation" title="Permalink to this heading">¶</a></h2>
 <p>A nice reference for Python for Fortran programmers:</p>
 <p><a class="reference external" href="http://fortran90.org/src/rosetta.html">http://fortran90.org/src/rosetta.html</a></p>
 <p>Fortran best practices (including interfacing with Python)</p>
 <p><a class="reference external" href="http://fortran90.org/src/best-practices.html">http://fortran90.org/src/best-practices.html</a></p>
 <p><a class="reference external" href="http://fortran90.org/src/best-practices.html#interfacing-with-python">http://fortran90.org/src/best-practices.html#interfacing-with-python</a></p>
-</div>
-<div class="section" id="interfacing-methods">
-<h2>Interfacing methods:<a class="headerlink" href="#interfacing-methods" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="interfacing-methods">
+<h2>Interfacing methods:<a class="headerlink" href="#interfacing-methods" title="Permalink to this heading">¶</a></h2>
 <p>There a a handful of ways to interface Fortran and Python:</p>
-<div class="section" id="f2py">
-<h3>f2py:<a class="headerlink" href="#f2py" title="Permalink to this headline">¶</a></h3>
+<section id="f2py">
+<h3>f2py:<a class="headerlink" href="#f2py" title="Permalink to this heading">¶</a></h3>
 <p><a class="reference external" href="http://docs.scipy.org/doc/numpy/user/c-info.python-as-glue.html#f2py">http://docs.scipy.org/doc/numpy/user/c-info.python-as-glue.html#f2py</a></p>
 <p>Been around a long time, and maintained (at least a little) as part of the numpy project – but more useful with older fortran – not up to modern fortran standards. Perhaps the best option for interfacing with old-style fortran.</p>
-</div>
-<div class="section" id="fwrap">
-<h3>fwrap:<a class="headerlink" href="#fwrap" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="fwrap">
+<h3>fwrap:<a class="headerlink" href="#fwrap" title="Permalink to this heading">¶</a></h3>
 <p><a class="reference external" href="http://fwrap.sourceforge.net/">http://fwrap.sourceforge.net/</a></p>
 <p>Very promising, but its development has stalled out – so probably not a good bet unless you want to actually work on it yourself.</p>
-</div>
-<div class="section" id="cython-and-iso-c-binding">
-<h3>Cython and iso_c_binding:<a class="headerlink" href="#cython-and-iso-c-binding" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="cython-and-iso-c-binding">
+<h3>Cython and iso_c_binding:<a class="headerlink" href="#cython-and-iso-c-binding" title="Permalink to this heading">¶</a></h3>
 <p><a class="reference external" href="http://fortran90.org/src/best-practices.html#interfacing-with-python">http://fortran90.org/src/best-practices.html#interfacing-with-python</a></p>
 <p>By using the iso_binding calls to extend a C interace to your fortran code, you can call it with Cython. And Cython is very useful for calling C, optimizing Python, and adding “thick” wrappers to either C or fortran.</p>
-</div>
-</div>
-<div class="section" id="an-example">
-<h2>An Example:<a class="headerlink" href="#an-example" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="an-example">
+<h2>An Example:<a class="headerlink" href="#an-example" title="Permalink to this heading">¶</a></h2>
 <p>The following is an example of using Cython to call fortran from Python.</p>
 <p>The problem at hand is an automatic gain control function function, expressed in fortran as:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">subroutine</span> <span class="n">AGC</span><span class="p">(</span><span class="n">nAGC</span><span class="p">,</span><span class="n">npts</span><span class="p">,</span><span class="n">amp</span><span class="p">,</span><span class="n">ampAGC</span><span class="p">)</span>
@@ -211,8 +126,8 @@
 <span class="n">end</span>
 </pre></div>
 </div>
-<div class="section" id="id1">
-<h3>f2py:<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<section id="id1">
+<h3>f2py:<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h3>
 <p>f2py is a command line utility that comes with numpy. You can build a default simple wrapper with the f2py command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f2py</span> <span class="o">-</span><span class="n">m</span> <span class="n">agc_subroutine</span> <span class="n">agc_subroutine</span><span class="o">.</span><span class="n">f</span>
 </pre></div>
@@ -222,7 +137,7 @@
 </pre></div>
 </div>
 <p>This will generate a compiled python extension named agc_subroutine that can be imported in python as:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">agc_subroutine</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">agc_subroutine</span>
 </pre></div>
 </div>
 <p>f2p automatically generates a docstring for the function it created:</p>
@@ -241,8 +156,8 @@
 </pre></div>
 </div>
 <p>where <cite>signal</cite> and <cite>filtered</cite> are 1-d arrays of float32 values, both of the same length.</p>
-<div class="section" id="giving-f2py-extra-information">
-<h4>Giving f2py extra information:<a class="headerlink" href="#giving-f2py-extra-information" title="Permalink to this headline">¶</a></h4>
+<section id="giving-f2py-extra-information">
+<h4>Giving f2py extra information:<a class="headerlink" href="#giving-f2py-extra-information" title="Permalink to this heading">¶</a></h4>
 <p>f2py can build an interface to a fortran subroutine, but it can’t do it all that well without some extra information. For instnce, note from the docstring that the argument <cite>ampagc</cite> is listed as an input argument, when it is really intended to be used for output.</p>
 <p>To get f2py to generate an interface file use the -h option:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f2py</span> <span class="o">-</span><span class="n">h</span> <span class="n">agc_subroutine</span><span class="o">.</span><span class="n">pyf</span> <span class="o">-</span><span class="n">m</span> <span class="n">agc_subroutine</span> <span class="n">agc_subroutine</span><span class="o">.</span><span class="n">f</span>
@@ -288,9 +203,9 @@ end python module agc_subroutine
 </pre></div>
 </div>
 <p>The intent directive, intent(out) is used to tell f2py that ampagc is an output variable and should be created by the interface before being passed to the underlying code. The intent(hide) directive tells f2py to not allow the user to specify the variable, npts, but instead to get it from the size of amp.</p>
-</div>
-<div class="section" id="inserting-directives-in-the-fortran-source">
-<h4>Inserting directives in the Fortran source<a class="headerlink" href="#inserting-directives-in-the-fortran-source" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="inserting-directives-in-the-fortran-source">
+<h4>Inserting directives in the Fortran source<a class="headerlink" href="#inserting-directives-in-the-fortran-source" title="Permalink to this heading">¶</a></h4>
 <p>Directives can alternatively be inserted in the fortran source as special comments:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c</span>
 <span class="n">c</span>  <span class="n">Subrooutine</span> <span class="n">to</span> <span class="n">compute</span> <span class="n">an</span> <span class="n">automatic</span> <span class="n">gain</span> <span class="n">control</span> <span class="nb">filter</span><span class="o">.</span>
@@ -321,56 +236,37 @@ end python module agc_subroutine
 </pre></div>
 </div>
 <p>You can see that you don’t need (and can’t) specify the length of the array, and the output array is automatically created by the wrappers, and memory-managed by python.</p>
-</div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
+</section>
 
 
            </div>
-           
           </div>
           <footer>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        
-        &copy; Copyright 2014, Christopher Barker
-
-    </p>
+    <p>&#169; Copyright 2014, Christopher Barker.</p>
   </div>
-    
-    
-    
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>
