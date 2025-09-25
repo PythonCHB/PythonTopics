@@ -2,7 +2,7 @@ name: Publish Pages
 
 on:
   push:
-    branches: [main] # branch to trigger deployment
+    branches: [master] # branch to trigger deployment
 
 concurrency:
   group: gh-${{ github.ref }}
