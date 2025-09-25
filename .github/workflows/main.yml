@@ -1,8 +1,13 @@
 name: Publish Pages
 
-on: [push]
+on:
   push:
-    branches: [master] # branch to trigger deployment
+    branches: [main] # branch to trigger deployment
+
+concurrency:
+  group: gh-${{ github.ref }}
+  cancel-in-progress: true
+
 
 jobs:
   build:
