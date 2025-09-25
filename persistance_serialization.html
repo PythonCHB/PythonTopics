@@ -6,12 +6,14 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Persistence and Serialization &mdash; Python Topics 1.0.0 documentation</title>
+  <title>Persistence and Serialization &mdash; Python Topics 2.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=3ee1c6c6" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
   
-      <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=af2ce170"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=73cda6fb"></script>
       <script src="_static/doctools.js?v=888ff710"></script>
       <script src="_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="_static/js/theme.js"></script>
@@ -121,9 +123,9 @@
            <div itemprop="articleBody">
              
   <section id="persistence-and-serialization">
-<h1>Persistence and Serialization<a class="headerlink" href="#persistence-and-serialization" title="Permalink to this heading">¶</a></h1>
+<h1>Persistence and Serialization<a class="headerlink" href="#persistence-and-serialization" title="Permalink to this heading"></a></h1>
 <section id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">¶</a></h2>
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
 <p>Persistence and Serialization are closely related.</p>
 <p><em>Serialization</em> means taking a potentially complex data structure and converting it into a single string of bytes.</p>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Serialization">https://en.wikipedia.org/wiki/Serialization</a></p>
@@ -132,7 +134,7 @@
 <p>They are closely related, because most forms of persistent storage – simple text files, databases, etc., require that it be turned into a simple string of bytes first. After all, at the end of the day, everything done with computers is ultimately a serial string of bytes.</p>
 <p>Serialization is also very useful for transmitting information between systems – over the network, etc.</p>
 <section id="serialization">
-<h3>Serialization<a class="headerlink" href="#serialization" title="Permalink to this heading">¶</a></h3>
+<h3>Serialization<a class="headerlink" href="#serialization" title="Permalink to this heading"></a></h3>
 <p>Today is less about concepts</p>
 <p>More about learning to use a given module</p>
 <p>So less talk, more coding</p>
@@ -142,7 +144,7 @@
 <p>The serial form can be saved to a file, pushed over the wire, etc.</p>
 </section>
 <section id="persistence">
-<h3>Persistence<a class="headerlink" href="#persistence" title="Permalink to this heading">¶</a></h3>
+<h3>Persistence<a class="headerlink" href="#persistence" title="Permalink to this heading"></a></h3>
 <p>Persistence is saving your python data structure(s) to disk – so they
 will persist once the python process is finished.</p>
 <p>Any serial form can provide persistence (by dumping/loading it to/from
@@ -151,15 +153,15 @@ a file), but not all persistence mechanisms are serial (i.e RDBMS)</p>
 </section>
 </section>
 <section id="python-specific-formats">
-<h2>Python Specific Formats<a class="headerlink" href="#python-specific-formats" title="Permalink to this heading">¶</a></h2>
+<h2>Python Specific Formats<a class="headerlink" href="#python-specific-formats" title="Permalink to this heading"></a></h2>
 <section id="python-literals">
-<h3>Python Literals<a class="headerlink" href="#python-literals" title="Permalink to this heading">¶</a></h3>
+<h3>Python Literals<a class="headerlink" href="#python-literals" title="Permalink to this heading"></a></h3>
 <p>Putting plain old python literals in your file</p>
 <p>Gives a nice, human-editable form for config files, etc.</p>
 <p>Don’t use for untrusted sources!!!</p>
 </section>
 <section id="id1">
-<h3>Python Literals<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h3>
+<h3>Python Literals<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
 <p>Good for basic python types.
 (can work for your own classes, too – if you write a good <code class="docutils literal notranslate"><span class="pre">__repr__</span></code> )</p>
 <p>In theory, <code class="docutils literal notranslate"><span class="pre">repr()</span></code>  always gives a form that can be re-constructed.</p>
@@ -168,7 +170,7 @@ a file), but not all persistence mechanisms are serial (i.e RDBMS)</p>
 <p><a class="reference external" href="https://docs.python.org/3.5/library/pprint.html">https://docs.python.org/3.5/library/pprint.html</a></p>
 </section>
 <section id="python-literal-example">
-<h3>Python Literal Example<a class="headerlink" href="#python-literal-example" title="Permalink to this heading">¶</a></h3>
+<h3>Python Literal Example<a class="headerlink" href="#python-literal-example" title="Permalink to this heading"></a></h3>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="go"># a list of dicts</span>
 <span class="go">data = [{&#39;this&#39;:5, &#39;that&#39;:4}, {&#39;spam&#39;:7, &#39;eggs&#39;:3.4}]</span>
 <span class="gp">In [51]: </span><span class="n">s</span> <span class="o">=</span> <span class="nb">repr</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="c1"># save a string version:</span>
@@ -183,7 +185,7 @@ a file), but not all persistence mechanisms are serial (i.e RDBMS)</p>
 <p>(NOTE: <code class="docutils literal notranslate"><span class="pre">ast.literal_eval</span></code> is safer than eval: <a class="reference external" href="https://docs.python.org/3.5/library/ast.html#ast-helpers">https://docs.python.org/3.5/library/ast.html#ast-helpers</a>)</p>
 </section>
 <section id="pretty-print">
-<h3>pretty print<a class="headerlink" href="#pretty-print" title="Permalink to this heading">¶</a></h3>
+<h3>pretty print<a class="headerlink" href="#pretty-print" title="Permalink to this heading"></a></h3>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [69]: </span><span class="kn">import</span><span class="w"> </span><span class="nn">pprint</span>
 <span class="gp">In [71]: </span><span class="nb">repr</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="gh">Out[71]: </span><span class="go">&quot;[{&#39;this&#39;: 5, &#39;that&#39;: 4}, {&#39;eggs&#39;: 3.4, &#39;spam&#39;: 7}, {&#39;foo&#39;: 86, &#39;bar&#39;: 4.5}, {&#39;fun&#39;: 43, &#39;baz&#39;: 6.5}]&quot;</span>
@@ -197,7 +199,7 @@ a file), but not all persistence mechanisms are serial (i.e RDBMS)</p>
 </div>
 </section>
 <section id="pickle">
-<h3>Pickle<a class="headerlink" href="#pickle" title="Permalink to this heading">¶</a></h3>
+<h3>Pickle<a class="headerlink" href="#pickle" title="Permalink to this heading"></a></h3>
 <p>Pickle is a binary format for python objects</p>
 <p>You can essentially dump any python object to disk (or string, or socket, or…</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [87]: </span><span class="kn">import</span><span class="w"> </span><span class="nn">pickle</span>
@@ -216,7 +218,7 @@ a file), but not all persistence mechanisms are serial (i.e RDBMS)</p>
 <p><a class="reference external" href="https://docs.python.org/3.5/library/pickle.html">https://docs.python.org/3.5/library/pickle.html</a></p>
 </section>
 <section id="shelve">
-<h3>Shelve<a class="headerlink" href="#shelve" title="Permalink to this heading">¶</a></h3>
+<h3>Shelve<a class="headerlink" href="#shelve" title="Permalink to this heading"></a></h3>
 <p>A “shelf” is a persistent, dictionary-like object.</p>
 <p>(It’s also a place you can put a jar of pickles…)</p>
 <p>The values (not the keys!) can be essentially arbitrary Python objects (anything picklable)</p>
@@ -236,7 +238,7 @@ a file), but not all persistence mechanisms are serial (i.e RDBMS)</p>
 <p><a class="reference external" href="https://docs.python.org/3.5/library/shelve.html">https://docs.python.org/3.5/library/shelve.html</a></p>
 </section>
 <section id="lab">
-<h3>LAB<a class="headerlink" href="#lab" title="Permalink to this heading">¶</a></h3>
+<h3>LAB<a class="headerlink" href="#lab" title="Permalink to this heading"></a></h3>
 <p>Here are two datasets embedded in Python:</p>
 <p><a class="reference download internal" download="" href="_downloads/9b1095d9f7d6a50a89a011beaee3ce5f/add_book_data.py"><code class="xref download docutils literal notranslate"><span class="pre">add_book_data.py</span></code></a>
 <a class="reference download internal" download="" href="_downloads/e766955bd4e3b7c757dc7de36e15ae91/add_book_data_flat.py"><code class="xref download docutils literal notranslate"><span class="pre">add_book_data_flat.py</span></code></a></p>
@@ -265,9 +267,9 @@ a file), but not all persistence mechanisms are serial (i.e RDBMS)</p>
 </section>
 </section>
 <section id="interchange-formats">
-<h2>Interchange Formats<a class="headerlink" href="#interchange-formats" title="Permalink to this heading">¶</a></h2>
+<h2>Interchange Formats<a class="headerlink" href="#interchange-formats" title="Permalink to this heading"></a></h2>
 <section id="ini">
-<h3>INI<a class="headerlink" href="#ini" title="Permalink to this heading">¶</a></h3>
+<h3>INI<a class="headerlink" href="#ini" title="Permalink to this heading"></a></h3>
 <p>INI files</p>
 <p>(the old Windows config files)</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">Section1</span><span class="p">]</span>
@@ -282,7 +284,7 @@ a file), but not all persistence mechanisms are serial (i.e RDBMS)</p>
 <p>Good for configuration data, etc.</p>
 </section>
 <section id="configparser">
-<h3>ConfigParser<a class="headerlink" href="#configparser" title="Permalink to this heading">¶</a></h3>
+<h3>ConfigParser<a class="headerlink" href="#configparser" title="Permalink to this heading"></a></h3>
 <p>Writing <code class="docutils literal notranslate"><span class="pre">ini</span></code>  files:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">configparser</span>
 <span class="n">config</span> <span class="o">=</span> <span class="n">configparser</span><span class="o">.</span><span class="n">ConfigParser</span><span class="p">()</span>
@@ -309,14 +311,14 @@ a file), but not all persistence mechanisms are serial (i.e RDBMS)</p>
 <p><a class="reference external" href="https://docs.python.org/3.5/library/configparser.html">https://docs.python.org/3.5/library/configparser.html</a></p>
 </section>
 <section id="csv">
-<h3>CSV<a class="headerlink" href="#csv" title="Permalink to this heading">¶</a></h3>
+<h3>CSV<a class="headerlink" href="#csv" title="Permalink to this heading"></a></h3>
 <p>CSV (Comma Separated Values) format is the most common import and export format for spreadsheets and databases.</p>
 <p>No real standard – the Python csv package more or less follows MS Excel “standard” (with other “dialects” available)</p>
 <p>Can use delimiters other than commas… (I like tabs better)</p>
 <p>Most useful for simple tabular data</p>
 </section>
 <section id="csv-module">
-<h3>CSV module<a class="headerlink" href="#csv-module" title="Permalink to this heading">¶</a></h3>
+<h3>CSV module<a class="headerlink" href="#csv-module" title="Permalink to this heading"></a></h3>
 <p>Reading <code class="docutils literal notranslate"><span class="pre">CSV</span></code>  files:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">spamReader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;eggs.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="p">)</span>
@@ -341,7 +343,7 @@ a file), but not all persistence mechanisms are serial (i.e RDBMS)</p>
 <p><a class="reference external" href="https://docs.python.org/3.5/library/csv.html">https://docs.python.org/3.5/library/csv.html</a></p>
 </section>
 <section id="json">
-<h3>JSON<a class="headerlink" href="#json" title="Permalink to this heading">¶</a></h3>
+<h3>JSON<a class="headerlink" href="#json" title="Permalink to this heading"></a></h3>
 <p>JSON (JavaScript Object Notation) is a subset of JavaScript syntax used as a lightweight data interchange format.</p>
 <p>Python module has an interface similar to pickle</p>
 <p>Can handle the standard Python data types</p>
@@ -351,7 +353,7 @@ a file), but not all persistence mechanisms are serial (i.e RDBMS)</p>
 <p><a class="reference external" href="https://docs.python.org/3.5/library/json.html">https://docs.python.org/3.5/library/json.html</a></p>
 </section>
 <section id="python-json-module">
-<h3>Python json module<a class="headerlink" href="#python-json-module" title="Permalink to this heading">¶</a></h3>
+<h3>Python json module<a class="headerlink" href="#python-json-module" title="Permalink to this heading"></a></h3>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [94]: </span><span class="n">s</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="gh">Out[95]: </span><span class="go">&#39;[{&quot;this&quot;: 5, &quot;that&quot;: 4}, {&quot;eggs&quot;: 3.4, &quot;spam&quot;: 7},</span>
 <span class="go">           {&quot;foo&quot;: 86, &quot;bar&quot;: 4.5}, {&quot;fun&quot;: 43, &quot;baz&quot;: 6.5}]&#39;</span>
@@ -369,12 +371,12 @@ a file), but not all persistence mechanisms are serial (i.e RDBMS)</p>
 <p><a class="reference external" href="https://docs.python.org/3.5/library/json.html">https://docs.python.org/3.5/library/json.html</a></p>
 </section>
 <section id="xml">
-<h3>XML<a class="headerlink" href="#xml" title="Permalink to this heading">¶</a></h3>
+<h3>XML<a class="headerlink" href="#xml" title="Permalink to this heading"></a></h3>
 <p>XML is a standardized version of SGML, designed for use as a data storage / interchange format.</p>
 <p>NOTE: HTML is also SGML, and modern versions conform to the XML standard.</p>
 </section>
 <section id="xml-in-the-python-std-lib">
-<h3>XML in the python std lib<a class="headerlink" href="#xml-in-the-python-std-lib" title="Permalink to this heading">¶</a></h3>
+<h3>XML in the python std lib<a class="headerlink" href="#xml-in-the-python-std-lib" title="Permalink to this heading"></a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">xml.dom</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">xml.sax</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">xml.parsers.expat</span></code></p>
@@ -382,7 +384,7 @@ a file), but not all persistence mechanisms are serial (i.e RDBMS)</p>
 <p><a class="reference external" href="https://docs.python.org/3.5/library/xml.etree.elementtree.html">https://docs.python.org/3.5/library/xml.etree.elementtree.html</a></p>
 </section>
 <section id="elementtree">
-<h3>elementtree<a class="headerlink" href="#elementtree" title="Permalink to this heading">¶</a></h3>
+<h3>elementtree<a class="headerlink" href="#elementtree" title="Permalink to this heading"></a></h3>
 <p>The Element type is a flexible container object, designed to store hierarchical data structures in memory.</p>
 <p>Essentially an in-memory XML – can be read from / written-to XML</p>
 <p>an <code class="docutils literal notranslate"><span class="pre">ElementTree</span></code>  is an entire XML doc</p>
@@ -390,7 +392,7 @@ a file), but not all persistence mechanisms are serial (i.e RDBMS)</p>
 <p><a class="reference external" href="https://docs.python.org/3.5/library/xml.etree.elementtree.html">https://docs.python.org/3.5/library/xml.etree.elementtree.html</a></p>
 </section>
 <section id="id2">
-<h3>LAB<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h3>
+<h3>LAB<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
 <p>Use the same addressbook data:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># load with:</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">add_book_data</span><span class="w"> </span><span class="kn">import</span> <span class="n">AddressBook</span>
@@ -431,16 +433,16 @@ a file), but not all persistence mechanisms are serial (i.e RDBMS)</p>
 </section>
 </section>
 <section id="databases">
-<h2>DataBases<a class="headerlink" href="#databases" title="Permalink to this heading">¶</a></h2>
+<h2>DataBases<a class="headerlink" href="#databases" title="Permalink to this heading"></a></h2>
 <section id="anydbm">
-<h3>anydbm<a class="headerlink" href="#anydbm" title="Permalink to this heading">¶</a></h3>
+<h3>anydbm<a class="headerlink" href="#anydbm" title="Permalink to this heading"></a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">dbm</span></code>  is a generic interface to variants of the DBM database</p>
 <p>Suitable for storing data that fits well into a python dict with strings as both keys and values</p>
 <p>Note: dbm will use the dbm system that works on your system – this may be different on different systems – so the db files may NOT be compatible! <code class="docutils literal notranslate"><span class="pre">whichdb</span></code>  will try to figure it out, but it’s not guaranteed</p>
 <p><a class="reference external" href="https://docs.python.org/3.5/library/dbm.html">https://docs.python.org/3.5/library/dbm.html</a></p>
 </section>
 <section id="dbm-module">
-<h3>dbm module<a class="headerlink" href="#dbm-module" title="Permalink to this heading">¶</a></h3>
+<h3>dbm module<a class="headerlink" href="#dbm-module" title="Permalink to this heading"></a></h3>
 <p>Writing data:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#creating a dbm file:</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">dbm</span>
@@ -457,7 +459,7 @@ a file), but not all persistence mechanisms are serial (i.e RDBMS)</p>
 <p><a class="reference external" href="https://docs.python.org/3.5/library/dbm.html">https://docs.python.org/3.5/library/dbm.html</a></p>
 </section>
 <section id="anydbm-module">
-<h3>anydbm module<a class="headerlink" href="#anydbm-module" title="Permalink to this heading">¶</a></h3>
+<h3>anydbm module<a class="headerlink" href="#anydbm-module" title="Permalink to this heading"></a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">dbm</span></code>  provides dict-like interface:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">db</span> <span class="o">=</span> <span class="n">dbm</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;dbm&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">)</span>
 <span class="n">db</span><span class="p">[</span><span class="s2">&quot;first&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;bruce&quot;</span>
@@ -474,7 +476,7 @@ a file), but not all persistence mechanisms are serial (i.e RDBMS)</p>
 <p><a class="reference external" href="http://docs.python.org/library/anydbm.html">http://docs.python.org/library/anydbm.html</a></p>
 </section>
 <section id="sqlite">
-<h3>sqlite<a class="headerlink" href="#sqlite" title="Permalink to this heading">¶</a></h3>
+<h3>sqlite<a class="headerlink" href="#sqlite" title="Permalink to this heading"></a></h3>
 <p>SQLite: C library provides a lightweight disk-based single-file database</p>
 <p>Nonstandard variant of the SQL query language</p>
 <p>Very broadly used as as an embedded databases for storing application-specific data etc.</p>
@@ -482,7 +484,7 @@ a file), but not all persistence mechanisms are serial (i.e RDBMS)</p>
 <p><a class="reference external" href="https://addons.mozilla.org/en-US/firefox/addon/sqlite-manager/">https://addons.mozilla.org/en-US/firefox/addon/sqlite-manager/</a></p>
 </section>
 <section id="python-sqlite-module">
-<h3>python sqlite module<a class="headerlink" href="#python-sqlite-module" title="Permalink to this heading">¶</a></h3>
+<h3>python sqlite module<a class="headerlink" href="#python-sqlite-module" title="Permalink to this heading"></a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">sqlite3</span></code>  Python module wraps C lib – provides standard DB-API interface</p>
 <p>Allows (and requires) SQL queries</p>
 <p>Can provide high performance, flexible, portable storage for your app</p>
@@ -500,7 +502,7 @@ a file), but not all persistence mechanisms are serial (i.e RDBMS)</p>
 <p><a class="reference external" href="https://docs.python.org/3.5/library/sqlite3.html">https://docs.python.org/3.5/library/sqlite3.html</a></p>
 </section>
 <section id="id3">
-<h3>python sqlite module<a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h3>
+<h3>python sqlite module<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
 <p>Execute SQL with the cursor:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create table</span>
 <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&#39;CREATE TABLE stocks (date text, trans text, symbol text, qty real, price real)&#39;&quot;</span><span class="p">)</span>
@@ -515,7 +517,7 @@ a file), but not all persistence mechanisms are serial (i.e RDBMS)</p>
 <p><a class="reference external" href="https://docs.python.org/3.5/library/sqlite3.html">https://docs.python.org/3.5/library/sqlite3.html</a></p>
 </section>
 <section id="id4">
-<h3>python sqlite module<a class="headerlink" href="#id4" title="Permalink to this heading">¶</a></h3>
+<h3>python sqlite module<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">SELECT</span></code>  creates an cursor that can be iterated:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM stocks ORDER BY price&#39;</span><span class="p">):</span>
 <span class="go">        print row</span>
@@ -531,7 +533,7 @@ a file), but not all persistence mechanisms are serial (i.e RDBMS)</p>
 </div>
 </section>
 <section id="id5">
-<h3>python sqlite module<a class="headerlink" href="#id5" title="Permalink to this heading">¶</a></h3>
+<h3>python sqlite module<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
 <p>Good idea to use the DB-API’s parameter substitution:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="n">symbol</span><span class="p">,)</span>
 <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM stocks WHERE symbol=?&#39;</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
@@ -547,7 +549,7 @@ a file), but not all persistence mechanisms are serial (i.e RDBMS)</p>
 <p><a class="reference external" href="http://xkcd.com/327/">http://xkcd.com/327/</a></p>
 </section>
 <section id="db-api">
-<h3>DB-API<a class="headerlink" href="#db-api" title="Permalink to this heading">¶</a></h3>
+<h3>DB-API<a class="headerlink" href="#db-api" title="Permalink to this heading"></a></h3>
 <p>The DB-API spec (PEP 249) is a specification for interaction between Python and Relational Databases.</p>
 <p>Support for a large number of third-party Database drivers:</p>
 <blockquote>
@@ -563,9 +565,9 @@ a file), but not all persistence mechanisms are serial (i.e RDBMS)</p>
 </section>
 </section>
 <section id="other-options">
-<h2>Other Options<a class="headerlink" href="#other-options" title="Permalink to this heading">¶</a></h2>
+<h2>Other Options<a class="headerlink" href="#other-options" title="Permalink to this heading"></a></h2>
 <section id="object-relation-mappers">
-<h3>Object-Relation Mappers<a class="headerlink" href="#object-relation-mappers" title="Permalink to this heading">¶</a></h3>
+<h3>Object-Relation Mappers<a class="headerlink" href="#object-relation-mappers" title="Permalink to this heading"></a></h3>
 <p>Systems for mapping Python objects to tables</p>
 <p>Saves you writing that glue code (and the SQL)</p>
 <dl>
@@ -578,13 +580,13 @@ a file), but not all persistence mechanisms are serial (i.e RDBMS)</p>
 <a class="reference external" href="https://docs.djangoproject.com/en/dev/topics/db/">https://docs.djangoproject.com/en/dev/topics/db/</a></p>
 </section>
 <section id="object-databases">
-<h3>Object Databases<a class="headerlink" href="#object-databases" title="Permalink to this heading">¶</a></h3>
+<h3>Object Databases<a class="headerlink" href="#object-databases" title="Permalink to this heading"></a></h3>
 <p>Directly store and retrieve Python Objects.</p>
 <p>Kind of like <code class="docutils literal notranslate"><span class="pre">shelve</span></code>, but more flexible, and give you searching, etc.</p>
 <p>ZODB: (<a class="reference external" href="http://www.zodb.org/">http://www.zodb.org/</a>)</p>
 </section>
 <section id="nosql">
-<h3>NoSQL<a class="headerlink" href="#nosql" title="Permalink to this heading">¶</a></h3>
+<h3>NoSQL<a class="headerlink" href="#nosql" title="Permalink to this heading"></a></h3>
 <p>Map-Reduce, etc.</p>
 <p>….Big deal for “Big Data”: Amazon, Google, etc.</p>
 <p>Document-Oriented Storage</p>
@@ -600,7 +602,7 @@ a file), but not all persistence mechanisms are serial (i.e RDBMS)</p>
 </ul>
 </section>
 <section id="id6">
-<h3>LAB<a class="headerlink" href="#id6" title="Permalink to this heading">¶</a></h3>
+<h3>LAB<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
 <dl class="simple">
 <dt>::</dt><dd><p># load with:
 from add_book_data import AddressBook</p>
@@ -634,7 +636,7 @@ from add_book_data import AddressBook</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2014, Christopher Barker.</p>
+    <p>&#169; Copyright 2014-2025, Christopher Barker.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

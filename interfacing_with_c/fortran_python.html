@@ -6,12 +6,14 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Interfacing Fortran and Python &mdash; Python Topics 1.0.0 documentation</title>
+  <title>Interfacing Fortran and Python &mdash; Python Topics 2.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=3ee1c6c6" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
   
-      <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=af2ce170"></script>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=73cda6fb"></script>
       <script src="../_static/doctools.js?v=888ff710"></script>
       <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="../_static/js/theme.js"></script>
@@ -70,9 +72,9 @@
            <div itemprop="articleBody">
              
   <section id="interfacing-fortran-and-python">
-<h1>Interfacing Fortran and Python<a class="headerlink" href="#interfacing-fortran-and-python" title="Permalink to this heading">¶</a></h1>
+<h1>Interfacing Fortran and Python<a class="headerlink" href="#interfacing-fortran-and-python" title="Permalink to this heading"></a></h1>
 <section id="documentation">
-<h2>Documentation:<a class="headerlink" href="#documentation" title="Permalink to this heading">¶</a></h2>
+<h2>Documentation:<a class="headerlink" href="#documentation" title="Permalink to this heading"></a></h2>
 <p>A nice reference for Python for Fortran programmers:</p>
 <p><a class="reference external" href="http://fortran90.org/src/rosetta.html">http://fortran90.org/src/rosetta.html</a></p>
 <p>Fortran best practices (including interfacing with Python)</p>
@@ -80,26 +82,26 @@
 <p><a class="reference external" href="http://fortran90.org/src/best-practices.html#interfacing-with-python">http://fortran90.org/src/best-practices.html#interfacing-with-python</a></p>
 </section>
 <section id="interfacing-methods">
-<h2>Interfacing methods:<a class="headerlink" href="#interfacing-methods" title="Permalink to this heading">¶</a></h2>
+<h2>Interfacing methods:<a class="headerlink" href="#interfacing-methods" title="Permalink to this heading"></a></h2>
 <p>There a a handful of ways to interface Fortran and Python:</p>
 <section id="f2py">
-<h3>f2py:<a class="headerlink" href="#f2py" title="Permalink to this heading">¶</a></h3>
+<h3>f2py:<a class="headerlink" href="#f2py" title="Permalink to this heading"></a></h3>
 <p><a class="reference external" href="http://docs.scipy.org/doc/numpy/user/c-info.python-as-glue.html#f2py">http://docs.scipy.org/doc/numpy/user/c-info.python-as-glue.html#f2py</a></p>
 <p>Been around a long time, and maintained (at least a little) as part of the numpy project – but more useful with older fortran – not up to modern fortran standards. Perhaps the best option for interfacing with old-style fortran.</p>
 </section>
 <section id="fwrap">
-<h3>fwrap:<a class="headerlink" href="#fwrap" title="Permalink to this heading">¶</a></h3>
+<h3>fwrap:<a class="headerlink" href="#fwrap" title="Permalink to this heading"></a></h3>
 <p><a class="reference external" href="http://fwrap.sourceforge.net/">http://fwrap.sourceforge.net/</a></p>
 <p>Very promising, but its development has stalled out – so probably not a good bet unless you want to actually work on it yourself.</p>
 </section>
 <section id="cython-and-iso-c-binding">
-<h3>Cython and iso_c_binding:<a class="headerlink" href="#cython-and-iso-c-binding" title="Permalink to this heading">¶</a></h3>
+<h3>Cython and iso_c_binding:<a class="headerlink" href="#cython-and-iso-c-binding" title="Permalink to this heading"></a></h3>
 <p><a class="reference external" href="http://fortran90.org/src/best-practices.html#interfacing-with-python">http://fortran90.org/src/best-practices.html#interfacing-with-python</a></p>
 <p>By using the iso_binding calls to extend a C interace to your fortran code, you can call it with Cython. And Cython is very useful for calling C, optimizing Python, and adding “thick” wrappers to either C or fortran.</p>
 </section>
 </section>
 <section id="an-example">
-<h2>An Example:<a class="headerlink" href="#an-example" title="Permalink to this heading">¶</a></h2>
+<h2>An Example:<a class="headerlink" href="#an-example" title="Permalink to this heading"></a></h2>
 <p>The following is an example of using Cython to call fortran from Python.</p>
 <p>The problem at hand is an automatic gain control function function, expressed in fortran as:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">subroutine</span> <span class="n">AGC</span><span class="p">(</span><span class="n">nAGC</span><span class="p">,</span><span class="n">npts</span><span class="p">,</span><span class="n">amp</span><span class="p">,</span><span class="n">ampAGC</span><span class="p">)</span>
@@ -127,7 +129,7 @@
 </pre></div>
 </div>
 <section id="id1">
-<h3>f2py:<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h3>
+<h3>f2py:<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
 <p>f2py is a command line utility that comes with numpy. You can build a default simple wrapper with the f2py command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f2py</span> <span class="o">-</span><span class="n">m</span> <span class="n">agc_subroutine</span> <span class="n">agc_subroutine</span><span class="o">.</span><span class="n">f</span>
 </pre></div>
@@ -157,7 +159,7 @@
 </div>
 <p>where <cite>signal</cite> and <cite>filtered</cite> are 1-d arrays of float32 values, both of the same length.</p>
 <section id="giving-f2py-extra-information">
-<h4>Giving f2py extra information:<a class="headerlink" href="#giving-f2py-extra-information" title="Permalink to this heading">¶</a></h4>
+<h4>Giving f2py extra information:<a class="headerlink" href="#giving-f2py-extra-information" title="Permalink to this heading"></a></h4>
 <p>f2py can build an interface to a fortran subroutine, but it can’t do it all that well without some extra information. For instnce, note from the docstring that the argument <cite>ampagc</cite> is listed as an input argument, when it is really intended to be used for output.</p>
 <p>To get f2py to generate an interface file use the -h option:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f2py</span> <span class="o">-</span><span class="n">h</span> <span class="n">agc_subroutine</span><span class="o">.</span><span class="n">pyf</span> <span class="o">-</span><span class="n">m</span> <span class="n">agc_subroutine</span> <span class="n">agc_subroutine</span><span class="o">.</span><span class="n">f</span>
@@ -205,7 +207,7 @@ end python module agc_subroutine
 <p>The intent directive, intent(out) is used to tell f2py that ampagc is an output variable and should be created by the interface before being passed to the underlying code. The intent(hide) directive tells f2py to not allow the user to specify the variable, npts, but instead to get it from the size of amp.</p>
 </section>
 <section id="inserting-directives-in-the-fortran-source">
-<h4>Inserting directives in the Fortran source<a class="headerlink" href="#inserting-directives-in-the-fortran-source" title="Permalink to this heading">¶</a></h4>
+<h4>Inserting directives in the Fortran source<a class="headerlink" href="#inserting-directives-in-the-fortran-source" title="Permalink to this heading"></a></h4>
 <p>Directives can alternatively be inserted in the fortran source as special comments:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c</span>
 <span class="n">c</span>  <span class="n">Subrooutine</span> <span class="n">to</span> <span class="n">compute</span> <span class="n">an</span> <span class="n">automatic</span> <span class="n">gain</span> <span class="n">control</span> <span class="nb">filter</span><span class="o">.</span>
@@ -249,7 +251,7 @@ end python module agc_subroutine
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2014, Christopher Barker.</p>
+    <p>&#169; Copyright 2014-2025, Christopher Barker.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

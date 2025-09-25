@@ -6,12 +6,14 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Interfacing C and Python &mdash; Python Topics 1.0.0 documentation</title>
+  <title>Interfacing C and Python &mdash; Python Topics 2.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=3ee1c6c6" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
   
-      <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=af2ce170"></script>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=73cda6fb"></script>
       <script src="../_static/doctools.js?v=888ff710"></script>
       <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="../_static/js/theme.js"></script>
@@ -70,42 +72,45 @@
            <div itemprop="articleBody">
              
   <section id="interfacing-c-and-python">
-<h1>Interfacing C and Python<a class="headerlink" href="#interfacing-c-and-python" title="Permalink to this heading">¶</a></h1>
+<h1>Interfacing C and Python<a class="headerlink" href="#interfacing-c-and-python" title="Permalink to this heading"></a></h1>
 <p>Sorry, not much here yet.</p>
 <p>NOTE: this is all about the CPython interpreter – not PyPy, IronPython, JPython, etc.</p>
 <section id="documentation">
-<h2>Documentation:<a class="headerlink" href="#documentation" title="Permalink to this heading">¶</a></h2>
+<h2>Documentation:<a class="headerlink" href="#documentation" title="Permalink to this heading"></a></h2>
 <p>Core docs for the C API:</p>
 <p><a class="reference external" href="https://docs.python.org/3/extending/">https://docs.python.org/3/extending/</a></p>
 </section>
 <section id="interfacing-methods">
-<h2>Interfacing methods:<a class="headerlink" href="#interfacing-methods" title="Permalink to this heading">¶</a></h2>
+<h2>Interfacing methods:<a class="headerlink" href="#interfacing-methods" title="Permalink to this heading"></a></h2>
 <p>There a bunch of ways to interface C and Python:</p>
 <section id="hand-write-against-the-c-api">
-<h3>Hand write against the C API:<a class="headerlink" href="#hand-write-against-the-c-api" title="Permalink to this heading">¶</a></h3>
+<h3>Hand write against the C API:<a class="headerlink" href="#hand-write-against-the-c-api" title="Permalink to this heading"></a></h3>
 <p>The python interpeter exposes a full API to all the python objects, etc. You can essentially do anything, but it’s a lot of hand-work.</p>
 <p>And reference counting is really hard to get right!</p>
 <p><a class="reference external" href="http://docs.python.org/3/c-api/">http://docs.python.org/3/c-api/</a></p>
 </section>
 <section id="cython">
-<h3>Cython:<a class="headerlink" href="#cython" title="Permalink to this heading">¶</a></h3>
+<h3>Cython:<a class="headerlink" href="#cython" title="Permalink to this heading"></a></h3>
 <p>Cython can be described as a “python-like language for writing python extensions”</p>
 <p>It can be used essentially to speed up Python, but also to call Python from C.</p>
 <p><a class="reference external" href="https://cython.org/">https://cython.org/</a></p>
 </section>
 <section id="ctypes">
-<h3>ctypes<a class="headerlink" href="#ctypes" title="Permalink to this heading">¶</a></h3>
-<p>Ctypes comes with PYthon out of the box.</p>
+<h3>ctypes<a class="headerlink" href="#ctypes" title="Permalink to this heading"></a></h3>
+<p>Ctypes comes with Python out of the box.</p>
 </section>
 <section id="swig-sip-etc">
-<h3>SWIG, SIP, ETC.<a class="headerlink" href="#swig-sip-etc" title="Permalink to this heading">¶</a></h3>
+<h3>SWIG, SIP, ETC.<a class="headerlink" href="#swig-sip-etc" title="Permalink to this heading"></a></h3>
 <p>Auto wrapper generators.</p>
 </section>
 </section>
 <section id="example">
-<h2>EXAMPLE:<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h2>
+<h2>EXAMPLE:<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
 <p>Same as the one for fortran: a automatic gain control filter:</p>
-<p><code class="xref download docutils literal notranslate"><span class="pre">agc_example.zip</span></code></p>
+<p><a class="reference download internal" download="" href="../_downloads/c81091e0e1e1932a524a603b3d93dd19/agc_c.c"><code class="xref download docutils literal notranslate"><span class="pre">agc_example/agc_c.c</span></code></a></p>
+<p><a class="reference download internal" download="" href="../_downloads/069a3d58ffbe15965b0e86112c81ab14/agc_c_cy.pyx"><code class="xref download docutils literal notranslate"><span class="pre">agc_example/agc_c_cy.pyx</span></code></a></p>
+<p><a class="reference download internal" download="" href="../_downloads/ca2fe0944016ad8f1cc1f7ebd4733c4f/agc_cython.pyx"><code class="xref download docutils literal notranslate"><span class="pre">agc_example/agc_cython.pyx</span></code></a></p>
+<p><a class="reference download internal" download="" href="../_downloads/8a6cd9468276089b5dcb7a41cb2ad77a/agc_python.py"><code class="xref download docutils literal notranslate"><span class="pre">agc_example/agc_python.py</span></code></a></p>
 </section>
 </section>
 
@@ -117,7 +122,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2014, Christopher Barker.</p>
+    <p>&#169; Copyright 2014-2025, Christopher Barker.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

@@ -13,6 +13,8 @@ Chris Barker
 
 ``https://github.com/PythonCHB``
 
+**NOTE:** These notes were written for Python 2. The principles remain the same (for now... work on a GIL-free python is close!), but Python 3 has stronger and smarter support for garbage collection, so this is all less critical (though still good to understand!) 
+
 ==================
 Memory Management
 ==================

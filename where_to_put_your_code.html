@@ -6,12 +6,14 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Where to put your custom code? &mdash; Python Topics 1.0.0 documentation</title>
+  <title>Where to put your custom code? &mdash; Python Topics 2.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=3ee1c6c6" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
   
-      <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=af2ce170"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=73cda6fb"></script>
       <script src="_static/doctools.js?v=888ff710"></script>
       <script src="_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="_static/js/theme.js"></script>
@@ -86,9 +88,9 @@
            <div itemprop="articleBody">
              
   <section id="where-to-put-your-custom-code">
-<h1>Where to put your custom code?<a class="headerlink" href="#where-to-put-your-custom-code" title="Permalink to this heading">¶</a></h1>
+<h1>Where to put your custom code?<a class="headerlink" href="#where-to-put-your-custom-code" title="Permalink to this heading"></a></h1>
 <section id="a-package-just-for-you">
-<h2>A Package Just for You!<a class="headerlink" href="#a-package-just-for-you" title="Permalink to this heading">¶</a></h2>
+<h2>A Package Just for You!<a class="headerlink" href="#a-package-just-for-you" title="Permalink to this heading"></a></h2>
 <p>(You can find this page at: <a class="reference external" href="http://bit.ly/JustPackage">http://bit.ly/JustPackage</a>)</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -97,16 +99,16 @@
 <p>A suggestion for how to manage your personal library of python functions you might use for scripting, data analysis, etc.</p>
 </section>
 <section id="tl-dr">
-<h2>TL; DR<a class="headerlink" href="#tl-dr" title="Permalink to this heading">¶</a></h2>
+<h2>TL; DR<a class="headerlink" href="#tl-dr" title="Permalink to this heading"></a></h2>
 <p>If you have a collection of your own code you want to access for various projects:</p>
 <p>Make a “package” out of it so you can manage it in one place, and use it in other places.</p>
 <p>You DO NOT NEED TO PUT IT ON PYPI !</p>
 <section id="introduction">
-<h3>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h3>
+<h3>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h3>
 <p>Many scientists and engineers that do a little coding find they have a collection of little scripts and utilities that they want to be able to use and re-use for various projects.</p>
 </section>
 <section id="options-for-handling-your-code-collection">
-<h3>Options for Handling Your Code Collection:<a class="headerlink" href="#options-for-handling-your-code-collection" title="Permalink to this heading">¶</a></h3>
+<h3>Options for Handling Your Code Collection:<a class="headerlink" href="#options-for-handling-your-code-collection" title="Permalink to this heading"></a></h3>
 <p><strong>(1)</strong> Keep your code in one place and copy and paste the functions you need into each new project.</p>
 <p class="centered">
 <strong><strong>DON’T DO THAT!</strong></strong></p><p class="centered">
@@ -119,12 +121,12 @@
 <p>If you don’t believe me: <strong>Google It</strong></p>
 </section>
 <section id="what-you-should-do-is-make-a-package">
-<h3>What you should do is make a “package”<a class="headerlink" href="#what-you-should-do-is-make-a-package" title="Permalink to this heading">¶</a></h3>
+<h3>What you should do is make a “package”<a class="headerlink" href="#what-you-should-do-is-make-a-package" title="Permalink to this heading"></a></h3>
 <p>The best way to do this with Python is to use the Python package mechanism.</p>
 <p>A Python “package” is a collection of modules and scripts – we usually think of these as something carefully developed for a particular purpose and distributed to a wide audience for re-use – the packages you can install with pip.</p>
 <p>Indeed that is the case, but the “collection of modules and scripts” part can be used for your own code that no one else is ever going to touch, and the overhead is small if you use it only this way.</p>
 <section id="why-don-t-people-tend-to-figure-this-out-for-themselves">
-<h4>Why Don’t People Tend to Figure This out for Themselves?<a class="headerlink" href="#why-don-t-people-tend-to-figure-this-out-for-themselves" title="Permalink to this heading">¶</a></h4>
+<h4>Why Don’t People Tend to Figure This out for Themselves?<a class="headerlink" href="#why-don-t-people-tend-to-figure-this-out-for-themselves" title="Permalink to this heading"></a></h4>
 <p>The packaging documentation is mostly about making a “proper” package for distribution to a wide audience.</p>
 <p>So newbies tend to either:</p>
 <ul class="simple">
@@ -139,7 +141,7 @@
 </section>
 </section>
 <section id="step-by-step">
-<h3>Step by Step:<a class="headerlink" href="#step-by-step" title="Permalink to this heading">¶</a></h3>
+<h3>Step by Step:<a class="headerlink" href="#step-by-step" title="Permalink to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>Create a directory in your user (or home, or … ) dir for your code. Let’s call it “my_code”.</p></li>
 <li><p>This is going to seem odd, but create another dir with the same name inside that – this is where the actual code goes. (it’s a convention to name the top directory the same thing as the “package” name, but you don’t have to follow that convention. But the inner name does matter – that is the name of your package, and how you will import it into Python.</p></li>
@@ -176,7 +178,7 @@
 <p>will do it for you.</p>
 </section>
 <section id="putting-in-your-code">
-<h3>Putting in your code<a class="headerlink" href="#putting-in-your-code" title="Permalink to this heading">¶</a></h3>
+<h3>Putting in your code<a class="headerlink" href="#putting-in-your-code" title="Permalink to this heading"></a></h3>
 <p>Now put some code in there!</p>
 <p>Create a file for your code, and put it in the inner my_code dir:</p>
 <p><code class="docutils literal notranslate"><span class="pre">some_code.py</span></code>:</p>
@@ -213,7 +215,7 @@
 <p>And you are good to go!</p>
 </section>
 <section id="notes">
-<h3>NOTES:<a class="headerlink" href="#notes" title="Permalink to this heading">¶</a></h3>
+<h3>NOTES:<a class="headerlink" href="#notes" title="Permalink to this heading"></a></h3>
 <p>If you have only a little bit of code, you can do all this with a single module, rather than a package, and have an easier import. But I think most folks have enough stuff that it’s better to have multiple modules with related stuff in them.</p>
 <p>If you have more than a few modules, it would probably make sense to keep them in separate packages, organized by functionality.</p>
 <dl class="simple">
@@ -240,7 +242,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2014, Christopher Barker.</p>
+    <p>&#169; Copyright 2014-2025, Christopher Barker.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
