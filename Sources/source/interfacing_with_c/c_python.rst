@@ -43,7 +43,7 @@ https://cython.org/
 ctypes
 ------
 
-Ctypes comes with PYthon out of the box.
+Ctypes comes with Python out of the box.
 
 
 SWIG, SIP, ETC.
@@ -57,7 +57,14 @@ EXAMPLE:
 
 Same as the one for fortran: a automatic gain control filter:
 
-:download:`agc_example.zip`
+:download:`agc_example/agc_c.c`
+
+:download:`agc_example/agc_c_cy.pyx`
+
+:download:`agc_example/agc_cython.pyx`
+
+:download:`agc_example/agc_python.py` 
+
 
 
 

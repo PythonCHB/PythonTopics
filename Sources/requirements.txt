@@ -5,6 +5,6 @@ Sphinx
 docutils
 sphinx-rtd-theme
 gnureadline
-hieroglyph
+# hieroglyph
 ipython
 libsass
