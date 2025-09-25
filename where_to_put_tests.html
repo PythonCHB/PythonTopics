@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -13,9 +13,9 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=73cda6fb"></script>
-      <script src="_static/doctools.js?v=888ff710"></script>
-      <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+      <script src="_static/documentation_options.js?v=51b770b3"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -84,20 +84,20 @@
            <div itemprop="articleBody">
              
   <section id="where-to-put-tests">
-<h1>Where to Put Tests?<a class="headerlink" href="#where-to-put-tests" title="Permalink to this heading"></a></h1>
+<h1>Where to Put Tests?<a class="headerlink" href="#where-to-put-tests" title="Link to this heading"></a></h1>
 <section id="tl-dr">
-<h2>TL; DR<a class="headerlink" href="#tl-dr" title="Permalink to this heading"></a></h2>
+<h2>TL; DR<a class="headerlink" href="#tl-dr" title="Link to this heading"></a></h2>
 <p>If your package and test code are small and self contained, put the tests in with the package.</p>
 <p>If the tests are large or complex, or require reading/writing files, or significant sample data, put your tests outside the package.</p>
 <section id="test-system-recommendations">
-<h3>Test system recommendations<a class="headerlink" href="#test-system-recommendations" title="Permalink to this heading"></a></h3>
+<h3>Test system recommendations<a class="headerlink" href="#test-system-recommendations" title="Link to this heading"></a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">pytest</span></code> has a bit of discussion of the issue here:</p>
 <p><a class="reference external" href="https://docs.pytest.org/en/stable/goodpractices.html">https://docs.pytest.org/en/stable/goodpractices.html</a></p>
 <p>For <code class="docutils literal notranslate"><span class="pre">nose</span></code>, read <a class="reference external" href="https://nose.readthedocs.io/en/latest/finding_tests.html">https://nose.readthedocs.io/en/latest/finding_tests.html</a></p>
 <p>and for <code class="docutils literal notranslate"><span class="pre">unittest</span></code> read <a class="reference external" href="https://docs.python.org/3/library/unittest.html#test-discovery">https://docs.python.org/3/library/unittest.html#test-discovery</a>.</p>
 </section>
 <section id="two-options">
-<h3>Two Options<a class="headerlink" href="#two-options" title="Permalink to this heading"></a></h3>
+<h3>Two Options<a class="headerlink" href="#two-options" title="Link to this heading"></a></h3>
 <p>In Python packaging, there is no consensus on where you should put your test suite. This thread:</p>
 <p><a class="reference external" href="https://mail.python.org/pipermail/distutils-sig/2015-October/027003.html">https://mail.python.org/pipermail/distutils-sig/2015-October/027003.html</a></p>
 <p>makes that clear :-)</p>
@@ -137,11 +137,11 @@
 </ol>
 </section>
 <section id="self-contained">
-<h3>Self Contained<a class="headerlink" href="#self-contained" title="Permalink to this heading"></a></h3>
+<h3>Self Contained<a class="headerlink" href="#self-contained" title="Link to this heading"></a></h3>
 <p>The advantage of keeping test code self-contained is that you can have a large suite of tests with sample data and who knows what, and it won’t bloat and complicate the installed package (and test code can write to the test dirs, etc. Also, you can then run the test suite against an installed version that may not be exactly the same as the current live code.</p>
 </section>
 <section id="sub-package">
-<h3>Sub-package<a class="headerlink" href="#sub-package" title="Permalink to this heading"></a></h3>
+<h3>Sub-package<a class="headerlink" href="#sub-package" title="Link to this heading"></a></h3>
 <p>The advantage of test being a sub-package is that your test code gets installed with the package, so users (including yourself, if you are deploying the code) can install the package, and run the test to make sure the install all went well. You can also have the tests use relative imports, so you can run it all without installing (though with develop mode I don’t think that is much of an advantage)</p>
 </section>
 </section>

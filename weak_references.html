@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -13,9 +13,9 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=73cda6fb"></script>
-      <script src="_static/doctools.js?v=888ff710"></script>
-      <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+      <script src="_static/documentation_options.js?v=51b770b3"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -98,13 +98,13 @@
            <div itemprop="articleBody">
              
   <section id="python-memory-management-and-weak-references">
-<h1>Python Memory Management and Weak References<a class="headerlink" href="#python-memory-management-and-weak-references" title="Permalink to this heading"></a></h1>
+<h1>Python Memory Management and Weak References<a class="headerlink" href="#python-memory-management-and-weak-references" title="Link to this heading"></a></h1>
 <p>Chris Barker</p>
 <p><code class="docutils literal notranslate"><span class="pre">PythonCHB&#64;gmail.com</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">https://github.com/PythonCHB</span></code></p>
 <p><strong>NOTE:</strong> These notes were written for Python 2. The principles remain the same (for now… work on a GIL-free python is close!), but Python 3 has stronger and smarter support for garbage collection, so this is all less critical (though still good to understand!)</p>
 <section id="memory-management">
-<h2>Memory Management<a class="headerlink" href="#memory-management" title="Permalink to this heading"></a></h2>
+<h2>Memory Management<a class="headerlink" href="#memory-management" title="Link to this heading"></a></h2>
 <ul class="left simple">
 <li><p>You don’t want python objects that are no longer in use taking up memory.</p></li>
 <li><p>You don’t want to keep track of all that yourself.</p></li>
@@ -113,7 +113,7 @@ automated memory management</p></li>
 </ul>
 <p class="center medium">Many ways to do “Garbage Collection”</p>
 <section id="reference-counting">
-<h3>Reference Counting<a class="headerlink" href="#reference-counting" title="Permalink to this heading"></a></h3>
+<h3>Reference Counting<a class="headerlink" href="#reference-counting" title="Link to this heading"></a></h3>
 <dl class="simple">
 <dt>How memory is managed is not part of the Python language spec:</dt><dd><ul class="simple">
 <li><p>Jython uses the JVM</p></li>
@@ -133,7 +133,7 @@ count is increased</p></li>
 </dl>
 </section>
 <section id="what-makes-a-reference">
-<h3>What makes a reference?<a class="headerlink" href="#what-makes-a-reference" title="Permalink to this heading"></a></h3>
+<h3>What makes a reference?<a class="headerlink" href="#what-makes-a-reference" title="Link to this heading"></a></h3>
 <ul>
 <li><p>Binding to a name:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">an_object</span>
@@ -154,7 +154,7 @@ count is increased</p></li>
 <p>Most of the time, you don’t need to think about this at all.</p>
 </section>
 <section id="how-do-i-see-what-s-going-on">
-<h3>How do I see what’s going on?<a class="headerlink" href="#how-do-i-see-what-s-going-on" title="Permalink to this heading"></a></h3>
+<h3>How do I see what’s going on?<a class="headerlink" href="#how-do-i-see-what-s-going-on" title="Link to this heading"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">getrefcount</span><span class="p">(</span><span class="nb">object</span><span class="p">)</span>
 </pre></div>
@@ -174,7 +174,7 @@ count is increased</p></li>
 </dl>
 </section>
 <section id="playing-with-references">
-<h3>Playing with References<a class="headerlink" href="#playing-with-references" title="Permalink to this heading"></a></h3>
+<h3>Playing with References<a class="headerlink" href="#playing-with-references" title="Link to this heading"></a></h3>
 <p>(live demo)</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [7]: </span><span class="n">a</span> <span class="o">=</span> <span class="p">[]</span>
 
@@ -230,7 +230,7 @@ count is increased</p></li>
 <p>(hint: interning….)</p>
 </section>
 <section id="the-power-of-reference-counting">
-<h3>The Power of Reference Counting<a class="headerlink" href="#the-power-of-reference-counting" title="Permalink to this heading"></a></h3>
+<h3>The Power of Reference Counting<a class="headerlink" href="#the-power-of-reference-counting" title="Link to this heading"></a></h3>
 <ul>
 <li><p>You don’t need to think about it most of the time.</p></li>
 <li><p>Code that creates objects doesn’t need to delete them</p></li>
@@ -243,7 +243,7 @@ count is increased</p></li>
 </ul>
 </section>
 <section id="the-limits-of-reference-counting">
-<h3>The Limits of Reference Counting<a class="headerlink" href="#the-limits-of-reference-counting" title="Permalink to this heading"></a></h3>
+<h3>The Limits of Reference Counting<a class="headerlink" href="#the-limits-of-reference-counting" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Performance overhead on all operations. But the big one:</p></li>
 </ul>
@@ -254,7 +254,7 @@ object:</p>
 </section>
 </section>
 <section id="circular-references">
-<h2>Circular References<a class="headerlink" href="#circular-references" title="Permalink to this heading"></a></h2>
+<h2>Circular References<a class="headerlink" href="#circular-references" title="Link to this heading"></a></h2>
 <div class="left highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [8]: </span><span class="n">l1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,]</span> <span class="p">;</span> <span class="n">l2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,]</span>
 
 <span class="gp">In [9]: </span><span class="n">l1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">l2</span><span class="p">);</span> <span class="n">l2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">l1</span><span class="p">)</span>
@@ -274,7 +274,7 @@ object:</p>
 </div>
 <p>(demo) – <a class="reference download internal" download="" href="_downloads/68fdf7be6441291a88cd184989d02039/simple_circular.py"><code class="xref download docutils literal notranslate"><span class="pre">simple_circular.py</span></code></a></p>
 <section id="the-garbage-collector">
-<h3>The Garbage Collector<a class="headerlink" href="#the-garbage-collector" title="Permalink to this heading"></a></h3>
+<h3>The Garbage Collector<a class="headerlink" href="#the-garbage-collector" title="Link to this heading"></a></h3>
 <p>As of Python 2.0 – a garbage collector was added.</p>
 <blockquote>
 <div><ul class="simple">
@@ -320,12 +320,12 @@ they are cleaned up in the wrong order.</p></li>
 </section>
 </section>
 <section id="tools">
-<h2>Tools<a class="headerlink" href="#tools" title="Permalink to this heading"></a></h2>
+<h2>Tools<a class="headerlink" href="#tools" title="Link to this heading"></a></h2>
 <p class="left">If these objects are no longer “reachable” – how do you find out what’s going on?</p>
 <p class="left">We saw <code class="docutils literal notranslate"><span class="pre">sys.getrefcount()</span></code> – but you need a reference to the object to use it.</p>
 <p class="left">You can see what the refcount is before you delete the last reference, but that isn’t always easy.</p>
 <section id="process-memory-use">
-<h3>Process Memory Use<a class="headerlink" href="#process-memory-use" title="Permalink to this heading"></a></h3>
+<h3>Process Memory Use<a class="headerlink" href="#process-memory-use" title="Link to this heading"></a></h3>
 <p>A really coarse way to find a memory leak is to see if the process memory
 is growing.</p>
 <p>It can be subtle –python (and the OS) do tricks to re-use memory, etc.</p>
@@ -335,7 +335,7 @@ is growing.</p>
 <p>(*nix and Windows code)</p>
 </section>
 <section id="id-checks">
-<h3>id checks<a class="headerlink" href="#id-checks" title="Permalink to this heading"></a></h3>
+<h3>id checks<a class="headerlink" href="#id-checks" title="Link to this heading"></a></h3>
 <p>As it happens, the Python <code class="docutils literal notranslate"><span class="pre">id()</span></code> function returns a memory address.</p>
 <p>It’s really dangerous, but that means we can examine an object if we know
 its <cite>id</cite>, even if we don’t hold a reference to it.</p>
@@ -347,7 +347,7 @@ object pointed to by an id (memory address) – “di”:</p>
 <p>NOTE: it would be a really bad idea to use these in production code!</p>
 </section>
 <section id="examples">
-<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this heading"></a></h3>
+<h3>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h3>
 <p><a class="reference download internal" download="" href="_downloads/12cddb2119e4bb8354336830e15fa55c/simple_circular_di.py"><code class="xref download docutils literal notranslate"><span class="pre">simple_circular_di.py</span></code></a></p>
 <p>uses the ref_by_id() function to see what’s going on with a circular
 reference and garbage collection.</p>
@@ -362,7 +362,7 @@ is code that reports process memory use.</p>
 <p><a class="reference external" href="https://github.com/PythonCHB/PythonTopics/tree/master/Sources/code/weak_references">https://github.com/PythonCHB/PythonTopics/tree/master/Sources/code/weak_references</a></p>
 </section>
 <section id="weak-references">
-<h3>Weak References<a class="headerlink" href="#weak-references" title="Permalink to this heading"></a></h3>
+<h3>Weak References<a class="headerlink" href="#weak-references" title="Link to this heading"></a></h3>
 <p>For times when you don’t want to keep objects alive, Python provides
 “weak references” – we saw this in the examples.</p>
 <p>(<a class="reference external" href="https://docs.python.org/2/library/weakref.html">https://docs.python.org/2/library/weakref.html</a>)</p>
@@ -395,7 +395,7 @@ is code that reports process memory use.</p>
 </section>
 </section>
 <section id="exercise">
-<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this heading"></a></h2>
+<h2>Exercise<a class="headerlink" href="#exercise" title="Link to this heading"></a></h2>
 <p class="left">Build a “weak cache”:</p>
 <p class="left">For large objects that are expensive to create:</p>
 <ul class="left simple">
